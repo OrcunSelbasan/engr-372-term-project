@@ -1,10 +1,11 @@
 :root {
-    --light-blue: #0077B6;
-    --dark-blue: #16558F;
+  --light-blue: #0077b6;
+  --dark-blue: #16558f;
+  --white: #e5e5e5;
 }
 * {
-    box-sizing: border-box;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 html,
@@ -12,59 +13,138 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
+  background-color: aliceblue;
+}
+
+body {
+  display: flex;
+}
+
+header {
+  display: inline-block;
+  width: 260px;
+  border-right: 2px solid var(--dark-blue);
+}
+
+main {
+  flex-grow: 1;
+  padding: 50px 20px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 50px 0px;
+}
+
+nav > ul {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+}
+
+nav > h1 {
+  padding: 0px 20px;
+  text-align: center;
+}
+
+nav > ul > li {
+  padding: 10px 20px;
+  border-top: 2px solid var(--dark-blue);
+  text-align: center;
+}
+
+nav > ul > li {
+  padding: 10px 20px;
+  border-top: 2px solid var(--dark-blue);
+  text-align: center;
+}
+
+nav > ul > li:last-child {
+  border-bottom: 2px solid var(--dark-blue);
+}
+
+a:visited,
+a:link,
+a:active,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+}
+
+.nav_link {
+  display: inline-block;
+  padding: 10px 20px;
+  border-top: 2px solid var(--dark-blue);
+  text-align: center;
+}
+
+.nav_link_item:hover {
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
+
+.nav_link_list {
+  flex-grow: 1;
+  margin: 0;
 }
 
 .login-wrapper {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--light-blue);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-blue);
 }
 
 .login {
-    margin: auto;
-    width: 500px;
-    border: 2px solid var(--dark-blue);
-    border-radius: 5px;
-    padding: 30px;
-    font-size: 18px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: aliceblue;
+  margin: auto;
+  width: 500px;
+  border: 2px solid var(--dark-blue);
+  border-radius: 5px;
+  padding: 30px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: aliceblue;
 }
 
 .login > h1 {
-    font-size: 24px;
-    color: var(--dark-blue);
+  font-size: 24px;
+  color: var(--dark-blue);
 }
 
 .form-element {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px;
 }
 
-.form-element > label{
-    color: var(--light-blue);
+.form-element > label {
+  color: var(--light-blue);
 }
 
-.form-element > input{
-    width: 60%;
+.form-element > input {
+  width: 60%;
 }
 
-#email, #password {
-    font-size: 18px;
+#email,
+#password {
+  font-size: 18px;
 }
 
 .form-element-btn {
-    font-size:18px;
-    width: max-content;
-    align-self: flex-end;
-    padding: 5px 15px;
-    border: 1px solid var(--dark-blue);
-    border-radius: 5px;
-    background-color: var(--light-blue);
-    color: #fff;
+  font-size: 18px;
+  width: max-content;
+  align-self: flex-end;
+  padding: 5px 15px;
+  border: 1px solid var(--dark-blue);
+  border-radius: 5px;
+  background-color: var(--light-blue);
+  color: var(--white);
 }

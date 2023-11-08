@@ -10,22 +10,14 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
         <script src="./jquery/jquery-3.7.1.js"></script>
+        <link rel="stylesheet" href="../css/index.css">
+        <title>Document</title>
     </head>
     <body>
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="">Storage</a></li>
-                    <li><a href="">Regions</a></li>
-                    <li><a href="">Cities</a></li>
-                    <li><a href="">Employees</a></li>
-                    <li><a href="">Reports</a></li>
-                </ul>
-                <a href="./logout.php">Logout</a>
-            </nav>
-        </header>
-        <h1>STORAGE PAGE</h1>
+        <?php include("./header.php"); ?>
+        <main>
+            <h1>STORAGE PAGE</h1>
+        </main>
     </body>
 </html>
