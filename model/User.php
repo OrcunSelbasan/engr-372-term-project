@@ -1,5 +1,6 @@
 <?php
 include("../database/index.php");
+include("../utils/index.php");
 class User
 {
     private $db;
@@ -7,7 +8,7 @@ class User
 
     public function __construct()
     {
-        $this->db = new Database("orcun", "1234qwer");
+        $this->db = new Database();
     }
 
     public function getById($id)

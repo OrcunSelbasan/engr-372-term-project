@@ -1,3 +1,10 @@
+<?php
+    include("../controller/ControllerAuth.php");
+    // * Check if the user is authenticated
+    $auth = new ControllerAuth();
+    $auth->checkAuth();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

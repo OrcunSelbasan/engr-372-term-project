@@ -4,11 +4,9 @@ class Database
 {
     private $connection;
 
-    public function __construct(String $username, String $password)
+    public function __construct(String $username = Constants::DB_USER, String $password = Constants::DB_PASSWORD)
     {
-        $user = isset($username) ? $username : Constants::DB_USER;
-        $pwd = isset($password) ? $password : Constants::DB_PASSWORD;
-        $this->connection = new mysqli(Constants::DB_HOST, $user, $pwd, Constants::DB_NAME);
+        $this->connection = new mysqli(Constants::DB_HOST, $username, $password, Constants::DB_NAME);
         if (isset($this->connection->connect_error)) {
             die("Connection error: " . $this->connection->connect_error);
         }
