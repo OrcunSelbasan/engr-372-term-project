@@ -3,9 +3,9 @@
 
     $auth = new ControllerAuth();
 
-    if ($_SESSION['logged_in']) {
-    $root = $auth::getRoot();
-    header("Location: $root/view/storage.php");
+    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
+        $root = $auth::getRoot();
+        header("Location: $root/view/storage.php");
     }
 ?>
 

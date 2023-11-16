@@ -10,7 +10,7 @@
 
         static public function isLoggedIn()
         {
-            return $_SESSION['logged_in'] == true;
+            return isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
         }
 
         static public function setLogin(bool $login = false)
@@ -32,10 +32,30 @@
         {
             $root = self::getRoot();
 
-            // If user is not logged in
+            // Checks if user is inactive for a while
+            $this->checkLastInteraction();
+
+            // Checks if user is not logged in
             if (!self::isLoggedIn()) {
                 header("Location: $root");
                 exit;
+            }
+        }
+
+
+        private function checkLastInteraction()
+        {
+            $lastInteractionTime = isset($_SESSION['LastInteractionTime']) ? $_SESSION['LastInteractionTime'] : 0;
+            $timeDifference = time() - $lastInteractionTime;
+            $oneHour = 3600;
+            if ($lastInteractionTime > 0 && $timeDifference > $oneHour) {
+                session_unset();
+                session_destroy();
+                header('Location: index.php');
+                return false;
+            } else if ($lastInteractionTime >= 0) {
+                $_SESSION['LastInteractionTime'] = time();
+                return true;
             }
         }
 

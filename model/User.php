@@ -1,6 +1,5 @@
 <?php
 include("../database/index.php");
-include("../utils/index.php");
 class User
 {
     private $db;

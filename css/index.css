@@ -1,7 +1,9 @@
 :root {
-  --light-blue: #0077b6;
+  --light-blue: #0077B6;
   --dark-blue: #16558f;
   --white: #e5e5e5;
+  --brown: #987654;
+  --green: #00A86B;
 }
 * {
   box-sizing: border-box;
@@ -18,12 +20,6 @@ body {
 
 body {
   display: flex;
-}
-
-header {
-  display: inline-block;
-  width: 260px;
-  border-right: 2px solid var(--dark-blue);
 }
 
 main {
@@ -52,13 +48,6 @@ nav > h1 {
 }
 
 nav > ul > li {
-  padding: 10px 20px;
-  border-top: 2px solid var(--dark-blue);
-  text-align: center;
-}
-
-nav > ul > li {
-  padding: 10px 20px;
   border-top: 2px solid var(--dark-blue);
   text-align: center;
 }
@@ -76,11 +65,34 @@ a:hover {
   background-color: inherit;
 }
 
-.nav_link {
+.header {
   display: inline-block;
-  padding: 10px 20px;
+  width: 260px;
+  background-color: var(--light-blue);
+  color: var(--white);
+  border-right: 2px solid var(--dark-blue);
+}
+
+.bg-brown {
+  background-color: var(--brown);
+}
+
+.bg-green {
+  background-color: var(--green);
+}
+
+.nav_link {
+  padding: 10px 40px;
   border-top: 2px solid var(--dark-blue);
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+.nav_link_item {
+  text-align: start;
 }
 
 .nav_link_item:hover {
@@ -91,6 +103,22 @@ a:hover {
 .nav_link_list {
   flex-grow: 1;
   margin: 0;
+}
+
+.nav_link_a {
+  display: block;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  padding: 10px 40px;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.nav_link_a_span {
+  display: block;
+  padding-left: 10px;
 }
 
 .login-wrapper {
