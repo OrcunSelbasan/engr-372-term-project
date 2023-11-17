@@ -1,4 +1,17 @@
-<header class="header">
+<?php 
+    $className = "";
+    switch ($_SERVER['REQUEST_URI']) {
+        case "/view/storage-add-record.php":
+            $className = "bg-brown";
+            break;
+        case "/view/storage-view-record.php":
+            $className = "bg-green";
+            break;
+        default:
+            break;
+    }
+?>
+<header class="header <?php echo $className ?>">
     <nav>
         <h1>WMS - <?php
                     $tmp = explode('/', $_SERVER['REQUEST_URI']);
