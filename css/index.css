@@ -1,3 +1,4 @@
+/* Added keyword alternatives in comments to ease search */
 :root {
   --light-blue: #0077B6;
   --dark-blue: #16558f;
@@ -26,6 +27,36 @@ main {
   flex-grow: 1;
   padding: 50px 20px;
 }
+
+.btn {
+  height: 40px;
+  border-radius: 5px;
+  opacity: 0.9;
+  box-shadow: 0px 2px 2px 0px rgba(99, 99, 99, 0.3);
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+.btn:active {
+  opacity: 0.95;
+}
+
+
+.btn-white {
+  border: 1px solid var(--light-blue);
+  background-color: var(--white);
+  color: var(--dark-blue);
+}
+
+.btn-blue {
+  background-color: var(--light-blue);
+  color: var(--white);
+  border: 1px solid var(--dark-blue);
+}
+
+/**************** NAV NAVIGATION *****************/
 
 nav {
   display: flex;
@@ -71,6 +102,8 @@ a:hover {
   color: var(--white);
   border-right: 2px solid var(--dark-blue);
   padding: 50px 0px;
+  position: absolute;
+  height: 100vh;
 }
 
 .bg-brown {
@@ -120,6 +153,10 @@ a:hover {
   display: block;
   padding-left: 10px;
 }
+
+/**************** END OF NAV NAVIGATION *****************/
+
+/**************** LOGIN LOG IN *****************/
 
 .login-wrapper {
   height: 100%;
@@ -176,3 +213,69 @@ a:hover {
   background-color: var(--light-blue);
   color: var(--white);
 }
+
+/**************** END OF LOGIN LOG IN LOG-IN *****************/
+
+
+/**************** STORAGE INVENTORY MAIN PAGE *****************/
+
+.storage-main {
+  padding: 50px 100px 20px;
+}
+
+.storage-header {
+
+}
+
+.storage-subheader-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.storage-subheader {
+  padding: 0;
+  max-width: 400px;
+}
+
+.btn-export {
+  flex-grow: 1;
+}
+
+.btn-create-report {
+  flex-grow: 2;
+}
+
+.storage-subheader-buttons {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+  width: 300px;
+}
+
+.storage-summary {
+  border: 1px solid var(--dark-blue);
+  padding: 20px 40px;
+  margin: 20px 0;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px 0px rgba(99, 99, 99, 0.3);
+}
+
+.storage-summary-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-storage-get-snapshot {
+  margin: 10px 0px 10px auto;
+  padding: 0 40px;
+}
+
+.storage-summary-row-item {
+
+}
+
+/**************** END OF STORAGE INVENTORY MAIN PAGE *****************/

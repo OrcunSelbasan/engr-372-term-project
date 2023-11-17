@@ -17,8 +17,55 @@
     </head>
     <body>
         <?php include("./header.php"); ?>
-        <main>
-            <h1>STORAGE PAGE</h1>
+        <div style="width: 260px;"></div>
+        <main class="storage-main">
+            <h2 class="storage-header">PLACEHOLDER'S INVENTORY</h2>
+            <section class="storage-subheader-wrapper">
+                <h3 class="storage-subheader">Lorem ipsum dolor sit amet</h3>
+                <div class="storage-subheader-buttons">
+                    <button class="btn btn-white btn-export">Export</button>
+                    <button class="btn btn-blue btn-create-report">Create Report</button>
+                </div>
+            </section>
+            <section class="storage-summary">
+                <h3>Summary</h3>
+                <div class="storage-summary-row">
+                    <div class="storage-summary-row-item">
+                        <p>Storage Object: <span>VALUE</span></p>
+                    </div>
+                    <div class="storage-summary-row-item">
+                        <p>Storage Object: <span>VALUE</span></p>
+                    </div>
+                    <div class="storage-summary-row-item">
+                        <p>Storage Object: <span>VALUE</span></p>
+                    </div>
+                </div>
+                <div class="storage-summary-row">
+                    <div class="storage-summary-row-item">
+                        <p>Storage Object: <span>VALUE</span></p>
+                    </div>
+                    <div class="storage-summary-row-item">
+                        <p>Storage Object: <span>VALUE</span></p>
+                    </div>
+                    <div class="storage-summary-row-item">
+                        <p>Storage Object: <span>VALUE</span></p>
+                    </div>
+                </div>
+                <div class="storage-summary-row">
+                    <div class="storage-summary-row-item">
+                        <p>Storage Object: <span>VALUE</span></p>
+                    </div>
+                    <div class="storage-summary-row-item">
+                        <p>Storage Object: <span>VALUE</span></p>
+                    </div>
+                    <div class="storage-summary-row-item">
+                        <p>Storage Object: <span>VALUE</span></p>
+                    </div>
+                </div>
+                <div class="storage-summary-row">
+                    <button class="btn btn-blue btn-storage-get-snapshot">Get Snapshot</button>
+                </div>
+            </section>
         </main>
     </body>
 </html>
