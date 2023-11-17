@@ -13,7 +13,7 @@
 ?>
 <header class="header <?php echo $className ?>">
     <nav>
-        <h1>WMS - <?php
+        <h1 style="text-align: center;">WMS <br> <?php
                     $tmp = explode('/', $_SERVER['REQUEST_URI']);
                     $res = explode('.', end($tmp))[0];
                     echo ucfirst($res);
