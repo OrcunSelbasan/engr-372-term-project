@@ -1,4 +1,4 @@
-Team Members
+# Team Members
 
 - Bal, Ümit Can
 - Bari, Mohammad Ali Saleh Al
@@ -6,7 +6,31 @@ Team Members
 - Moeglich, Frauke 
 - Selbasan, Lütfü Orçun
 
-Project Details
+# Codebase Explained
+
+assets folder: should contain images, icons, fonts, etc.
+
+controller folder: should include the functionalities. It should use __**models**__ to interact with data source according to the request coming from __**views**__. This can be considered as middle man between client and data source
+
+css: it should contain only the style files of the pages
+
+database: it should contain the code that is directly related to the database
+
+jquery: this folder contains development version of jQuery. therefore code is not minified and can be debugged thanks to that. This folder doesn't need edition. Production version of jQuery can be added if deployment is considered.
+
+js: this folder contains only the javascript files. The codes in this files should only be used in views folder. Because views are served to the client and JS is required for client side interactions.
+
+model: this folder contains structure of entities. Such as their attributes, belonging tables names, and data interaction methods that use SQL commands. Basically we use the models in this file to interact with the database.
+
+shared: course related content. each team member can share their design files, database dumps, etc.
+
+utils: this folder contains the files that doesn't belong to specific folder.
+
+view: this folder contains the files that clients are able to see in their browser. 
+
+index.php: this is the entry point of our site.
+
+# Project Details
 
 The goal is to provide a easy to use user interface to manage entities that are involved in the waste disposal processes. These entities can be categorized in four sections:
 
