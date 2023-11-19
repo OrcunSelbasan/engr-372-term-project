@@ -1,3 +1,11 @@
+Team Members
+
+- Bal, Ümit Can
+- Bari, Mohammad Ali Saleh Al
+- Bücherl, Jonas
+- Moeglich, Frauke 
+- Selbasan, Lütfü Orçun
+
 Project Details
 
 The goal is to provide a easy to use user interface to manage entities that are involved in the waste disposal processes. These entities can be categorized in four sections:
