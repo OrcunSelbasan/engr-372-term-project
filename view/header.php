@@ -23,18 +23,23 @@
         }
     }
 
-    $header = getHeader();
-    $className = "";
-    switch ($_SERVER['REQUEST_URI']) {
-        case "/view/storage-add-record.php":
-            $className = "bg-brown";
-            break;
-        case "/view/storage-view-record.php":
-            $className = "bg-green";
-            break;
-        default:
-            break;
+    function getClasses() {
+        $directoryName = getCurrentDirectoryName();
+        switch ($directoryName) {
+            case "storage-add-record":
+                return "bg-brown";
+                break;
+            case "storage-view-record":
+                return "bg-green";
+                break;
+            default:
+                break;
+        }
     }
+
+    $header = getHeader();
+    $className = getClasses();
+
 ?>
 <header class="header <?php echo $className ?>">
     <nav>
