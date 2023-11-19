@@ -1,4 +1,29 @@
 <?php 
+    function getCurrentDirectoryName() {
+        $tmp = explode('/', $_SERVER['REQUEST_URI']);
+        $res = explode('.', end($tmp))[0];
+        return $res;
+    }
+
+    function getHeader() {
+        $directoryName = getCurrentDirectoryName();
+        switch ($directoryName) {
+            case 'storage-add-record':
+                return "Add Record";
+                break;
+            case 'storage-view-record':
+                if (isset($_GET['edit']) && $_GET['edit'] == '1') {
+                    return "Edit Record";
+                }
+                return "View Record";
+                break;
+            default:
+                return "Storage";
+                break;
+        }
+    }
+
+    $header = getHeader();
     $className = "";
     switch ($_SERVER['REQUEST_URI']) {
         case "/view/storage-add-record.php":
@@ -13,11 +38,7 @@
 ?>
 <header class="header <?php echo $className ?>">
     <nav>
-        <h1 style="text-align: center;">WMS <br> <?php
-                    $tmp = explode('/', $_SERVER['REQUEST_URI']);
-                    $res = explode('.', end($tmp))[0];
-                    echo ucfirst($res);
-                    ?></h1>
+        <h1 style="text-align: center;">WMS <br> <?php echo $header ?></h1>
         <ul class="nav_link_list">
             <li class="nav_link_item"><a class="nav_link_a" href="./storage.php">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

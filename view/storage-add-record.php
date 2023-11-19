@@ -18,8 +18,11 @@
     <body>
         <?php include("./header.php"); ?>
         <div style="width: 260px;"></div>
-        <main>
-            <h1>STORAGE PAGE</h1>
+        <main class="storage-main">
+            <h2 class="storage-header">PLACEHOLDER'S INVENTORY</h2>
+            <section class="storage-subheader-wrapper">
+                <h3 class="storage-subheader">Lorem ipsum dolor sit amet</h3>
+            </section>
         </main>
     </body>
 </html>
