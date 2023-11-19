@@ -21,7 +21,7 @@
         <main class="storage-main">
             <h2 class="storage-header">PLACEHOLDER'S INVENTORY</h2>
             <section class="storage-subheader-wrapper">
-                <h3 class="storage-subheader">Lorem ipsum dolor sit amet</h3>
+                <h3 class="storage-subheader" style="max-width: 700px; font-weight: 500;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo laborum vitae eveniet iusto et. Unde non officiis omnis. Explicabo nemo provident accusantium quisquam, officiis maiores facere? Perferendis voluptatum impedit nam!</h3>
             </section>
         </main>
     </body>
