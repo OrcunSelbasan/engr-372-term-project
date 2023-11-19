@@ -17,6 +17,7 @@
     </head>
     <body>
         <?php include("./header.php"); ?>
+        <div style="width: 260px;"></div>
         <main>
             <h1>STORAGE PAGE</h1>
         </main>
