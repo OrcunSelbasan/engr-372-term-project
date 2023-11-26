@@ -30,6 +30,11 @@
         echo $output;
     }
 
+    function showBtn($record) {
+        $output = $record['isEdit'] == "false" ? "display: none;" : "";
+        echo $output;
+    }
+
     $setSelected = function ($propName, $result) use($record) {
         if (isset($record[$propName]) && $record[$propName] == $result) {
             echo "selected";
@@ -152,7 +157,7 @@
                 </form>
             </section>
             <div style="width: 100%; padding-top: 20px; margin: auto;">
-                <div class="storage-subheader-buttons" style="margin-left: auto; display: flex; width: 100%;">
+                <div class="storage-subheader-buttons" style="margin-left: auto; display: flex; width: 100%; <?php showBtn($record) ?>">
                     <div style="flex-grow: 1;">
                         <button type="button" class="btn btn-red btn-delete" <?php echo "onclick='deleteItem($recordId)'" ?> style="width: 100px;" id="storage-delete">
                             Delete

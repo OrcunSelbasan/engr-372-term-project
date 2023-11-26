@@ -73,11 +73,11 @@ function handleVolumeUnit($unit) {
         <section class="storage-subheader-wrapper">
             <h3 class="storage-subheader" style="font-weight: 500;">Lorem ipsum dolor sit amet</h3>
             <div class="storage-subheader-buttons">
-                <button class="btn btn-white btn-export">
+                <!-- <button class="btn btn-white btn-export">
                     <a href="link-download" class="storage-action-btn">
                         Export
                     </a>
-                </button>
+                </button> -->
                 <button class="btn btn-blue btn-create-record">
                     <a href="./storage-add-record.php" class="storage-action-btn">
                         Create Record
@@ -121,11 +121,11 @@ function handleVolumeUnit($unit) {
                 </div>
             </div>
             <div class="storage-summary-row">
-                <button class="btn btn-blue btn-storage-get-snapshot">
+                <!-- <button class="btn btn-blue btn-storage-get-snapshot">
                     <a href="link-download-snapshot" class="storage-action-btn">
                         Get Snapshot
                     </a>
-                </button>
+                </button> -->
             </div>
         </section>
         <section class="storage-table-wrapper">
