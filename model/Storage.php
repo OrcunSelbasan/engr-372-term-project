@@ -48,7 +48,7 @@ class Storage
     {
         try {
             $result = $this->db->queryRaw("SELECT * FROM $this->table");
-            $this->db->close();
+            // $this->db->close();
             return $result;
         } catch (Exception $e) {
             var_dump($e->getMessage());
@@ -175,5 +175,21 @@ class Storage
             return $e;
         }
         return false;
+    }
+
+    public function getStat($column, $condition, $op = "") {
+        try {
+            $statement = "SELECT COUNT($column) FROM $this->table WHERE $condition";
+            if ($op == "sum") {
+                $statement = "SELECT SUM($column) FROM $this->table";
+            }
+            $result = $this->db->queryRaw($statement);
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
+        return false;
+        
     }
 }

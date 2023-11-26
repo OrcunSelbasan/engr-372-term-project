@@ -280,6 +280,7 @@ a:hover {
 }
 
 .storage-summary-row-item {
+  width: 300px;
 }
 
 .storage-table {

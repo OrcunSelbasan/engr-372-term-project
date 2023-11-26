@@ -8,6 +8,7 @@ $auth->checkAuth();
 $controller = new ControllerStorage();
 $records = $controller->getAllRecords();
 $records = is_array($records) ? $records : [];
+$stats = $controller->getStats();
 
 function editActionHTML($id)
 {
@@ -89,43 +90,36 @@ function handleVolumeUnit($unit) {
             <h3>Summary</h3>
             <div class="storage-summary-row">
                 <div class="storage-summary-row-item">
-                    <p>Storage Object: <span>VALUE</span></p>
+                    <p>Storage Objects: <span><?php echo $stats['storageObjs'] ?></span></p>
                 </div>
                 <div class="storage-summary-row-item">
-                    <p>Storage Object: <span>VALUE</span></p>
+                    <p>Active Storage Objects:  <span><?php echo $stats['activeStorageObjs'] ?></span></p>
                 </div>
                 <div class="storage-summary-row-item">
-                    <p>Storage Object: <span>VALUE</span></p>
+                    <p>Inactive Storage Objects: <span><?php echo $stats['inctiveStorageObjs'] ?></span></p>
                 </div>
             </div>
             <div class="storage-summary-row">
                 <div class="storage-summary-row-item">
-                    <p>Storage Object: <span>VALUE</span></p>
+                    <p>Transportation Objects:  <span><?php echo $stats['transportationObjs'] ?></span></p>
                 </div>
                 <div class="storage-summary-row-item">
-                    <p>Storage Object: <span>VALUE</span></p>
+                    <p>Active Transportation Objects:  <span><?php echo $stats['activeTransportationObjs'] ?></span></p>
                 </div>
                 <div class="storage-summary-row-item">
-                    <p>Storage Object: <span>VALUE</span></p>
+                    <p>Inactive Transportation Objects:  <span><?php echo $stats['inctiveTransportationObjs'] ?></span></p>
                 </div>
             </div>
             <div class="storage-summary-row">
                 <div class="storage-summary-row-item">
-                    <p>Storage Object: <span>VALUE</span></p>
+                    <p>Total Inventory Objects:  <span><?php echo $stats['totalObjects'] ?></span></p>
                 </div>
                 <div class="storage-summary-row-item">
-                    <p>Storage Object: <span>VALUE</span></p>
+                    <p>Total Capacity: <span><?php echo $stats['totalVolume'] ?></span></p>
                 </div>
                 <div class="storage-summary-row-item">
-                    <p>Storage Object: <span>VALUE</span></p>
+                    <p>Assets Value: <span><?php echo $stats['totalPrice'] ?></span></p>
                 </div>
-            </div>
-            <div class="storage-summary-row">
-                <!-- <button class="btn btn-blue btn-storage-get-snapshot">
-                    <a href="link-download-snapshot" class="storage-action-btn">
-                        Get Snapshot
-                    </a>
-                </button> -->
             </div>
         </section>
         <section class="storage-table-wrapper">

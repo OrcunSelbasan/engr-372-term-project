@@ -137,4 +137,31 @@ class ControllerStorage
         $queryResult =  $this->entity->deleteById($id);
         return $queryResult == true;
     }
+
+    public function getStats()
+    {
+        $storageObjs =  $this->entity->getStat("category", "category='bin'")->fetch_row()[0];
+        $activeStorageObjs =  $this->entity->getStat("category", "category='bin' AND initial_status='active'")->fetch_row()[0];
+        $inctiveStorageObjs =  $this->entity->getStat("category", "category='bin' AND initial_status<>'active'")->fetch_row()[0];
+
+        $transportationObjs =  $this->entity->getStat("category", "category='truck'")->fetch_row()[0];
+        $activeTransportationObjs =  $this->entity->getStat("category", "category='truck' AND initial_status='active'")->fetch_row()[0];
+        $inctiveTransportationObjs =  $this->entity->getStat("category", "category='truck' AND initial_status<>'active'")->fetch_row()[0];
+
+        $totalObjects =  $this->entity->getStat("id", "id>-1")->fetch_row()[0];
+
+        $totalVolume =  $this->entity->getStat("volume", "volume>-1", "sum")->fetch_row()[0];
+        $totalPrice =  $this->entity->getStat("value", "value>-1", "sum")->fetch_row()[0];
+        return [
+            'storageObjs' => $storageObjs,
+            'activeStorageObjs' => $activeStorageObjs,
+            'inctiveStorageObjs' => $inctiveStorageObjs,
+            'transportationObjs' => $transportationObjs,
+            'activeTransportationObjs' => $activeTransportationObjs,
+            'inctiveTransportationObjs' => $inctiveTransportationObjs,
+            'totalObjects' => $totalObjects,
+            'totalVolume' => $totalVolume,
+            'totalPrice' => $totalPrice,
+        ];
+    }
 }
