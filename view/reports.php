@@ -17,6 +17,5 @@
     </head>
     <body>
         <?php include("./header.php"); ?>
-        <div style="width: 260px;"></div>
     </body>
 </html>

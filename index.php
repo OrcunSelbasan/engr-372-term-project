@@ -19,7 +19,7 @@
         <!-- TODO: UPDATE THE TITLE -->
         <title>Document</title>
     </head>
-    <body>
+    <body style="height: 100vh">
         <main class="login-wrapper">
             <form class="login" action="./utils/auth.php" method="POST">
                 <h1>Waste Management System - Login</h1>

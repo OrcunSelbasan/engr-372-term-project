@@ -16,15 +16,13 @@
     </head>
     <body>
         <?php include("./header.php"); ?>
-        <iframe name="preventredirection" style="display: none !important;"></iframe>
-        <div style="width: 260px;"></div>
         <main class="storage-main">
             <h2 class="storage-header">PLACEHOLDER'S INVENTORY</h2>
             <section class="storage-subheader-wrapper">
                 <h3 class="storage-subheader" style="max-width: 700px; font-weight: 500;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo laborum vitae eveniet iusto et. Unde non officiis omnis. Explicabo nemo provident accusantium quisquam, officiis maiores facere? Perferendis voluptatum impedit nam!</h3>
             </section>
             <section class="storage-form-wrapper">
-                <form class="storage-form" id="storage-form" action="../utils/submission.php" target="preventredirection" method="POST">
+                <form class="storage-form" id="storage-form" action="../utils/submission.php" method="POST">
                     <input id="form-submission-type" name="form-submission-type" type="text" id="" style="display: none;">
                     <div class="storage-form-lines-wrapper">
                         <div class="storage-form-line">
@@ -111,5 +109,5 @@
             </div>
         </main>
     </body>
-    <script src="../js/storage-add-record.js"></script>
+    <script src="../js/storage.js"></script>
 </html>
