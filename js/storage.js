@@ -179,7 +179,9 @@ async function deleteItem(id) {
   }
 }
 
-$('#change-loc').on('click', activateInput);
+document.querySelectorAll(".change-loc").forEach(el => el.addEventListener("click", activateInput));
+
+// $('#change-loc').on('click', activateInput);
 
 function activateInput(params) {
   console.log(params);
