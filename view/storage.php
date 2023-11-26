@@ -72,7 +72,7 @@ function handleVolumeUnit($unit) {
     <main class="storage-main">
         <h2 class="storage-header">PLACEHOLDER'S INVENTORY</h2>
         <section class="storage-subheader-wrapper">
-            <h3 class="storage-subheader" style="font-weight: 500;">Lorem ipsum dolor sit amet</h3>
+            <h3 class="storage-subheader" style="font-weight: 500;">Last Modification Date <?php echo(end($records)['modification_date']) ?></h3>
             <div class="storage-subheader-buttons">
                 <!-- <button class="btn btn-white btn-export">
                     <a href="link-download" class="storage-action-btn">
