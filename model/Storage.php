@@ -1,6 +1,6 @@
 <?php
 // TODO: CHECK SQL INJECTION PREVENTION
-include("../database/index.php");
+include_once("../database/index.php");
 class Storage
 {
     private $db;

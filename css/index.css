@@ -398,3 +398,44 @@ a:hover {
 .storage-form-line input[type="checkbox"] {
   transform: scale(1.5);
 }
+
+/**************** EMPLOYEE CREATE ADD ITEM PAGE *****************/
+
+.employee-form-line {
+  margin: auto;
+  padding: 10px 0;
+  width: 90%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.employee-form-line > label {
+  flex-grow: 1;
+}
+
+.employee-form-line input {
+  border: 2px solid #000;
+}
+
+.employee-form-line div input {
+  border-right: none;
+}
+
+.employee-form-line select:active,
+.employee-form-line select:focus {
+  outline: none;
+}
+
+.employee-form-line select {
+  border: 2px solid #000;
+}
+
+.employee-form-line div select {
+  border: 2px solid #000;
+  border-left: none;
+}
+
+.employee-form-line input[type="checkbox"] {
+  transform: scale(1.5);
+}

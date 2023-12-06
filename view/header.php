@@ -17,6 +17,9 @@
                 }
                 return "View Record";
                 break;
+            case "employees":
+                return "Employees";
+                break;
             default:
                 return "Storage";
                 break;
