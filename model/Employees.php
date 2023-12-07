@@ -59,14 +59,39 @@ class Employees
         return false;
     }
 
-    public function deleteByIds($array)
+
+    public function getById($value)
     {
         try {
-            $queryString = "";
+            $result = $this->db->queryRaw("SELECT * FROM $this->table WHERE $this->id = $value");
+            $this->db->close();
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
+        return false;
+    }
+
+    public function updateById($id, $array)
+    {
+        try {
+            $query = "";
+            $lastColumnValue = end($array);
             foreach ($array as $key => $value) {
-                $queryString = $queryString . " OR $this->id = $value";
+                if ($key == "employees") {
+                    continue;
+                } else {
+                    $quotes = in_array($key, ["salary"]) ? "" : '"';
+                    $comma = ($value == $lastColumnValue) ? '' : ',';
+                    $query = $query . " $key=$quotes$value$quotes $comma";
+                }
             }
-            $result = $this->db->queryRaw("DELETE FROM $this->table WHERE $this->id = $value $queryString");
+            if (empty($array)) {
+                throw new Exception("Error Processing Request: empty update array", 1);
+            }
+            $statement = "UPDATE $this->table SET $query WHERE $this->id = $id";
+            $result = $this->db->queryRaw($statement);
             $this->db->close();
             return $result;
         } catch (Exception $e) {

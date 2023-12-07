@@ -7,7 +7,7 @@ const Fields = (function getFields() {
     const email = $("#employee-email");
     const phone = $("#employee-phone");
     const salary = $("#employee-salary");
-    const salaryUnit = $("#employee-salary-unit");
+    // const salaryUnit = $("#employee-salary-unit");
     const form = $("#storage-form");
 
     return {
@@ -18,13 +18,14 @@ const Fields = (function getFields() {
         email,
         phone,
         salary,
-        salaryUnit,
+        // salaryUnit,
         form,
         btnUpdate,
     };
 })();
 
 function validate(event) {
+    console.log("Validating");
     const erroredFields = [];
     const fields = Object.entries(Fields)
         .filter(
@@ -35,8 +36,10 @@ function validate(event) {
                 fieldIdentifier !== "btnUpdate"
         )
         .map((field) => field[1]);
+    console.log(fields);
     let isValid = true;
     for (const field of fields) {
+        // console.log(field);
         // Check if the field is input except checkbox(it is optional field).
         if (!field.is("button") && !field.is("form") && !field.is(":checkbox")) {
             // Check if field is filled. Falsy values(null, undefined, 0, "", false, NaN)
@@ -49,6 +52,7 @@ function validate(event) {
             }
         }
     }
+    console.log("Error Fields: " + erroredFields);
 
     if (!isValid) {
         event.preventDefault();
@@ -88,6 +92,7 @@ Fields.btnReset.on("click", () => {
 // and submit event of the form element triggers the submission. Therefore, I've added validate
 // function to both elements.
 Fields.btnCreate.on("click", (event) => {
+    console.log("create pressed");
     const isValid = validate(event);
     if (isValid) {
         $("#form-submission-type").val("EMPLOYEES");
@@ -113,14 +118,18 @@ Fields.btnUpdate.on("click", async function (event) {
     //   });
     //   const text = await response.text();
     //   console.log(text);
+    console.log("Update pressed");
     const isValid = validate(event);
-    console.log(isValid);
+    // console.log(isValid);
     if (isValid) {
-        const id = $("#storage-object-id").data("identifier")
+
+        console.log("fine");
+        const id = $("#employee-object-id").data("identifier")
         $("#form-submission-type").val("EMPLOYEES");
         $("#storage-method").val("PUT");
-        $("#storage-object-id").val(id);
+        $("#employee-object-id").val(id);
         Fields.form.submit();
+        console.log("form sent");
     }
 });
 
@@ -150,6 +159,7 @@ Fields.btnUpdate.on("click", async function (event) {
 // }
 
 async function deleteItem(id) {
+    console.log("Delete pressed");
     const origin = window.location.origin;
     const pathname = "utils/submission.php";
     const query = `id=${id}`;
@@ -162,7 +172,9 @@ async function deleteItem(id) {
                 Accept: "*/*",
             },
         });
+        console.log("fetched");
         const text = await response.text();
+        console.log(text);
         if (text === "true") {
             window.location.reload();
         }

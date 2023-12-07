@@ -30,34 +30,18 @@ class ControllerEmployees{
 
     public function updateRecord($post)
     {
-        $id = $post['storage-object-id'];
-        $category = $post['storage-category'];
-        $volume = $post['storage-volume'];
-        $volumeUnit = $post['storage-volume-unit'];
-        $type = $post['storage-type'];
-        $initialStatus = $post['storage-initial-status'];
-        $value = $post['storage-value'];
-        $valueUnit = $post['storage-value-unit'];
-        $autonotfier = $post['storage-notifier'];
-        $quantity = $post['storage-quantity'];
-        $lifetime = $post['storage-estimated-lifetime'];
-        $lifetimeUnit = $post['storage-estimated-lifetime-unit'];
-        $temporaryStorage = $category === 'bin' ? 'false' : 'true';
-        $modificationDate = date('Y-m-d');
+        $id = $post['employee-object-id'];
+        $fname = $post['employee-fname'];
+        $lname = $post['employee-lname'];
+        $email = $post['employee-email'];
+        $phone = $post['employee-phone'];
+        $salary = $post['employee-salary'];
         $isSuccess = $this->entity->updateById($id, [
-            'category' => $category,
-            'volume' => $volume,
-            'volume_unit' => $volumeUnit,
-            'type' => $type,
-            'initial_status' => $initialStatus,
-            'value' => $value,
-            'value_unit' => $valueUnit,
-            'autonotifier' => $autonotfier,
-            'quantity' => $quantity,
-            'lifetime' => $lifetime,
-            'lifetime_unit' => $lifetimeUnit,
-            'temporary_storage' => $temporaryStorage,
-            'modification_date' => $modificationDate
+            'fname' => $fname,
+            'lname' => $lname,
+            'email' => $email,
+            'phone' => $phone,
+            'salary' => $salary,
         ]);
 
         return $isSuccess;
