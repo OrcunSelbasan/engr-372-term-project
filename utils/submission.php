@@ -57,6 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     if (str_contains($_SERVER['HTTP_REFERER'], 'storage')) {
         $controller = new ControllerStorage();
+    }else if (str_contains($_SERVER['HTTP_REFERER'], 'employees')) {
+        $controller = new ControllerEmployees();
+    }
         $queryString = $_SERVER['QUERY_STRING'];
         $queryArray = [];
         parse_str($queryString, $queryArray);
@@ -67,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
             } else {
                 var_dump('An error occurred while deleting!');
             }
-        }
+        
     }
 }
 

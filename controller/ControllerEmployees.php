@@ -114,4 +114,10 @@ class ControllerEmployees{
         }
         return false;
     }
+
+    public function deleteRecord($id)
+    {
+        $queryResult =  $this->entity->deleteById($id);
+        return $queryResult == true;
+    }
 }

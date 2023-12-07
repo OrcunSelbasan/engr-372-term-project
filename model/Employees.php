@@ -45,6 +45,37 @@ class Employees
         }
         return false;
     }
+
+     public function deleteById($value)
+    {
+        try {
+            $result = $this->db->queryRaw("DELETE FROM $this->table WHERE $this->id = $value");
+            $this->db->close();
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
+        return false;
+    }
+
+    public function deleteByIds($array)
+    {
+        try {
+            $queryString = "";
+            foreach ($array as $key => $value) {
+                $queryString = $queryString . " OR $this->id = $value";
+            }
+            $result = $this->db->queryRaw("DELETE FROM $this->table WHERE $this->id = $value $queryString");
+            $this->db->close();
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
+        return false;
+    }
+
     public function getStat($column, $condition, $op = "") {
         try {
             $statement = "SELECT COUNT($column) FROM $this->table WHERE $condition";
