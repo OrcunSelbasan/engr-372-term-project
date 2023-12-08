@@ -10,7 +10,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="../jquery/jquery-3.7.1.js"></script>
-        <link rel="stylesheet" href="../css/index.css">
+        <link rel="stylesheet" href="../css/employees.css">
         <title>WMS Inventory - Add Employee</title>
     </head>
 <body>
@@ -67,7 +67,7 @@
                     <button type="button" class="btn btn-white btn-export" id="storage-reset">
                         Reset
                     </button>
-                    <button type="submit" class="btn btn-blue btn-create-record" id="storage-create">
+                    <button type="submit" class="btn btn-green btn-create-record" id="storage-create">
                         <span class="storage-action-btn">
                             Create Record
                         </span>

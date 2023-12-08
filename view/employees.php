@@ -44,7 +44,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="../jquery/jquery-3.7.1.js"></script>
         <script src="../js/storage.js"></script>
-        <link rel="stylesheet" href="../css/index.css">
+        <link rel="stylesheet" href="../css/employees.css">
         <!-- TODO: UPDATE THE TITLE -->
         <title>WMS - Employee Page</title>
     </head>
@@ -53,14 +53,14 @@
         <main class="storage-main">
             <h2>Employees</h2>
             <section class="storage-subheader-wrapper">
-            <h3 class="storage-subheader" style="font-weight: 500;">Last Modification Date <?php echo "Hello"; ?></h3>
+            <h3 class="storage-subheader" style="font-weight: 500;">Last Modification Date:  <?php echo(end($records)['modification_date']) ?></h3>
             <div class="storage-subheader-buttons">
                 <!-- <button class="btn btn-white btn-export">
                     <a href="link-download" class="storage-action-btn">
                         Export
                     </a>
                 </button> -->
-                <button class="btn btn-blue btn-create-record">
+                <button class="btn btn-green btn-create-record">
                     <a href="./add-employee.php" class="storage-action-btn">
                         Add employee
                     </a>
@@ -76,10 +76,22 @@
                     <th class="storage-table-header-data">E-Mail</th>
                     <th class="storage-table-header-data">Phone</th>
                     <th class="storage-table-header-data">Salary</th>
+                    <th class="storage-table-header-data">Modification Date</th>
+                    <th class="storage-table-header-data">Actions</th>
                 </tr>
                 <?php
                 if (sizeof($records) > 0) {
                     $records = array_reverse($records);
+                    
+                    // sort the entries by last name
+                     function compare_lastname($a, $b){
+                        return strnatcmp($a['lname'], $b['lname']);
+                    }
+
+                    // sort alphabetically by name
+                    usort($records, 'compare_lastname');
+
+                    
                     foreach ($records as $record) {
                         $id = $record['id'];
                         $fname = $record['fname'];
@@ -87,6 +99,7 @@
                         $email = $record['email'];
                         $phone = $record['phone'];
                         $salary = $record['salary'];
+                        $date = $record['modification_date'];
                         echo "<tr>";
                         echo "<td class='storage-table-data'>$id</td>";
                         echo "<td class='storage-table-data'>$fname</td>";
@@ -94,6 +107,7 @@
                         echo "<td class='storage-table-data'>$email</td>";
                         echo "<td class='storage-table-data'>$phone</td>";
                         echo "<td class='storage-table-data'>$salary</td>";
+                        echo "<td class='storage-table-data'>$date</td>";
                         echo editActionHTML($id);
                         echo "</tr>";
                     }

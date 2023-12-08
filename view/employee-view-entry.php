@@ -62,7 +62,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="../jquery/jquery-3.7.1.js"></script>
-        <link rel="stylesheet" href="../css/index.css">
+        <link rel="stylesheet" href="../css/employees.css">
         <!-- TODO: UPDATE THE TITLE -->
         <title>WMS Employee View -</title>
     </head>
@@ -112,12 +112,12 @@
             </section>
             <div style="width: 100%; padding-top: 20px; margin: auto;">
                 <div class="storage-subheader-buttons" style="margin-left: auto; display: flex; width: 100%; <?php showBtn($record) ?>">
-                    <div style="flex-grow: 1;">
+                    <div style="flex-grow: 1;" hidden>
                         <button type="button" class="btn btn-red btn-delete" <?php echo "onclick='deleteItem($recordId)'" ?> style="width: 100px;" id="employee-delete">
                             Delete
                         </button>
                     </div>
-                    <button type="button" class="btn btn-blue btn-create-record" style="max-width: 200px;" id="storage-update">
+                    <button type="button" class="btn btn-green btn-create-record" style="max-width: 200px;" id="storage-update">
                         <!-- <span class="storage-action-btn"> -->
                             Update
                         <!-- </span> -->

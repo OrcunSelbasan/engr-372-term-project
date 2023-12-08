@@ -15,6 +15,7 @@ class ControllerEmployees{
         $email = $post['employee-email'];
         $phone = $post['employee-phone'];
         $salary = $post['employee-salary'];
+        $modificationDate = date('Y-m-d');
         
 
         $isSuccess = $this->entity->create(
@@ -23,6 +24,7 @@ class ControllerEmployees{
             $email,
             $phone,
             $salary,
+            $modificationDate
         );
 
         return $isSuccess;
@@ -36,12 +38,14 @@ class ControllerEmployees{
         $email = $post['employee-email'];
         $phone = $post['employee-phone'];
         $salary = $post['employee-salary'];
+        $modificationDate = date('Y-m-d');
         $isSuccess = $this->entity->updateById($id, [
             'fname' => $fname,
             'lname' => $lname,
             'email' => $email,
             'phone' => $phone,
             'salary' => $salary,
+            'modification_date' => $modificationDate
         ]);
 
         return $isSuccess;

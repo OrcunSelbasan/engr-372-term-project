@@ -7,7 +7,7 @@
   --brown: #987654;
   --green: #00a86b;
   --red: #800020;
-  --light-green: #77b600;
+  --light-green: #345100;
   --dark-green: #243700;
 }
 * {
@@ -48,15 +48,21 @@ main {
 }
 
 .btn-white {
-  border: 1px solid var(--light-blue);
+  border: 1px solid var(--light-green);
   background-color: var(--white);
-  color: var(--dark-blue);
+  color: var(--dark-green);
 }
 
 .btn-blue {
   background-color: var(--light-blue);
   color: var(--white);
   border: 1px solid var(--dark-blue);
+}
+
+.btn-green{
+    background-color: var(--light-green);
+  color: var(--white);
+  border: 1px solid var(--dark-green);
 }
 
 .btn-red {
@@ -87,12 +93,12 @@ nav > h1 {
 }
 
 nav > ul > li {
-  border-top: 2px solid var(--dark-blue);
+  border-top: 2px solid var(--white);
   text-align: center;
 }
 
 nav > ul > li:last-child {
-  border-bottom: 2px solid var(--dark-blue);
+  border-bottom: 2px solid var(--white);
 }
 
 a:visited,
@@ -108,7 +114,7 @@ a:hover {
   height: 100vh;
   display: inline-block;
   width: 260px;
-  background-color: var(--light-blue);
+  background-color: var(--dark-green);
   color: var(--white);
   border-right: 2px solid var(--dark-blue);
   padding: 50px 0px 0px 0px;
@@ -133,7 +139,7 @@ a:hover {
 
 .nav_link {
   padding: 10px 40px 8px;
-  border-top: 2px solid var(--dark-blue);
+  border-top: 2px solid var(--white);
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -146,7 +152,7 @@ a:hover {
 }
 
 .nav_link_item:hover {
-  background-color: var(--dark-blue);
+  background-color: var(--dark-green);
   color: var(--white);
 }
 
@@ -267,7 +273,7 @@ a:hover {
 }
 
 .storage-summary {
-  border: 1px solid var(--dark-blue);
+  border: 1px solid var(--dark-green);
   padding: 20px 40px;
   margin: 20px 0;
   border-radius: 2px;
@@ -297,14 +303,14 @@ a:hover {
 
 .storage-table-header-data,
 .storage-table-data {
-  border: 1px solid var(--dark-blue);
+  border: 1px solid var(--dark-green);
   padding: 5px 5px;
   text-align: center;
 }
 
 .storage-table-row,
 .storage-table-data {
-  border: 1px solid var(--dark-blue);
+  border: 1px solid var(--dark-green);
 }
 
 .storage-table-data-delete-btn {
@@ -331,7 +337,7 @@ a:hover {
 .storage-form-wrapper {
   background-color: var(--white);
   padding: 20px 40px;
-  border: 2px solid var(--dark-blue);
+  border: 2px solid var(--dark-green);
   border-radius: 5px;
   box-shadow: 0px 2px 2px 0px rgba(99, 99, 99, 0.3);
 }

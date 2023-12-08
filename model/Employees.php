@@ -11,16 +11,17 @@ class Employees
     private $email = 'email';
     private $phone = 'phone';
     private $salary = 'salary';
+    private $modificationDate = 'modification_date';
 
      public function __construct()
     {
         $this->db = new Database();
     }
 
-    public function create($fname, $lname, $email, $phone, $salary)
+    public function create($fname, $lname, $email, $phone, $salary, $modificationDate)
     {
         try {
-            $statement = "INSERT INTO $this->table ($this->firstName, $this->lastName, $this->email, $this->phone, $this->salary) VALUES ('$fname',  '$lname', '$email', '$phone',  '$salary')";
+            $statement = "INSERT INTO $this->table ($this->firstName, $this->lastName, $this->email, $this->phone, $this->salary, $this->modificationDate) VALUES ('$fname',  '$lname', '$email', '$phone',  '$salary', '$modificationDate')";
             $query = $this->db->queryRaw($statement);
             if ($query == true) {
                 return true;
