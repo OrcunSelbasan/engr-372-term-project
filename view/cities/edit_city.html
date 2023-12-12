@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../jquery/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Cities</title>
+
+</head>
+
+<body>
+    <nav class="top_navigation">
+        <a href="overview.html">Overview</a>
+        <a href="resources.html">Resources</a>
+        <a class="active" href="management.html">Management</a>
+    </nav>
+    <nav class="second_navigation">
+        <a class="active" href="edit_city.html">Edit a City</a>
+        <a href="add_city.html">Add a City</a>
+    </nav>
+
+    <br><br>
+    <table>
+        <tr>
+            <td>Which city woult you like to edit:</td>
+            <td>
+                <select name="city" id="city">
+                    <!-- *TODO get Citynames from database -->
+                    <option value="Default">--- City:</option>
+                    <option value="Beşiktaş">Beşiktaş</option>
+                    <option value="Pendik">Pendik</option>
+                </select>
+
+            </td>
+            <td><input class="select_city" type="submit" value="Submit"></td>
+        </tr>
+    </table>
+
+    <br><br>
+    <h2>Edit the City: "..."</h2><!-- *TODO use selected Cityname -->
+    <br><br>
+
+    <table><!-- *TODO finish -->
+        <tr>
+            <th>Category</th>
+            <th>old</th>
+            <th>new</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td></td>
+            <td>
+                <input class="input_editcity" type="text" name="Name" id="Name">
+            </td>
+            <td>
+                <input class="change" type="submit" value="change">
+            </td>
+        </tr>
+        <tr>
+            <td>Inhabitants</td>
+            <td></td>
+            <td>
+                <input class="input_editcity" type="text" name="" id="">
+            </td>
+            <td>
+                <input class="change" type="submit" value="change">
+            </td>
+        </tr>
+        <tr>
+            <td>Employees</td>
+            <td></td>
+            <td>
+                <input class="input_editcity" type="text" name="" id="">
+            </td>
+            <td>
+                <input class="change" type="submit" value="change">
+            </td>
+        </tr>
+        <tr>
+            <td>Geographic coordinates</td>
+            <td></td>
+            <td>
+                <input class="input_editcity" type="text" name="" id="">
+            </td>
+            <td>
+                <input class="change" type="submit" value="change">
+            </td>
+        </tr>
+        <tr>
+            <td>Objects</td>
+            <td></td>
+            <td>
+                <input class="input_editcity" type="text" name="" id="">
+            </td>
+            <td>
+                <input class="change" type="submit" value="change">
+            </td>
+        </tr>
+        <tr>
+            <td>Region</td>
+            <td></td>
+            <td>
+                <input class="input_editcity" type="text" name="" id="">
+            </td>
+            <td>
+                <input class="change" type="submit" value="change">
+            </td>
+        </tr>
+        <tr>
+            <td>Contact person</td>
+            <td></td>
+            <td>
+                <input class="input_editcity" type="text" name="" id="">
+            </td>
+            <td>
+                <input class="change" type="submit" value="change">
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
