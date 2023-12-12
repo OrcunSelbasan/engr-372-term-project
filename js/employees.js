@@ -1,14 +1,14 @@
 const Fields = (function getFields() {
-    const btnReset = $("#storage-reset");
-    const btnCreate = $("#storage-create");
-    const btnUpdate = $("#storage-update");
+    const btnReset = $("#employee-reset");
+    const btnCreate = $("#employee-create");
+    const btnUpdate = $("#employee-update");
     const fname = $("#employee-fname");
     const lname = $("#employee-lname");
     const email = $("#employee-email");
     const phone = $("#employee-phone");
     const salary = $("#employee-salary");
     // const salaryUnit = $("#employee-salary-unit");
-    const form = $("#storage-form");
+    const form = $("#employee-form");
 
     return {
         btnReset,
@@ -72,6 +72,7 @@ function validate(event) {
 }
 
 Fields.btnReset.on("click", () => {
+    console.log("reset pressed");
     const fields = Object.values(Fields);
     // Iterate over fields array to set fields to empty
     fields.forEach((field) => {
@@ -175,8 +176,9 @@ async function deleteItem(id) {
         console.log("fetched");
         const text = await response.text();
         console.log(text);
+        console.log(url);
         if (text === "true") {
-            window.location.reload();
+            window.location.assign("http://localhost/view/employees2.php");
         }
     }
 }

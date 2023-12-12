@@ -62,6 +62,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="../jquery/jquery-3.7.1.js"></script>
+        
         <link rel="stylesheet" href="../css/employees.css">
         <!-- TODO: UPDATE THE TITLE -->
         <title>WMS Employee View -</title>
@@ -74,7 +75,7 @@
                 <h3 class="storage-subheader" style="max-width: 700px; font-weight: 500;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo laborum vitae eveniet iusto et. Unde non officiis omnis. Explicabo nemo provident accusantium quisquam, officiis maiores facere? Perferendis voluptatum impedit nam!</h3>
             </section>
             <section class="storage-form-wrapper">
-                <form class="storage-form" id="storage-form" action="../utils/submission.php" method="POST">
+                <form class="employee-form" id="employee-form" action="../utils/submission.php" method="POST">
                     <input id="form-submission-type" name="form-submission-type" type="text" id="" style="display: none;">
                     <input id="storage-method" name="storage-method" type="text" id="" style="display: none;">
                     <input id="employee-object-id" name="employee-object-id" data-identifier='<?php echo $record['id']?>' type="text" style="display: none;">
@@ -112,12 +113,12 @@
             </section>
             <div style="width: 100%; padding-top: 20px; margin: auto;">
                 <div class="storage-subheader-buttons" style="margin-left: auto; display: flex; width: 100%; <?php showBtn($record) ?>">
-                    <div style="flex-grow: 1;" hidden>
+                    <div style="flex-grow: 1;" >
                         <button type="button" class="btn btn-red btn-delete" <?php echo "onclick='deleteItem($recordId)'" ?> style="width: 100px;" id="employee-delete">
                             Delete
                         </button>
                     </div>
-                    <button type="button" class="btn btn-green btn-create-record" style="max-width: 200px;" id="storage-update">
+                    <button type="button" class="btn btn-green btn-create-record" style="max-width: 200px;" id="employee-update">
                         <!-- <span class="storage-action-btn"> -->
                             Update
                         <!-- </span> -->
@@ -126,5 +127,5 @@
             </div>
         </main>
     </body>
-    <script src="../js/employees.js"></script>
+   <script src="../js/employees.js"></script> 
 </html>
