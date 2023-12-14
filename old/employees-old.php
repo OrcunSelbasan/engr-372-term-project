@@ -8,12 +8,13 @@
     $controller = new ControllerEmployees();
     $records = $controller->getAllRecords();
     $records = is_array($records) ? $records : [];
+    //$stats = $controller->getStats();
 
     function editActionHTML($id)
 {
     return  "
-        <td class='table-data'>
-        <button class='table-data-delete-btn' onclick='deleteItem($id)'>
+        <td class='storage-table-data'>
+        <button class='storage-table-data-delete-btn' onclick='deleteItem($id)'>
             <svg width='22' height='24' viewBox='0 0 22 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
                 <path d='M4 24C3.26667 24 2.63889 23.7389 2.11667 23.2167C1.59444 22.6944 1.33333 22.0667 1.33333 21.3333V4H0V1.33333H6.66667V0H14.6667V1.33333H21.3333V4H20V21.3333C20 22.0667 19.7389 22.6944 19.2167 23.2167C18.6944 23.7389 18.0667 24 17.3333 24H4ZM17.3333 4H4V21.3333H17.3333V4ZM6.66667 18.6667H9.33333V6.66667H6.66667V18.6667ZM12 18.6667H14.6667V6.66667H12V18.6667Z' fill='black'/>
             </svg>
@@ -38,42 +39,47 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WMS - Employee Overview</title>
-    <script src="../jquery/jquery-3.7.1.js"></script>
-    <script src="../js/employees.js"></script>
-    <link rel="stylesheet" href="../css/employees.css">
-</head>
-<body>
-    <?php include("./header.php"); ?>
-    <main class="employee-container">
-    <h1>Employees</h1>
-    <div class="header-flex">
-            <h2 style="font-weight: 400;">Last Modification Date:  <?php echo(end($records)['modification_date']) ?></h2>
-            <button class="btn-create-employee">
-                    <a href="./add-employee.php" >
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../jquery/jquery-3.7.1.js"></script>
+        <script src="../js/storage.js"></script>
+        <link rel="stylesheet" href="../css/employees.css">
+        <!-- TODO: UPDATE THE TITLE -->
+        <title>WMS - Employee Page</title>
+    </head>
+    <body>
+        <?php include("./header.php"); ?>
+        <main class="storage-main">
+            <h2>Employees</h2>
+            <section class="storage-subheader-wrapper">
+            <h3 class="storage-subheader" style="font-weight: 500;">Last Modification Date:  <?php echo(end($records)['modification_date']) ?></h3>
+            <div class="storage-subheader-buttons">
+                <!-- <button class="btn btn-white btn-export">
+                    <a href="link-download" class="storage-action-btn">
+                        Export
+                    </a>
+                </button> -->
+                <button class="btn btn-green btn-create-record">
+                    <a href="./add-employee.php" class="storage-action-btn">
                         Add employee
                     </a>
                 </button>
-    </div>
-    <div class="stats-flex">
-        <?php echo "Total number of employees: "." "."<span style='font-weight: 500;margin-left:4px;'>".count($records) ."</span>"?>
-    </div>
-    <div class="employee-entries">
-        <table class="employee-table">
-            <tr class="table-header">
-                <th class="table-header-data">ID</th>
-                <th class="table-header-data">First Name</th>
-                <th class="table-header-data">Last Name</th>
-                <th class="table-header-data">E-Mail</th>
-                <th class="table-header-data">Phone</th>
-                <th class="table-header-data">Salary</th>
-                <th class="table-header-data">Modification Date</th>
-                <th class="table-header-data">Actions</th>
-            </tr>
-            <?php
+            </div>
+        </section>
+        <section class="storage-table-wrapper">
+            <table class="storage-table">
+                <tr class="storage-table-header">
+                    <th class="storage-table-header-data">ID</th>
+                    <th class="storage-table-header-data">First Name</th>
+                    <th class="storage-table-header-data">Last Name</th>
+                    <th class="storage-table-header-data">E-Mail</th>
+                    <th class="storage-table-header-data">Phone</th>
+                    <th class="storage-table-header-data">Salary</th>
+                    <th class="storage-table-header-data">Modification Date</th>
+                    <th class="storage-table-header-data">Actions</th>
+                </tr>
+                <?php
                 if (sizeof($records) > 0) {
                     $records = array_reverse($records);
                     
@@ -95,13 +101,13 @@
                         $salary = $record['salary'];
                         $date = $record['modification_date'];
                         echo "<tr>";
-                        echo "<td class='table-data'>$id</td>";
-                        echo "<td class='table-data'>$fname</td>";
-                        echo "<td class='table-data'>$lname</td>";
-                        echo "<td class='table-data'>$email</td>";
-                        echo "<td class='table-data'>$phone</td>";
-                        echo "<td class='table-data'>$salary</td>";
-                        echo "<td class='table-data'>$date</td>";
+                        echo "<td class='storage-table-data'>$id</td>";
+                        echo "<td class='storage-table-data'>$fname</td>";
+                        echo "<td class='storage-table-data'>$lname</td>";
+                        echo "<td class='storage-table-data'>$email</td>";
+                        echo "<td class='storage-table-data'>$phone</td>";
+                        echo "<td class='storage-table-data'>$salary</td>";
+                        echo "<td class='storage-table-data'>$date</td>";
                         echo editActionHTML($id);
                         echo "</tr>";
                     }
@@ -110,12 +116,8 @@
                 }
 
                 ?>
-
-        </table>
-
-    </div>
-    
-</main>
-    
-</body>
+            </table>
+        </section>
+        </main>
+    </body>
 </html>

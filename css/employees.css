@@ -9,6 +9,8 @@
   --red: #800020;
   --light-green: #345100;
   --dark-green: #243700;
+  --lightest-green: #568400;
+  --dark-red: #840016;
 }
 * {
   box-sizing: border-box;
@@ -500,8 +502,17 @@ a:hover {
 .stats-flex{
   display: flex;
   flex-direction: row;
-  align-items: start;
+  
+  align-items: center;
   font-size: 20px;
+}
+.stats-flex > :first-child{
+  margin-right: auto;
+}
+
+.stats-flex > :last-child{
+  margin-left: auto;
+  font-size: 16px;
 }
 
 .employee-table{
@@ -533,6 +544,15 @@ a:hover {
   font-weight: 400;
 }
 
+.table-data-actions{
+  border: 2px solid var(--dark-green);
+  border-top: none ;
+  border-left: none;
+  padding: 5px 5px;
+  text-align: center;
+  font-weight: 400;
+}
+
 .btn-create-employee{
   height: 40px;
   width: 200px;
@@ -540,8 +560,68 @@ a:hover {
   opacity: 0.9;
   background-color: var(--light-green);
   color: var(--white);
+  border: 1px solid var(--dark-green); 
+}
+
+.btn-create-employee:hover{
+  cursor: pointer;
+  opacity: 1;
+}
+
+.validate-error{
+  padding-top:30px; color: red;font-weight:600;
+}
+
+.add-buttons-container{
+  display: flex; justify-content: flex-end; padding-top: 20px;padding-left:150px;padding-right:15px;
+}
+
+.btn-add-employee{
+  height: 40px;
+  width: 200px;
+  border-radius: 12px;
+  opacity: 0.9;
+  background-color: var(--light-green);
+  color: var(--white);
   border: 1px solid var(--dark-green);
-  
+  margin-left:30px;
+}
+
+.btn-add-employee:hover{
+  cursor: pointer;
+  opacity: 1;
+}
+
+.reset-button{
+  height: 40px;
+  width: 100px;
+  border-radius: 12px;
+  background-color: var(--white);
+  color: var(--dark-green);
+  border: 1px solid var(--dark-green);
+  transition-duration: 1ms;
+}
+
+.reset-button:hover{
+  cursor: pointer;
+  color: var(--white);
+  background-color: var(--light-green);
+}
+
+.delete-employee{
+  height: 40px;
+  width: 100px;
+  border-radius: 12px;
+  background-color: var(--white);
+  color: red;
+  border: 1px solid red;
+  transition-duration: 1ms;
+}
+
+.delete-employee:hover{
+  cursor: pointer;
+  color: var(--white);
+  background-color: red;
 }
 
 .table-data-delete-btn {
@@ -549,6 +629,36 @@ a:hover {
   
   border: none;
   cursor: pointer;
+}
+
+.employee-buttons {
+  display: flex;
+  justify-content:flex-end;
+  gap: 10px;
+  width: 300px;
+  margin-left: 300px;
+}
+
+.table-action-button{
+  border: 1px solid var(--dark-green);
+  border-radius: 3px;
+  background-color: var(--lightest-green);
+  color: var(--white);
+  cursor: pointer;
+  width: 55px;
+}
+
+.table-action-button-delete{
+  border: 1px solid var(--red);
+  border-radius: 3px;
+  background-color: var(--dark-red);
+  color: var(--white);
+  cursor: pointer;
+  width: 55px;
+}
+
+#desc{
+  accent-color: var(--lightest-green);
 }
 
 /* End of my CSS */

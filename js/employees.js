@@ -58,14 +58,14 @@ function validate(event) {
         event.preventDefault();
     }
 
-    // Highlight errored field for 1.5 seconds, after turn the bottom border's color back to black.
     if (erroredFields.length > 0) {
-        for (const field of erroredFields) {
-            field.css("border-bottom-color", "red");
-            setTimeout(() => {
-                field.css("border-bottom-color", "black");
-            }, 1500);
-        }
+        $("#validate-error").text("Please fill all fields!");
+        $("#employee-form-container").css("border", "2px solid red");
+        setTimeout(() => {
+
+            $("#validate-error").text("");
+            $("#employee-form-container").css("border", "2px solid var(--dark-green)");
+        }, 1000);
     }
 
     return isValid;
@@ -88,6 +88,7 @@ Fields.btnReset.on("click", () => {
         }
     });
 });
+
 
 // We've created a validation function above, both click event of the create button
 // and submit event of the form element triggers the submission. Therefore, I've added validate
@@ -134,31 +135,6 @@ Fields.btnUpdate.on("click", async function (event) {
     }
 });
 
-// function buildPutRequestBody() {
-//   const fields = Object.entries(Fields).filter(
-//     ([fieldIdentifier, field]) =>
-//       fieldIdentifier !== "btnReset" &&
-//       fieldIdentifier !== "btnCreate" &&
-//       fieldIdentifier !== "form" &&
-//       fieldIdentifier !== "btnUpdate"
-//   );
-//   const body = Object.values(fields).reduce(
-//     (prev, [fieldIdentifier, field], index) => {
-//       const name = field.attr("name");
-//       const value = field.val();
-//       const pair = encodeURIComponent(name)
-//         .concat("=")
-//         .concat(encodeURIComponent(value));
-//       const seperator = index === 0 ? "" : "&";
-//       const newString = prev.concat(seperator).concat(pair);
-//       return newString;
-//     },
-//     ""
-//   );
-
-//   return body;
-// }
-
 async function deleteItem(id) {
     console.log("Delete pressed");
     const origin = window.location.origin;
@@ -178,18 +154,7 @@ async function deleteItem(id) {
         console.log(text);
         console.log(url);
         if (text === "true") {
-            window.location.assign("http://localhost/view/employees2.php");
+            window.location.assign("http://localhost/view/employees.php");
         }
     }
-}
-
-document.querySelectorAll(".change-loc").forEach(el => el.addEventListener("click", activateInput));
-
-// $('#change-loc').on('click', activateInput);
-
-function activateInput(params) {
-    console.log(params);
-    const currentPath = window.location.href;
-    const url = `${currentPath}&edit=1`;
-    window.location.replace(url);
 }
