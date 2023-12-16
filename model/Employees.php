@@ -100,4 +100,7 @@ class Employees
         }
         return false;
     }
+    public function getLastModDate(){
+        return $this->db->queryRaw("SELECT MAX(modification_date) FROM $this->table")->fetch_row()[0];
+    }
 }

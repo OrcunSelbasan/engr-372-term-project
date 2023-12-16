@@ -39,13 +39,7 @@ function validate(event) {
     console.log(fields);
     let isValid = true;
     for (const field of fields) {
-        // console.log(field);
-        // Check if the field is input except checkbox(it is optional field).
         if (!field.is("button") && !field.is("form") && !field.is(":checkbox")) {
-            // Check if field is filled. Falsy values(null, undefined, 0, "", false, NaN)
-            // can be seen as empty field. If field value is falsy field.val() will be false
-            // If it is false we should prevent submission. Therefore we'll apply negation and
-            // exit from loop.
             if (!field.val()) {
                 isValid = false;
                 erroredFields.push(field);
@@ -74,25 +68,14 @@ function validate(event) {
 Fields.btnReset.on("click", () => {
     console.log("reset pressed");
     const fields = Object.values(Fields);
-    // Iterate over fields array to set fields to empty
     fields.forEach((field) => {
-        if (field.is(":checkbox") && field.is(":checked")) {
-            // Checkbox value is stored in the checked
-            field.prop("checked", false);
-        } else if (!field.is("button") && !field.is("form")) {
-            // If the field is not checkbox then this condition will be checked
-            // Here, we also check if the field is not form and the field is not
-            // button. If it is not both, then we can set this field's value to
-            // empty string.
+        if (!field.is("button") && !field.is("form")) {
             field.val("");
         }
     });
 });
 
 
-// We've created a validation function above, both click event of the create button
-// and submit event of the form element triggers the submission. Therefore, I've added validate
-// function to both elements.
 Fields.btnCreate.on("click", (event) => {
     console.log("create pressed");
     const isValid = validate(event);
@@ -103,28 +86,9 @@ Fields.btnCreate.on("click", (event) => {
 });
 
 Fields.btnUpdate.on("click", async function (event) {
-    // const isValid = validate(event);
-    // const origin = window.location.origin;
-    // const pathname = "utils/submission.php";
-    // const url = `${origin}/${pathname}`;
-    // console.log(isValid);
-    // if (isValid) {
-    //   const body = buildPutRequestBody();
-    //   const response = await fetch(url, {
-    //     method: "PUT",
-    //     headers: {
-    //       "Content-Type": "application/x-www-form-urlencoded",
-    //       Accept: "*/*",
-    //     },
-    //     body,
-    //   });
-    //   const text = await response.text();
-    //   console.log(text);
     console.log("Update pressed");
     const isValid = validate(event);
-    // console.log(isValid);
     if (isValid) {
-
         console.log("fine");
         const id = $("#employee-object-id").data("identifier")
         $("#form-submission-type").val("EMPLOYEES");
@@ -156,5 +120,22 @@ async function deleteItem(id) {
         if (text === "true") {
             window.location.assign("http://localhost/view/employees.php");
         }
+    }
+}
+function editItem(id) {
+    console.log("Edit " + id);
+    window.location.href = `employee-view-entry.php?id=${id}`;
+}
+function addEmployee() {
+    window.location.href = "add-employee.php";
+}
+function sortTable() {
+    var sortAttribute = document.getElementById('sortAttribute').value;
+    var descCheckbox = document.getElementById("desc");
+    var isDescending = descCheckbox.checked;
+    if (isDescending) {
+        window.location.href = `employees.php?sort=${sortAttribute}&desc=true`;
+    } else {
+        window.location.href = `employees.php?sort=${sortAttribute}&desc=false`;
     }
 }

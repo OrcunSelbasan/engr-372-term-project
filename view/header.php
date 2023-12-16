@@ -55,23 +55,6 @@
         }
     }
 
-    // function getStyles(){
-    //     $directoryName = getCurrentDirectoryName();
-    //     switch ($directoryName) {
-    //         case "storage-add-record":
-    //             return "bg-brown";
-    //             break;
-    //         case "storage-view-record":
-    //             return "bg-green";
-    //             break;
-    //         case "employees":
-    //             return "bg-light-green";
-    //             break;
-    //         default:
-    //             break;
-    //     }
-    // }
-
     $header = getHeader();
     $className = getClasses();
 

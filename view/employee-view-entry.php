@@ -62,7 +62,7 @@
                         </div>
                         <div class="employee-form-line">
                             <label for="employee-phone">Phone Number</label>
-                            <div class="employee-input">
+                            <div class="employee-input" >
                                 <input name="employee-phone" id="employee-phone" type="text" style="flex-grow: 1;" required <?php  $setValue('phone'); ?>>
                             </div>
                             
@@ -70,7 +70,7 @@
                         <div class="employee-form-line">
                             <label for="employee-salary">Monthly Salary</label>
                             <div class="employee-select">
-                                <input name="employee-salary" id="employee-salary" type="number" min="1" style="flex-grow: 1;border-right:0" required <?php $setValue('salary'); ?>>
+                                <input name="employee-salary" id="employee-salary" type="number" min="1" style="flex-grow: 1;border-right:0;outline:none;" required <?php $setValue('salary'); ?>>
                                 <select name="employee-salary-unit" id="employee-salary-unit" required>
                                     <option value="lira">Lira</option>
                                     <option value="dollar">Dollar</option>

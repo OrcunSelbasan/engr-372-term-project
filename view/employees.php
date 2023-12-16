@@ -12,6 +12,8 @@
     $sortAttribute = isset($_GET['sort']) ? $_GET['sort'] : 'lname';
     $sortDescending = isset($_GET['desc']) ? $_GET['desc'] : false;
 
+    $lastModificationDate = $controller->getLastModDate();
+
     function addButtons($id)
 {   
     return "
@@ -65,7 +67,7 @@
     <main class="employee-container">
     <h1>Employees</h1>
     <div class="header-flex">
-            <h2 style="font-weight: 400;">Last Modification Date:  <?php echo(end($records)['modification_date']) ?></h2>
+            <h2 style="font-weight: 400;">Last Modification Date:  <?php echo"$lastModificationDate"; ?></h2>
             <button class="btn-create-employee" onclick="addEmployee()">
                     Add Employee
                 </button>
@@ -74,7 +76,7 @@
         <?php echo "<div>Total number of employees: "." "."<span style='font-weight: 500;margin-left:4px;'>".count($records) ."</span></div>"?>
         <div class="sorting-options">
             <label for="sortAttribute">Sort by:</label>
-            <select id="sortAttribute" onchange="sortTable()">
+            <select id="sortAttribute" onchange="sortTable()" style="margin-left:5px;">
                 <option value="fname" <?php setSorted("fname",$sortAttribute);?>>First Name</option>
                 <option value="lname" <?php setSorted("lname",$sortAttribute);?>>Last Name</option>
                 <option value="email" <?php setSorted("email",$sortAttribute);?>>E-Mail</option>

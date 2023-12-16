@@ -181,63 +181,8 @@ a:hover {
 
 /**************** END OF NAV NAVIGATION *****************/
 
-/**************** LOGIN LOG IN *****************/
+/**************** EMPLOYEE CREATE ADD ITEM PAGE *****************/
 
-.login-wrapper {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--light-blue);
-}
-
-.login {
-  margin: auto;
-  width: 500px;
-  border: 2px solid var(--dark-blue);
-  border-radius: 5px;
-  padding: 30px;
-  font-size: 18px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: aliceblue;
-}
-
-.login > h1 {
-  font-size: 24px;
-  color: var(--dark-blue);
-}
-
-.form-element {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0px;
-}
-
-.form-element > label {
-  color: var(--light-blue);
-}
-
-.form-element > input {
-  width: 60%;
-}
-
-#email,
-#password {
-  font-size: 18px;
-}
-
-.form-element-btn {
-  font-size: 18px;
-  width: max-content;
-  align-self: flex-end;
-  padding: 5px 15px;
-  border: 1px solid var(--dark-blue);
-  border-radius: 5px;
-  background-color: var(--light-blue);
-  color: var(--white);
-}
 
 .employee-form-container {
   background-color: var(--white);
@@ -245,14 +190,14 @@ a:hover {
   border: 2px solid var(--dark-green);
   border-radius: 5px;
   box-shadow: 0px 2px 2px 0px rgba(99, 99, 99, 0.3);
-}
+} 
 
 .employee-form {
   height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
+} 
 
 .employee-form-lines-container {
   height: 70%;
@@ -262,7 +207,7 @@ a:hover {
   flex-grow: 1;
   overflow-y: scroll;
   overflow-x: hidden;
-}
+} 
 
 .employee-form-line{
   margin: auto;
@@ -271,222 +216,24 @@ a:hover {
   flex-grow: 1;
   display: flex;
   justify-content: space-between;
-}
+} 
 
 .employee-input{
   width: 300px; 
   text-align: end;
   display: flex;
   border-right: 2px solid black;
-}
+} 
+
+.employee-input input:focus{
+  outline: none;
+} 
 
 .employee-select{
     width: 300px; 
   text-align: end;
   display: flex;
 }
-
-.storage-form-line input {
-  border: 2px solid #000;
-}
-
-.employee-form-line div input {
-  border-right: none;
-}
-
-.employee-form-line select:active,
-.employee-form-line select:focus {
-  outline: none;
-}
-
-.employee-form-line select {
-  
-  border-right: none;
-}
-
-.employee-form-line div select {
-  border: 0px solid #000;
-  border-left: none;
-}
-
-
-/**************** END OF LOGIN LOG IN LOG-IN *****************/
-
-/**************** STORAGE INVENTORY MAIN PAGE *****************/
-
-.storage-main {
-  padding: 50px 100px 20px;
-}
-
-.storage-subheader-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.storage-subheader {
-  padding: 0;
-  max-width: 400px;
-}
-
-.btn-export {
-  flex-grow: 1;
-}
-
-.btn-create-record {
-  flex-grow: 2;
-}
-
-.storage-subheader-buttons {
-  display: flex;
-  justify-content: end;
-  gap: 10px;
-  width: 300px;
-}
-
-.storage-summary {
-  border: 1px solid var(--dark-green);
-  padding: 20px 40px;
-  margin: 20px 0;
-  border-radius: 2px;
-  box-shadow: 0px 2px 2px 0px rgba(99, 99, 99, 0.3);
-}
-
-.storage-summary-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.btn-storage-get-snapshot {
-  margin: 10px 0px 10px auto;
-  width: 200px;
-}
-
-.storage-summary-row-item {
-  width: 300px;
-}
-
-.storage-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.storage-table-header-data,
-.storage-table-data {
-  border: 1px solid var(--dark-green);
-  padding: 5px 5px;
-  text-align: center;
-}
-
-.storage-table-row,
-.storage-table-data {
-  border: 1px solid var(--dark-green);
-}
-
-.storage-table-data-delete-btn {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.storage-action-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 97%;
-  height: 97%;
-  margin: auto;
-  align-self: center;
-  flex-grow: 1;
-}
-
-/**************** END OF STORAGE INVENTORY MAIN PAGE *****************/
-
-/**************** STORAGE CREATE ADD ITEM PAGE *****************/
-
-.storage-form-wrapper {
-  background-color: var(--white);
-  padding: 20px 40px;
-  border: 2px solid var(--dark-green);
-  border-radius: 5px;
-  box-shadow: 0px 2px 2px 0px rgba(99, 99, 99, 0.3);
-}
-
-
-.storage-form {
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.storage-form-lines-wrapper {
-  height: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-grow: 1;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-.storage-form-lines-wrapper::-webkit-scrollbar {
-  width: 10px;
-}
-.storage-form-lines-wrapper::-webkit-scrollbar-thumb {
-  background-color: var(--gray);
-}
-.storage-form-lines-wrapper::-webkit-scrollbar-track {
-  border: none;
-  outline: none;
-}
-.storage-form-lines-wrapper::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-}
-
-.storage-form-line {
-  margin: auto;
-  padding: 10px 0;
-  width: 90%;
-  flex-grow: 1;
-  display: flex;
-  justify-content: space-between;
-}
-
-.storage-form-line > label {
-  flex-grow: 1;
-}
-
-.storage-form-line input {
-  border: 2px solid #000;
-}
-
-.storage-form-line div input {
-  border-right: none;
-}
-
-.storage-form-line select:active,
-.storage-form-line select:focus {
-  outline: none;
-}
-
-.storage-form-line select {
-  border: 2px solid #000;
-}
-
-.storage-form-line div select {
-  border: 2px solid #000;
-  border-left: none;
-}
-
-.storage-form-line input[type="checkbox"] {
-  transform: scale(1.5);
-}
-
-/**************** EMPLOYEE CREATE ADD ITEM PAGE *****************/
 
 .employee-container{
   padding: 50px 30px 100px 50px;
@@ -555,7 +302,7 @@ a:hover {
 
 .btn-create-employee{
   height: 40px;
-  width: 200px;
+  width: 250px;
   border-radius: 10px;
   opacity: 0.9;
   background-color: var(--light-green);
@@ -573,7 +320,11 @@ a:hover {
 }
 
 .add-buttons-container{
-  display: flex; justify-content: flex-end; padding-top: 20px;padding-left:150px;padding-right:15px;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 20px;
+  padding-left:150px;
+  padding-right:15px;
 }
 
 .btn-add-employee{
@@ -615,7 +366,7 @@ a:hover {
   background-color: var(--white);
   color: red;
   border: 1px solid red;
-  transition-duration: 1ms;
+  transition-duration: 300ms;
 }
 
 .delete-employee:hover{
@@ -661,36 +412,13 @@ a:hover {
   accent-color: var(--lightest-green);
 }
 
-/* End of my CSS */
-
-.employee-form-line {
-  margin: auto;
-  padding: 10px 0;
-  width: 90%;
-  flex-grow: 1;
-  display: flex;
-  justify-content: space-between;
-}
-
-.employee-form-line > label {
-  flex-grow: 1;
-}
-
 .employee-form-line input {
   border: 2px solid #000;
 }
 
+
 .employee-form-line div input {
   border-right: none;
-}
-
-.employee-form-line select:active,
-.employee-form-line select:focus {
-  outline: none;
-}
-
-.employee-form-line select {
-  border: 2px solid #000;
 }
 
 .employee-form-line div select {
@@ -698,6 +426,6 @@ a:hover {
   border-left: none;
 }
 
-.employee-form-line input[type="checkbox"] {
-  transform: scale(1.5);
+.employee-select input:focus{
+  outline: none;
 }

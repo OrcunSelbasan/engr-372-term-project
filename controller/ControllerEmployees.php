@@ -60,7 +60,6 @@ class ControllerEmployees{
         $id = isset($queryArray['id']) ? $queryArray['id'] : "false";
         $isEdit = isset($queryArray['edit']) ? $queryArray['edit'] : "false";
 
-        // No id means trouble just redirect to storage main page
         if ($id == "false") {
             header("Location: $root/view/storage.php");
             exit();
@@ -101,6 +100,10 @@ class ControllerEmployees{
             return $fetchResult;
         }
         return false;
+    }
+
+    public function getLastModDate(){
+        return $this->entity->getLastModDate();
     }
 
     public function deleteRecord($id)
