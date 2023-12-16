@@ -1,5 +1,5 @@
 <?php
-include("../utils/constants.php");
+include_once("../utils/constants.php");
 class Database
 {
     private $connection;

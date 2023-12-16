@@ -17,6 +17,15 @@
                 }
                 return "View Record";
                 break;
+            case "employees":
+                return "Employees";
+                break;
+            case "add-employee":
+                return "Add Employee";
+                break;
+            case "employee-view-entry":
+                return "Employee";
+                break;
             default:
                 return "Storage";
                 break;
@@ -32,6 +41,15 @@
             case "storage-view-record":
                 return "bg-green";
                 break;
+            case "employees":
+                return "bg-light-green";
+                break;
+            case "add-employee":
+                return "bg-light-green";
+                break;
+            case "employee-view-entry":
+                return "bg-light-green";
+                break;
             default:
                 break;
         }
@@ -45,7 +63,7 @@
     <nav>
         <h1 style="text-align: center;">WMS <br> <?php echo $header ?></h1>
         <ul class="nav_link_list">
-            <li class="nav_link_item"><a class="nav_link_a" href="./storage.php">
+            <li class="nav_link_item" ><a class="nav_link_a" href="./storage.php">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.6 24C2.94 24 2.375 23.765 1.905 23.295C1.435 22.825 1.2 22.26 1.2 21.6V8.07C0.84 7.85 0.55 7.565 0.33 7.215C0.11 6.865 0 6.46 0 6V2.4C0 1.74 0.235 1.175 0.705 0.705C1.175 0.235 1.74 0 2.4 0H21.6C22.26 0 22.825 0.235 23.295 0.705C23.765 1.175 24 1.74 24 2.4V6C24 6.46 23.89 6.865 23.67 7.215C23.45 7.565 23.16 7.85 22.8 8.07V21.6C22.8 22.26 22.565 22.825 22.095 23.295C21.625 23.765 21.06 24 20.4 24H3.6ZM3.6 8.4V21.6H20.4V8.4H3.6ZM2.4 6H21.6V2.4H2.4V6ZM8.4 14.4H15.6V12H8.4V14.4Z" fill="white" />
                     </svg>

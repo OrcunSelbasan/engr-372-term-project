@@ -35,6 +35,7 @@ const Fields = (function getFields() {
 })();
 
 function validate(event) {
+  console.log("Validating");
   const erroredFields = [];
   const fields = Object.entries(Fields)
     .filter(
@@ -45,6 +46,7 @@ function validate(event) {
         fieldIdentifier !== "btnUpdate"
     )
     .map((field) => field[1]);
+  console.log(fields);
   let isValid = true;
   for (const field of fields) {
     // Check if the field is input except checkbox(it is optional field).
@@ -98,6 +100,7 @@ Fields.btnReset.on("click", () => {
 // and submit event of the form element triggers the submission. Therefore, I've added validate
 // function to both elements.
 Fields.btnCreate.on("click", (event) => {
+  console.log("Create clicked");
   const isValid = validate(event);
   if (isValid) {
     $("#form-submission-type").val("STORAGE");
@@ -123,6 +126,7 @@ Fields.btnUpdate.on("click", async function (event) {
   //   });
   //   const text = await response.text();
   //   console.log(text);
+  console.log("Update pressed");
   const isValid = validate(event);
   console.log(isValid);
   if (isValid) {
