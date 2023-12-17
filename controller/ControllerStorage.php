@@ -79,7 +79,38 @@ class ControllerStorage
 
         return $isSuccess;
     }
+    public function getAllRecordsFiltered($conditions = []) {
+        // Create a database connection -----yeni eklendi
+        $db = $this->connectDatabase();
 
+        // Prepare query string from conditions
+        $queryString = "";
+        foreach ($conditions as $key => $value) {
+            if ($key == (count($conditions) - 1)) {
+                $queryString = $queryString;
+            } else {
+                $queryString = $value . " AND ";
+            }
+        }
+
+
+        // Prepare a SQL query with search criteria
+        $query = "SELECT * FROM storage WHERE  ?";
+        $stmt = $db->prepare($query);
+        $searchTerm = '%' . $search . '%';
+        $stmt->bind_param("s", $searchTerm);
+
+        // Execute the query and fetch results
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $records = [];
+        while ($row = $result->fetch_assoc()) {
+            $records[] = $row;
+        }
+
+        return $records;
+    }
     public function getRecord($qs, $root)
     {
         $queryString = $qs;
@@ -163,5 +194,23 @@ class ControllerStorage
             'totalVolume' => $totalVolume,
             'totalPrice' => $totalPrice,
         ];
+    }
+
+    private function connectDatabase() {
+        $host = 'localhost';
+        $username = 'umit';
+        $password = '1234';
+        $database = 'group4';
+
+        // Create connection ------------------yeni eklendi
+        
+        $conn = new mysqli($host, $username, $password, $database);
+
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        return $conn;
     }
 }
