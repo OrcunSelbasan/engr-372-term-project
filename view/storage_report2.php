@@ -4,11 +4,19 @@ include("../controller/ControllerStorage.php");
 // * Check if the user is authenticated
 $auth = new ControllerAuth();
 $auth->checkAuth();
+$search = isset($_GET['search']) ? $_GET['search'] : '';
 
 $controller = new ControllerStorage();
 $records = $controller->getAllRecords();
 $records = is_array($records) ? $records : [];
 $stats = $controller->getStats();
+
+$controller1 = new ControllerStorage();
+
+$records1 = $controller1->getAllRecordsFiltered($search);
+var_dump($records1);
+$records1 = is_array($records1) ? $records1 : [];
+$stats2 = $controller1->getStats();
 function editActionHTML($id)
 {
     return  "
@@ -61,8 +69,6 @@ function handleVolumeUnit($unit) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="./jquery/jquery-3.7.1.js"></script>
         <link rel="stylesheet" href="../css/index.css">
-          <!-- I added it for days -->
-        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <style>
         body {
             font-family: Arial, sans-serif;
@@ -103,6 +109,7 @@ function handleVolumeUnit($unit) {
             border-bottom: 1px solid #ddd;
         }
 
+        /* Renkli linkler */
         .dropdown-content a {
             color: #333;
             text-decoration: none;
@@ -118,9 +125,6 @@ function handleVolumeUnit($unit) {
         font-weight: bold;
         margin-bottom: 10px;
         }
-        .select-dropdown {
-            border: 2px solid #000;
-        }
     </style>
         <title>WMS Inventory - Reports</title>
     </head>
@@ -128,96 +132,30 @@ function handleVolumeUnit($unit) {
     <main class="report-main">
         <h2 class="report-header">REPORT</h2>
         <section class="select-dropdown">
+            <div class="dropdown">
+                <span class="dropdown-label">Please Select A Category </span>
+                <div class="dropdown-content">
                     <ul>
-                        <li><a href="./reports.php">Storage</a></li>
+                        <li><a href="./storage_report.php">Storage</a></li>
                         <li><a href='./regions_report.php'>Regions</a></li>
                         <li><a href='./cities_report.php'>Cities</a></li>
                         <li><a href='./employees_report.php'>Employees</a></li>
                     </ul>
+                 </div>
+            </div>
         </section>
-        <h3>Storage</h3>
-         <!-- Report Table-->
-         <section class="report-table-wrapper">
-            <table class="report-table">
-                <tr>
-                    <th>Category</th>
-                    <th>Type</th>
-                    <th>Status</th>
-                    <th>Modification Date</th>
-
-                </tr>
-                <tr>
-                    <td>
-                        <select>
-                            <option value=></option>
-                            <option value="bin">Bin</option>
-                            <option value="truck">Truck</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select>
-                            <option value=></option>
-                            <option value="smart">Smart</option>
-                            <option value="regular">Regular</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select>
-                            <option value=></option>
-                            <option value="maintenance">Maintenance</option>
-                            <option value="passive">Passive</option>
-                            <option value="active">Active</option>
-                    <td>
-                        <input type="text" id="datepicker">
-                    </td>
-            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-                 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-                  <script>
-                    $(function () {
-                         $("#datepicker").datepicker();
-                    });
-            </script>
-                        </select>
-                    </td>
-                </tr>
-            </table>
-        </section>
-        <section class="storage-table-wrapper">
-            <table class="storage-table">
-                <tr class="storage-table-header">
-                    <th class="storage-table-header-data">ID</th>
-                    <th class="storage-table-header-data">Category</th>
-                    <th class="storage-table-header-data">Volume</th>
-                    <th class="storage-table-header-data">Type</th>
-                    <th class="storage-table-header-data">Status</th>
-                    <th class="storage-table-header-data">Modification Date</th>
-                    <th class="storage-table-header-data">Actions</th>
-                </tr>
-                <?php
-                if (sizeof($records) > 0) {
-                    $records = array_reverse($records);
-                    foreach ($records as $record) {
-                        $id = $record['id'];
-                        $category = $record['category'];
-                        $volume = $record['volume'] . handleVolumeUnit($record['volume_unit']);
-                        $type = $record['type'];
-                        $status = $record['initial_status'];
-                        $date = $record['modification_date'];
-                        echo "<tr>";
-                        echo "<td class='storage-table-data'>$id</td>";
-                        echo "<td class='storage-table-data'>$category</td>";
-                        echo "<td class='storage-table-data'>$volume</td>";
-                        echo "<td class='storage-table-data'>$type</td>";
-                        echo "<td class='storage-table-data'>$status</td>";
-                        echo "<td class='storage-table-data'>$date</td>";
-                        echo editActionHTML($id);
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='12' align='center'>No information.</td></tr>";
-                }
-
-                ?>
+        <!-- Search Form -->
+    <form action="storage_report.php" method="get">
+        <input type="text" name="search" placeholder="Search by category (bin,truck)..." value="<?php echo htmlspecialchars($search); ?>">
+        <!-- Add more filter inputs as needed -->
+        <input type="submit" value="Search">
+    </form>
+        <?php include("../model/Storage.php");
+        // Örnek sınıf adı 'StorageClass' varsayalım
+            $storage = new Storage();
+            $categoryResults = $storage->getByCategory($category);
+            
+            ?>
             </table>
         </section>
     </main>
