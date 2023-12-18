@@ -60,15 +60,7 @@ if (isset($_GET['referrer'])) {
     }
 
     $records = $controller->getByFilters($filters);
-
-
-
-    // $records = $controller->getAllRecords();
-    // $records = is_array($records) ? $records : [];
-    // $stats = $controller->getStats();
 }
-
-
 
 ?>
 
@@ -215,7 +207,7 @@ if (isset($_GET['referrer'])) {
                         <input name="storage-estimated-lifetime" id="storage-estimated-lifetime" type="number" min="1" style="flex-grow: 1;">
                     </td>
 
-                    
+
                 </tr>
             </table>
             <div style="display: flex; flex-direction: row; justify-content: end;">

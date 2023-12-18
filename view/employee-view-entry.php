@@ -36,7 +36,7 @@
             <section class="employee-form-container" id="employee-form-container">
                 <form class="employee-form" id="employee-form" action="../utils/submission.php" method="POST">
                     <input id="form-submission-type" name="form-submission-type" type="text" id="" style="display: none;">
-                    <input id="storage-method" name="storage-method" type="text" id="" style="display: none;">
+                    <input id="employee-method" name="employee-method" type="text" id="" style="display: none;">
                     <input id="employee-object-id" name="employee-object-id" data-identifier='<?php echo $record['id']?>' type="text" style="display: none;">
                     <div class="employee-form-lines-container">
                         <div class="employee-form-line">
