@@ -1,5 +1,5 @@
 <?php
-    include("../controller/ControllerAuth.php");
+    include("../../controller/ControllerAuth.php");
     // * Check if the user is authenticated
     $auth = new ControllerAuth();
     $auth->checkAuth();
@@ -10,8 +10,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="./jquery/jquery-3.7.1.js"></script>
-        <link rel="stylesheet" href="../css/index.css">
+        <script src="../../jquery/jquery-3.7.1.js"></script>
+        <link rel="stylesheet" href="../../css/index.css">
         <style>
         body {
             font-family: Arial, sans-serif;
@@ -64,7 +64,7 @@
     </style>
         <title>WMS Inventory - Reports</title>
     </head>
-    <?php include("./header.php"); ?>
+    <?php include("../header.php"); ?>
     <main class="report-main">
         <h2 class="report-header">REPORT</h2>
         <section class="select-dropdown">
@@ -72,7 +72,7 @@
                 <span>Please Select A Category </span>
                 <div class="dropdown-content">
                     <ul>
-                        <li><a href="./reports.php">Storage</a></li>
+                        <li><a href="./storage_reports.php">Storage</a></li>
                         <li><a href='./regions_report.php'>Regions</a></li>
                         <li><a href='./cities_report.php'>Cities</a></li>
                         <li><a href='./employees_report.php'>Employees</a></li>
@@ -80,8 +80,7 @@
                  </div>
             </div>
         </section>
-        <h3>Employees<h3>
-
+        <h3>Cities</h3>
     </main>
 </body>
 

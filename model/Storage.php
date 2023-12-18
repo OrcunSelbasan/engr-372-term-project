@@ -1,6 +1,8 @@
 <?php
 // TODO: CHECK SQL INJECTION PREVENTION
-include_once("../database/index.php");
+$rootPath = $_SERVER['DOCUMENT_ROOT'];
+$dbPath = $rootPath."/database/index.php";
+include_once($dbPath);
 class Storage
 {
     private $db;
@@ -108,6 +110,33 @@ class Storage
         try {
             $result = $this->db->queryRaw("SELECT * FROM $this->table WHERE $this->type = '$value'");
             $this->db->close();
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
+        return false;
+    }
+
+    public function getByFilters($filters) {
+        // Prepare query string from conditions
+        if ($filters == []) {
+            return [];
+        }
+        $lastElement = count($filters) - 1;
+        $counter = 0;
+        $queryString = "";
+        foreach ($filters as $key => $value) {
+            if ($counter == $lastElement) {
+                $queryString = $queryString . "$key='$value'";
+            } else {
+                $queryString = $queryString . "$key='$value'" . " AND ";
+            }
+            $counter += 1;
+        }
+        $query = "SELECT * FROM storage WHERE $queryString";;
+        try {
+            $result = $this->db->queryRaw($query);
             return $result;
         } catch (Exception $e) {
             var_dump($e->getMessage());
