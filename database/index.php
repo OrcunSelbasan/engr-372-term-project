@@ -1,5 +1,8 @@
 <?php
-include_once("../utils/constants.php");
+// TODO HANDLE ABSOULTE PATHS IN CONTROLLER AUTH
+$rootPath = $_SERVER['DOCUMENT_ROOT'];
+$constantsPath = $rootPath."/utils/constants.php";
+include_once($constantsPath);
 class Database
 {
     private $connection;
