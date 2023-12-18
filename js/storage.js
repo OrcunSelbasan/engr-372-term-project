@@ -35,7 +35,6 @@ const Fields = (function getFields() {
 })();
 
 function validate(event) {
-  console.log("Validating");
   const erroredFields = [];
   const fields = Object.entries(Fields)
     .filter(
@@ -46,7 +45,6 @@ function validate(event) {
         fieldIdentifier !== "btnUpdate"
     )
     .map((field) => field[1]);
-  console.log(fields);
   let isValid = true;
   for (const field of fields) {
     // Check if the field is input except checkbox(it is optional field).
@@ -100,7 +98,6 @@ Fields.btnReset.on("click", () => {
 // and submit event of the form element triggers the submission. Therefore, I've added validate
 // function to both elements.
 Fields.btnCreate.on("click", (event) => {
-  console.log("Create clicked");
   const isValid = validate(event);
   if (isValid) {
     $("#form-submission-type").val("STORAGE");
@@ -109,59 +106,15 @@ Fields.btnCreate.on("click", (event) => {
 });
 
 Fields.btnUpdate.on("click", async function (event) {
-  // const isValid = validate(event);
-  // const origin = window.location.origin;
-  // const pathname = "utils/submission.php";
-  // const url = `${origin}/${pathname}`;
-  // console.log(isValid);
-  // if (isValid) {
-  //   const body = buildPutRequestBody();
-  //   const response = await fetch(url, {
-  //     method: "PUT",
-  //     headers: {
-  //       "Content-Type": "application/x-www-form-urlencoded",
-  //       Accept: "*/*",
-  //     },
-  //     body,
-  //   });
-  //   const text = await response.text();
-  //   console.log(text);
-  console.log("Update pressed");
   const isValid = validate(event);
-  console.log(isValid);
   if (isValid) {
-    const id = $("#storage-object-id").data("identifier")
+    const id = $("#storage-object-id").data("identifier");
     $("#form-submission-type").val("STORAGE");
     $("#storage-method").val("PUT");
     $("#storage-object-id").val(id);
     Fields.form.submit();
   }
 });
-
-// function buildPutRequestBody() {
-//   const fields = Object.entries(Fields).filter(
-//     ([fieldIdentifier, field]) =>
-//       fieldIdentifier !== "btnReset" &&
-//       fieldIdentifier !== "btnCreate" &&
-//       fieldIdentifier !== "form" &&
-//       fieldIdentifier !== "btnUpdate"
-//   );
-//   const body = Object.values(fields).reduce(
-//     (prev, [fieldIdentifier, field], index) => {
-//       const name = field.attr("name");
-//       const value = field.val();
-//       const pair = encodeURIComponent(name)
-//         .concat("=")
-//         .concat(encodeURIComponent(value));
-//       const seperator = index === 0 ? "" : "&";
-//       const newString = prev.concat(seperator).concat(pair);
-//       return newString;
-//     },
-//     ""
-//   );
-
-//   return body;
-// }
 
 async function deleteItem(id) {
   const origin = window.location.origin;
@@ -183,12 +136,11 @@ async function deleteItem(id) {
   }
 }
 
-document.querySelectorAll(".change-loc").forEach(el => el.addEventListener("click", activateInput));
-
-// $('#change-loc').on('click', activateInput);
+document
+  .querySelectorAll(".change-loc")
+  .forEach((el) => el.addEventListener("click", activateInput));
 
 function activateInput(params) {
-  console.log(params);
   const currentPath = window.location.href;
   const url = `${currentPath}&edit=1`;
   window.location.replace(url);
