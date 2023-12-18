@@ -113,12 +113,14 @@ async function deleteItem(id) {
                 Accept: "*/*",
             },
         });
-        console.log("fetched");
         const text = await response.text();
         console.log(text);
         console.log(url);
         if (text === "true") {
-            window.location.assign("http://localhost/view/employees.php");
+            // window.location.reload();
+            // history.back();
+            const redirectUrl = origin.concat('/view/employees.php');
+            window.location.replace(redirectUrl);
         }
     }
 }
