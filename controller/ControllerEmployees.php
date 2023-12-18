@@ -1,5 +1,8 @@
 <?php
-include("../model/Employees.php");
+// Setting absoulute path to prevent errors caused by nesting in the folders
+$rootPath = $_SERVER['DOCUMENT_ROOT'];
+$employeeModelPath = $rootPath . "/model/Employees.php";
+include($employeeModelPath);
 
 class ControllerEmployees{
     private $entity;

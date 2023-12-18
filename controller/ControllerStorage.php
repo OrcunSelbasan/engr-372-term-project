@@ -1,7 +1,8 @@
 <?php
+// Setting absoulute path to prevent errors caused by nesting in the folders
 $rootPath = $_SERVER['DOCUMENT_ROOT'];
-$storagePath = $rootPath . "/model/Storage.php";
-include_once($storagePath);
+$storageModelPath = $rootPath . "/model/Storage.php";
+include_once($storageModelPath);
 // TODO: VALIDATE DATA AND SANITIZE
 class ControllerStorage
 {
