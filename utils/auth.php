@@ -4,6 +4,10 @@ $rootPath = $_SERVER['DOCUMENT_ROOT'];
 $userModelPath = $rootPath . "/model/User.php";
 $authControllerPath = $rootPath . "/controller/ControllerAuth.php";
 
+include_once($userModelPath);
+include_once($authControllerPath);
+
+
 $auth = new ControllerAuth();
 $root = $auth::getRoot();
 $user = new User();
@@ -23,7 +27,7 @@ if ($userQuery->num_rows > 0) {
 
         if ($isValidCredentials) {
             $auth::setLogin(true);
-            header("Location: $root/view/storage.php");
+            header("Location: $root/view/storage/storage.php");
         } else {
             header("Location: $root");
         }

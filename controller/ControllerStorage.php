@@ -127,7 +127,7 @@ class ControllerStorage
 
         // No id means trouble just redirect to storage main page
         if ($id == "false") {
-            header("Location: $root/view/storage.php");
+            header("Location: $root/view/storage/storage.php");
             exit();
         }
 
@@ -136,7 +136,7 @@ class ControllerStorage
         }
 
         if ($record == null) {
-            header("Location: $root/view/storage.php");
+            header("Location: $root/view/storage/storage.php");
             exit();
         }
 

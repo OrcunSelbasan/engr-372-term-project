@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 } else {
                     $success = $controller->createRecord($_POST);
                 }
-                header("Location: $root/view/storage.php");
+                header("Location: $root/view/storage/storage.php");
                 if (!boolval($success)) {
                     throw new Exception("Error Processing Request");
                 }
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Server doesn't know how to handle this request, so send code 500
                 http_response_code(500);
                 // Redirect user to storage main page
-                header("Location: $root/view/storage.php");
+                header("Location: $root/view/storage/storage.php");
             }
             break;
         case 'EMPLOYEES':
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Server doesn't know how to handle this request, so send code 500
                 http_response_code(500);
                 // Redirect user to storage main page
-                header("Location: $root/view/storage.php");
+                header("Location: $root/view/storage/storage.php");
             }
             break;
         default:
