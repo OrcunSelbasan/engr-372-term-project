@@ -30,7 +30,7 @@ $auth->checkAuth();
     <main>
         <!-- Home Page Content -->
         <div id="home">
-            <p>Welcome to the Region Management System!</p>
+            <p>Welcome to the Region Management System! UPDATE</p>
         </div>
 
         <!-- Create Region Page Content -->

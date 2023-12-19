@@ -58,18 +58,17 @@
                             </div>
                         </div> 
                 </div>
-            
-        </form>
-    </section>
-    <div style="display: flex;justify-content: flex-end;">
-            <div id="validate-error" class="validate-error"></div>  
-             <div class="add-buttons-container">
-                <div>
-                    <button class="reset-button" id="employee-reset" >Reset</button>
-                    <button type="submit" class="btn-add-employee" id="employee-create">Add Employee</button>   
-                </div>       
-            </div>
-    </div>
+            </form>
+        </section>
+        <div style="display: flex;justify-content: flex-end;">
+                <div id="validate-error" class="validate-error"></div>  
+                <div class="add-buttons-container">
+                    <div>
+                        <button class="reset-button" id="employee-reset" >Reset</button>
+                        <button type="submit" class="btn-add-employee" id="employee-create">Add Employee</button>   
+                    </div>       
+                </div>
+        </div>
            
     </main>
 </body>
