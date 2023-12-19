@@ -7,7 +7,16 @@ include_once($dbPath);
 class Region
 {
     private $db;
-    private $table = '';
+    private $table = 'regions';
+    private $id = 'id';
+    private $name = 'name';
+    private $lat = 'lat';
+    private $lon = 'lon';
+    private $collection_interval = 'collection_interval';
+    private $threshold = 'threshold';
+    private $budget = 'budget';
+    private $modification_date = 'modification_date';
+    public $schema;
 
     public function __construct()
     {
@@ -15,8 +24,20 @@ class Region
     }
 
     // CREATE OPS
-    public function create()
+    public function create($name, $lat, $lon, $collection_interval, $threshold, $budget, $modificationDate)
     {
+        try {
+            $statement = "INSERT INTO $this->table ($this->name, $this->lat, $this->lon, $this->collection_interval, $this->threshold, $this->budget, $this->modification_date)  VALUES ('$name', $lat, $lon, '$collection_interval', $threshold, $budget, '$modificationDate')";
+            $query = $this->db->queryRaw($statement);
+            if ($query == true) {
+                return true;
+            } else {
+                throw new Exception("Error Processing Request: troubled statement", 1);
+            }
+        } catch (Exception $e) {
+            return $e;
+        }
+        return false;
     }
 
     // READ OPS
@@ -35,137 +56,107 @@ class Region
 
     public function getById($value)
     {
-        // try {
-        //     $result = $this->db->queryRaw("SELECT * FROM $this->table WHERE $this->id = $value");
-        //     $this->db->close();
-        //     return $result;
-        // } catch (Exception $e) {
-        //     var_dump($e->getMessage());
-        //     return $e;
-        // }
-        // return false;
+        try {
+            $result = $this->db->queryRaw("SELECT * FROM $this->table WHERE $this->id = $value");
+            $this->db->close();
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
+        return false;
     }
 
     public function getByIds($array)
     {
-        // try {
-        //     $queryString = "";
-        //     foreach ($array as $key => $value) {
-        //         $queryString = $queryString . " OR $this->id = $value";
-        //     }
-        //     if (empty($queryString)) {
-        //         throw new Exception("Error Processing Request: empty query string", 1);
-        //     }
-        //     $result = $this->db->queryRaw("SELECT * FROM $this->table WHERE $this->id = $value $queryString");
-        //     $this->db->close();
-        //     return $result;
-        // } catch (Exception $e) {
-        //     var_dump($e->getMessage());
-        //     return $e;
-        // }
-        // return false;
+        try {
+            $queryString = "";
+            foreach ($array as $key => $value) {
+                $queryString = $queryString . " OR $this->id = $value";
+            }
+            if (empty($queryString)) {
+                throw new Exception("Error Processing Request: empty query string", 1);
+            }
+            $result = $this->db->queryRaw("SELECT * FROM $this->table WHERE $this->id = $value $queryString");
+            $this->db->close();
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
+        return false;
     }
 
-    public function getByCategory($value)
+    public function getByInterval($value)
     {
-        // try {
-        //     $result = $this->db->queryRaw("SELECT * FROM $this->table WHERE $this->category = '$value'");
-        //     $this->db->close();
-        //     return $result;
-        // } catch (Exception $e) {
-        //     var_dump($e->getMessage());
-        //     return $e;
-        // }
-        // return false;
-    }
-
-    public function getByType($value)
-    {
-        // try {
-        //     $result = $this->db->queryRaw("SELECT * FROM $this->table WHERE $this->type = '$value'");
-        //     $this->db->close();
-        //     return $result;
-        // } catch (Exception $e) {
-        //     var_dump($e->getMessage());
-        //     return $e;
-        // }
-        // return false;
+        try {
+            $result = $this->db->queryRaw("SELECT * FROM $this->table WHERE $this->collection_interval = '$value'");
+            $this->db->close();
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
+        return false;
     }
 
     // UPDATE OPS
-    // TODO: Improve this function
     public function updateById($id, $array)
     {
-        // try {
-        //     $query = "";
-        //     $lastColumnValue = end($array);
-        //     foreach ($array as $key => $value) {
-        //         if ($key == "storage") {
-        //             continue;
-        //         } else {
-        //             $quotes = in_array($key, ["volume", "value", "quantity", "lifetime"]) ? "" : '"';
-        //             $comma = ($value == $lastColumnValue) ? '' : ',';
-        //             $query = $query . " $key=$quotes$value$quotes $comma";
-        //         }
-        //     }
-        //     if (empty($array)) {
-        //         throw new Exception("Error Processing Request: empty update array", 1);
-        //     }
-        //     $statement = "UPDATE $this->table SET $query WHERE $this->id = $id";
-        //     $result = $this->db->queryRaw($statement);
-        //     $this->db->close();
-        //     return $result;
-        // } catch (Exception $e) {
-        //     var_dump($e->getMessage());
-        //     return $e;
-        // }
-        // return false;
+        try {
+            $query = "";
+            $lastColumnValue = end($array);
+            foreach ($array as $key => $value) {
+                if ($key == "storage") {
+                    continue;
+                } else {
+                    $quotes = in_array($key, ["lat", "lon", "threshold", "budget"]) ? "" : '"';
+                    $comma = ($value == $lastColumnValue) ? '' : ',';
+                    $query = $query . " $key=$quotes$value$quotes $comma";
+                }
+            }
+            if (empty($array)) {
+                throw new Exception("Error Processing Request: empty update array", 1);
+            }
+            $statement = "UPDATE $this->table SET $query WHERE $this->id = $id";
+            $result = $this->db->queryRaw($statement);
+            $this->db->close();
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
+        return false;
     }
 
     // DELETE OPS
     public function deleteById($value)
     {
-        // try {
-        //     $result = $this->db->queryRaw("DELETE FROM $this->table WHERE $this->id = $value");
-        //     $this->db->close();
-        //     return $result;
-        // } catch (Exception $e) {
-        //     var_dump($e->getMessage());
-        //     return $e;
-        // }
-        // return false;
+        try {
+            $result = $this->db->queryRaw("DELETE FROM $this->table WHERE $this->id = $value");
+            $this->db->close();
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
+        return false;
     }
 
     public function deleteByIds($array)
     {
-        // try {
-        //     $queryString = "";
-        //     foreach ($array as $key => $value) {
-        //         $queryString = $queryString . " OR $this->id = $value";
-        //     }
-        //     $result = $this->db->queryRaw("DELETE FROM $this->table WHERE $this->id = $value $queryString");
-        //     $this->db->close();
-        //     return $result;
-        // } catch (Exception $e) {
-        //     var_dump($e->getMessage());
-        //     return $e;
-        // }
-        // return false;
-    }
-
-    public function getStat($column, $condition, $op = "") {
-        // try {
-        //     $statement = "SELECT COUNT($column) FROM $this->table WHERE $condition";
-        //     if ($op == "sum") {
-        //         $statement = "SELECT SUM($column) FROM $this->table";
-        //     }
-        //     $result = $this->db->queryRaw($statement);
-        //     return $result;
-        // } catch (Exception $e) {
-        //     var_dump($e->getMessage());
-        //     return $e;
-        // }
-        // return false;
-        
+        try {
+            $queryString = "";
+            foreach ($array as $key => $value) {
+                $queryString = $queryString . " OR $this->id = $value";
+            }
+            $result = $this->db->queryRaw("DELETE FROM $this->table WHERE $this->id = $value $queryString");
+            $this->db->close();
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
+        return false;
     }
 }
