@@ -92,7 +92,7 @@ nav > ul > li {
 }
 
 
-#regions_link_wrapper {
+#regions_link_wrapper, #cities_link_wrapper {
   border-top: 2px solid var(--dark-blue);
 }
 
