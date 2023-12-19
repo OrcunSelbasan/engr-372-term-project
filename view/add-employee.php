@@ -22,7 +22,8 @@
             <form class="employee-form" autocomplete="off" id="employee-form" action="../utils/submission.php" method="POST">
                 <input id="form-submission-type" name="form-submission-type" type="text" id="" style="display: none;">
                 <div class="employee-form-lines-container">
-                    <div class="employee-form-line">
+                    <table></table>
+                    <!-- <div class="employee-form-line">
                             <label for="employee-fname">First Name</label>
                             <div class="employee-input">
                                 <input name="employee-fname" id="employee-fname" type="text" style="flex-grow: 1;" required>
@@ -56,7 +57,7 @@
                                     <option value="euro">Euro</option>
                                 </select>
                             </div>
-                        </div> 
+                        </div>  -->
                 </div>
             
         </form>
