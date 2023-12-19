@@ -1,5 +1,5 @@
 <?php
-// TODO HANDLE ABSOULTE PATHS IN CONTROLLER AUTH
+// Setting absoulute path to prevent errors caused by nesting in the folders
 $rootPath = $_SERVER['DOCUMENT_ROOT'];
 $constantsPath = $rootPath."/utils/constants.php";
 include_once($constantsPath);

@@ -1,6 +1,9 @@
 <?php
-    include("../controller/ControllerAuth.php");
-    include("../controller/ControllerStorage.php");
+    $rootPath = $_SERVER['DOCUMENT_ROOT'];
+    $authControllerPath = $rootPath . "/controller/ControllerAuth.php";
+    $storageControllerPath = $rootPath . "/controller/ControllerStorage.php";
+    include($authControllerPath);
+    include($storageControllerPath);
     // * Check if the user is authenticated
     $auth = new ControllerAuth();
     $controller = new ControllerStorage();
@@ -60,20 +63,20 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="../jquery/jquery-3.7.1.js"></script>
-        <link rel="stylesheet" href="../css/index.css">
+        <script src="../../jquery/jquery-3.7.1.js"></script>
+        <link rel="stylesheet" href="../../css/index.css">
         <!-- TODO: UPDATE THE TITLE -->
         <title>WMS Inventory - Record</title>
     </head>
     <body>
-        <?php include("./header.php"); ?>
+        <?php include("../header.php"); ?>
         <main class="storage-main">
             <h2 class="storage-header">Inventory Record - Item#<?php echo $record['id']?></h2>
             <section class="storage-subheader-wrapper">
                 <h3 class="storage-subheader" style="max-width: 700px; font-weight: 500;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo laborum vitae eveniet iusto et. Unde non officiis omnis. Explicabo nemo provident accusantium quisquam, officiis maiores facere? Perferendis voluptatum impedit nam!</h3>
             </section>
             <section class="storage-form-wrapper">
-                <form class="storage-form" id="storage-form" action="../utils/submission.php" method="POST">
+                <form class="storage-form" id="storage-form" action="../../utils/submission.php" method="POST">
                     <input id="form-submission-type" name="form-submission-type" type="text" id="" style="display: none;">
                     <input id="storage-method" name="storage-method" type="text" id="" style="display: none;">
                     <input id="storage-object-id" name="storage-object-id" data-identifier='<?php echo $record['id']?>' type="text" style="display: none;">
@@ -172,5 +175,5 @@
             </div>
         </main>
     </body>
-    <script src="../js/storage.js"></script>
+    <script src="../../js/storage.js"></script>
 </html>

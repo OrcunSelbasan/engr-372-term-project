@@ -1,5 +1,8 @@
 <?php
-include_once("../database/index.php");
+// Setting absoulute path to prevent errors caused by nesting in the folders
+$rootPath = $_SERVER['DOCUMENT_ROOT'];
+$dbPath = $rootPath . "/database/index.php";
+include_once($dbPath);
 class User
 {
     private $db;

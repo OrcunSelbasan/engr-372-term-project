@@ -1,7 +1,8 @@
 <?php
+// Setting absoulute path to prevent errors caused by nesting in the folders
 $rootPath = $_SERVER['DOCUMENT_ROOT'];
-$storagePath = $rootPath . "/model/Storage.php";
-include_once($storagePath);
+$storageModelPath = $rootPath . "/model/Storage.php";
+include_once($storageModelPath);
 // TODO: VALIDATE DATA AND SANITIZE
 class ControllerStorage
 {
@@ -126,7 +127,7 @@ class ControllerStorage
 
         // No id means trouble just redirect to storage main page
         if ($id == "false") {
-            header("Location: $root/view/storage.php");
+            header("Location: $root/view/storage/storage.php");
             exit();
         }
 
@@ -135,7 +136,7 @@ class ControllerStorage
         }
 
         if ($record == null) {
-            header("Location: $root/view/storage.php");
+            header("Location: $root/view/storage/storage.php");
             exit();
         }
 

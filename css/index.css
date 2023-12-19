@@ -91,6 +91,11 @@ nav > ul > li {
   text-align: center;
 }
 
+
+#regions_link_wrapper, #cities_link_wrapper {
+  border-top: 2px solid var(--dark-blue);
+}
+
 nav > ul > li:last-child {
   border-bottom: 2px solid var(--dark-blue);
 }
@@ -148,6 +153,10 @@ a:hover {
 .nav_link_item:hover {
   background-color: var(--dark-blue);
   color: var(--white);
+}
+
+.regions_dropdown_link_item:hover {
+ opacity: .8;
 }
 
 .nav_link_list {

@@ -5,7 +5,7 @@
 
     if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
         $root = $auth::getRoot();
-        header("Location: $root/view/storage.php");
+        header("Location: $root/view/storage/storage.php");
     }
 ?>
 

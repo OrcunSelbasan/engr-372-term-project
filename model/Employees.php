@@ -1,5 +1,8 @@
 <?php
-include_once("../database/index.php");
+// Setting absoulute path to prevent errors caused by nesting in the folders
+$rootPath = $_SERVER['DOCUMENT_ROOT'];
+$dbPath = $rootPath . "/database/index.php";
+include_once($dbPath);
 class Employees
 {
     private $db;
@@ -100,7 +103,35 @@ class Employees
         }
         return false;
     }
+
     public function getLastModDate(){
         return $this->db->queryRaw("SELECT MAX(modification_date) FROM $this->table")->fetch_row()[0];
+    }
+
+    public function getByFilters($filters) {
+        // Prepare query string from conditions
+        if ($filters == []) {
+            return [];
+        }
+        $lastElement = count($filters) - 1;
+        $counter = 0;
+        $queryString = "";
+        foreach ($filters as $key => $value) {
+            if ($counter == $lastElement) {
+                $queryString = $queryString . "$key='$value'";
+            } else {
+                $queryString = $queryString . "$key='$value'" . " AND ";
+            }
+            $counter += 1;
+        }
+        $query = "SELECT * FROM employees WHERE $queryString";;
+        try {
+            $result = $this->db->queryRaw($query);
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
+        return false;
     }
 }

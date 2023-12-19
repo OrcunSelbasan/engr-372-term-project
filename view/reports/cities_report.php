@@ -64,20 +64,18 @@
     </style>
         <title>WMS Inventory - Reports</title>
     </head>
-    <?php include("../header.php"); ?>
+    <?php include("../header.php");?>
     <main class="report-main">
         <h2 class="report-header">REPORT</h2>
         <section class="select-dropdown">
             <div class="dropdown">
-                <span>Please Select A Category </span>
-                <div class="dropdown-content">
-                    <ul>
-                        <li><a href="./storage_reports.php">Storage</a></li>
-                        <li><a href='./regions_report.php'>Regions</a></li>
-                        <li><a href='./cities_report.php'>Cities</a></li>
-                        <li><a href='./employees_report.php'>Employees</a></li>
-                    </ul>
-                 </div>
+                <span>Please Select A Category Below </span>
+                <ul style="display: flex; flex-direction: row; gap: 20px;">
+                    <li style="list-style: none;"><a href="./storage_reports.php">Storage</a></li>
+                    <li style="list-style: none;"><a href='./regions_report.php'>Regions</a></li>
+                    <li style="list-style: none; border-bottom: 1px solid black;"><a href='./cities_report.php'>Cities</a></li>
+                    <li style="list-style: none;"><a href='./employees_report.php'>Employees</a></li>
+                </ul>
             </div>
         </section>
         <h3>Cities</h3>

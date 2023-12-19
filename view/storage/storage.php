@@ -1,6 +1,9 @@
 <?php
-include("../controller/ControllerAuth.php");
-include("../controller/ControllerStorage.php");
+$rootPath = $_SERVER['DOCUMENT_ROOT'];
+$authControllerPath = $rootPath . "/controller/ControllerAuth.php";
+$storageControllerPath = $rootPath . "/controller/ControllerStorage.php";
+include($authControllerPath);
+include($storageControllerPath);
 // * Check if the user is authenticated
 $auth = new ControllerAuth();
 $auth->checkAuth();
@@ -36,7 +39,8 @@ function editActionHTML($id)
     </td>";
 }
 
-function handleVolumeUnit($unit) {
+function handleVolumeUnit($unit)
+{
     switch ($unit) {
         case 'cubicmeter':
             return " M<sup>3</sup>";
@@ -61,18 +65,18 @@ function handleVolumeUnit($unit) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../jquery/jquery-3.7.1.js"></script>
-    <script src="../js/storage.js"></script>
-    <link rel="stylesheet" href="../css/index.css">
+    <script src="../../jquery/jquery-3.7.1.js"></script>
+    <script src="../../js/storage.js"></script>
+    <link rel="stylesheet" href="../../css/index.css">
     <title>WMS Inventory - Home Page</title>
 </head>
 
 <body>
-    <?php include("./header.php"); ?>
+    <?php include("../header.php"); ?>
     <main class="storage-main">
         <h2 class="storage-header">PLACEHOLDER'S INVENTORY</h2>
         <section class="storage-subheader-wrapper">
-            <h3 class="storage-subheader" style="font-weight: 500;">Last Modification Date <?php echo(end($records)['modification_date']) ?></h3>
+            <h3 class="storage-subheader" style="font-weight: 500;">Last Modification Date <?php echo (end($records)['modification_date']) ?></h3>
             <div class="storage-subheader-buttons">
                 <!-- <button class="btn btn-white btn-export">
                     <a href="link-download" class="storage-action-btn">
@@ -93,7 +97,7 @@ function handleVolumeUnit($unit) {
                     <p>Storage Objects: <span><?php echo $stats['storageObjs'] ?></span></p>
                 </div>
                 <div class="storage-summary-row-item">
-                    <p>Active Storage Objects:  <span><?php echo $stats['activeStorageObjs'] ?></span></p>
+                    <p>Active Storage Objects: <span><?php echo $stats['activeStorageObjs'] ?></span></p>
                 </div>
                 <div class="storage-summary-row-item">
                     <p>Inactive Storage Objects: <span><?php echo $stats['inctiveStorageObjs'] ?></span></p>
@@ -101,18 +105,18 @@ function handleVolumeUnit($unit) {
             </div>
             <div class="storage-summary-row">
                 <div class="storage-summary-row-item">
-                    <p>Transportation Objects:  <span><?php echo $stats['transportationObjs'] ?></span></p>
+                    <p>Transportation Objects: <span><?php echo $stats['transportationObjs'] ?></span></p>
                 </div>
                 <div class="storage-summary-row-item">
-                    <p>Active Transportation Objects:  <span><?php echo $stats['activeTransportationObjs'] ?></span></p>
+                    <p>Active Transportation Objects: <span><?php echo $stats['activeTransportationObjs'] ?></span></p>
                 </div>
                 <div class="storage-summary-row-item">
-                    <p>Inactive Transportation Objects:  <span><?php echo $stats['inctiveTransportationObjs'] ?></span></p>
+                    <p>Inactive Transportation Objects: <span><?php echo $stats['inctiveTransportationObjs'] ?></span></p>
                 </div>
             </div>
             <div class="storage-summary-row">
                 <div class="storage-summary-row-item">
-                    <p>Total Inventory Objects:  <span><?php echo $stats['totalObjects'] ?></span></p>
+                    <p>Total Inventory Objects: <span><?php echo $stats['totalObjects'] ?></span></p>
                 </div>
                 <div class="storage-summary-row-item">
                     <p>Total Capacity: <span><?php echo $stats['totalVolume'] ?></span></p>

@@ -179,6 +179,10 @@ a:hover {
   padding-left: 10px;
 }
 
+#regions_link_wrapper, #cities_link_wrapper {
+  border-top: 2px solid var(--white);
+}
+
 /**************** END OF NAV NAVIGATION *****************/
 
 /**************** EMPLOYEE CREATE ADD ITEM PAGE *****************/

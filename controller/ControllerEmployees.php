@@ -1,5 +1,8 @@
 <?php
-include("../model/Employees.php");
+// Setting absoulute path to prevent errors caused by nesting in the folders
+$rootPath = $_SERVER['DOCUMENT_ROOT'];
+$employeeModelPath = $rootPath . "/model/Employees.php";
+include($employeeModelPath);
 
 class ControllerEmployees{
     private $entity;
@@ -61,7 +64,7 @@ class ControllerEmployees{
         $isEdit = isset($queryArray['edit']) ? $queryArray['edit'] : "false";
 
         if ($id == "false") {
-            header("Location: $root/view/storage.php");
+            header("Location: $root/view/storage/storage.php");
             exit();
         }
 
@@ -70,7 +73,7 @@ class ControllerEmployees{
         }
 
         if ($record == null) {
-            header("Location: $root/view/storage.php");
+            header("Location: $root/view/storage/storage.php");
             exit();
         }
 
@@ -110,5 +113,22 @@ class ControllerEmployees{
     {
         $queryResult =  $this->entity->deleteById($id);
         return $queryResult == true;
+    }
+
+    public function getByFilters($filters)
+    {
+        $result = $this->entity->getByFilters($filters);
+        $records = [];
+        try {
+            if (!is_array($result)) {
+                while ($row = $result->fetch_assoc()) {
+                    $records[] = $row;
+                }
+            }
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $records;
+        }
+        return $records;
     }
 }
