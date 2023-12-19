@@ -98,6 +98,7 @@ $className = getClasses();
                 </li>
                 <div id="regions_dropdown" style="display: none;">
                     <ul class="nav_link_list">
+                        <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_create"><a href="<?php echo $regionsPath ?>">Overview</a></li>
                         <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_create"><a href="<?php echo $regionsRootPath."regions_create.php" ?>">Create Region</a></li>
                         <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_update"><a href="<?php echo $regionsRootPath."regions_update.php" ?>">Update Region</a></li>
                         <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_review"><a href="<?php echo $regionsRootPath."regions_review.php" ?>">Review Region</li></a>
