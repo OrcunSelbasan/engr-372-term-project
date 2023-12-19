@@ -38,7 +38,7 @@
                         <div class="storage-form-line">
                             <label for="storage-volume">Storage Volume</label>
                             <div style="width: 300px; text-align: end; display: flex;">
-                                <input name="storage-volume" id="storage-volume" type="number" min="1" max="4000" style="flex-grow: 1;" required>
+                                <input name="storage-volume" id="storage-volume" type="number" min="1" max="4000" style="flex-grow: 1;" placeholder="10" required>
                                 <select name="storage-volume-unit" id="storage-volume-unit" required>
                                     <option value="" selected disabled>Please Select</option>
                                     <option value="liter">Liter</option>
@@ -67,7 +67,7 @@
                         <div class="storage-form-line">
                             <label for="storage-value">Purchase Value</label>
                             <div style="width: 300px; text-align: end; display: flex;">
-                                <input name="storage-value" id="storage-value" type="number" min="1" style="flex-grow: 1;" required>
+                                <input name="storage-value" id="storage-value" type="number" min="1" style="flex-grow: 1;" placeholder="2000" required>
                                 <select name="storage-value-unit" id="storage-value-unit" required>
                                     <option value="" selected disabled>Please Select</option>
                                     <option value="dollar">Dollar</option>
@@ -81,12 +81,12 @@
                         </div>
                         <div class="storage-form-line">
                             <label for="storage-quantity">Quantity</label>
-                            <input type="number" min="1" name="storage-quantity" id="storage-quantity" style="width: 300px" required>
+                            <input type="number" min="1" name="storage-quantity" id="storage-quantity" style="width: 300px" placeholder="1" required>
                         </div>
                         <div class="storage-form-line">
                             <label for="storage-estimated-lifetime">Estimated Lifetime</label>
                             <div style="width: 300px; text-align: end; display: flex;">
-                                <input name="storage-estimated-lifetime" id="storage-estimated-lifetime" type="number" min="1" style="flex-grow: 1;" required>
+                                <input name="storage-estimated-lifetime" id="storage-estimated-lifetime" type="number" min="1" style="flex-grow: 1;" required placeholder="5">
                                 <select name="storage-estimated-lifetime-unit" id="storage-estimated-lifetime-unit" required>
                                     <option value="" selected disabled>Please Select</option>
                                     <option value="year">Year</option>
