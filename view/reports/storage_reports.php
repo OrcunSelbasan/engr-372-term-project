@@ -112,6 +112,7 @@ if (isset($_GET['referrer'])) {
                 <li style="list-style: none;"><a href='./regions_report.php'>Regions</a></li>
                 <li style="list-style: none;"><a href='./cities_report.php'>Cities</a></li>
                 <li style="list-style: none;"><a href='./employees_report.php'>Employees</a></li>
+                <li style="list-style: none;"><a href='./tasks_log.php'>Tasks Log</a></li>
             </ul>
         </div>
     </section>

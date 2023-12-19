@@ -13,6 +13,10 @@ class ControllerRegions
         $this->entity = new Region();
     }
 
+    public function getEntity() {
+        return $this->entity;
+    }
+
     public function createRecord($post)
     {
         $name = $post['region-name'];
