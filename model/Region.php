@@ -159,4 +159,32 @@ class Region
         }
         return false;
     }
+
+    public function getByFilters($filters)
+    {
+        // Prepare query string from conditions
+        if ($filters == []) {
+            return [];
+        }
+        $lastElement = count($filters) - 1;
+        $counter = 0;
+        $queryString = "";
+        foreach ($filters as $key => $value) {
+            if ($counter == $lastElement) {
+                $queryString = $queryString . "$key='$value'";
+            } else {
+                $queryString = $queryString . "$key='$value'" . " AND ";
+            }
+            $counter += 1;
+        }
+        $query = "SELECT * FROM regions WHERE $queryString";;
+        try {
+            $result = $this->db->queryRaw($query);
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
+        return false;
+    }
 }

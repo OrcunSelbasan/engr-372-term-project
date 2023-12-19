@@ -119,4 +119,21 @@ class ControllerRegions
         $queryResult =  $this->entity->deleteById($id);
         return $queryResult == true;
     }
+
+    public function getByFilters($filters)
+    {
+        $result = $this->entity->getByFilters($filters);
+        $records = [];
+        try {
+            if (!is_array($result)) {
+                while ($row = $result->fetch_assoc()) {
+                    $records[] = $row;
+                }
+            }
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $records;
+        }
+        return $records;
+    }
 }
