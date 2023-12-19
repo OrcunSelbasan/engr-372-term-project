@@ -11,6 +11,10 @@ class ControllerEmployees{
         $this -> entity = new Employees();
     }
 
+    public function getEntity() {
+        return $this->entity;
+    }
+
     public function createRecord($post)
     {
         $fname = $post['employee-fname'];
