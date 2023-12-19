@@ -1,5 +1,7 @@
 <?php
-    include("../controller/ControllerAuth.php");
+    $rootPath = $_SERVER['DOCUMENT_ROOT'];
+    $authControllerPath = $rootPath . "/controller/ControllerAuth.php";
+    include($authControllerPath);
     // * Check if the user is authenticated
     $auth = new ControllerAuth();
     $auth->checkAuth();
@@ -10,19 +12,19 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="../jquery/jquery-3.7.1.js"></script>
-        <link rel="stylesheet" href="../css/index.css">
+        <script src="../../jquery/jquery-3.7.1.js"></script>
+        <link rel="stylesheet" href="../../css/index.css">
         <title>WMS Inventory - Add Record</title>
     </head>
     <body>
-        <?php include("./header.php"); ?>
+        <?php include("../header.php"); ?>
         <main class="storage-main">
             <h2 class="storage-header">PLACEHOLDER'S INVENTORY</h2>
             <section class="storage-subheader-wrapper">
                 <h3 class="storage-subheader" style="max-width: 700px; font-weight: 500;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo laborum vitae eveniet iusto et. Unde non officiis omnis. Explicabo nemo provident accusantium quisquam, officiis maiores facere? Perferendis voluptatum impedit nam!</h3>
             </section>
             <section class="storage-form-wrapper">
-                <form class="storage-form" id="storage-form" action="../utils/submission.php" method="POST">
+                <form class="storage-form" id="storage-form" action="../../utils/submission.php" method="POST">
                     <input id="form-submission-type" name="form-submission-type" type="text" id="" style="display: none;">
                     <div class="storage-form-lines-wrapper">
                         <div class="storage-form-line">
@@ -109,5 +111,5 @@
             </div>
         </main>
     </body>
-    <script src="../js/storage.js"></script>
+    <script src="../../js/storage.js"></script>
 </html>

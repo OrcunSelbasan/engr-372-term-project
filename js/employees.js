@@ -92,7 +92,7 @@ Fields.btnUpdate.on("click", async function (event) {
         console.log("fine");
         const id = $("#employee-object-id").data("identifier")
         $("#form-submission-type").val("EMPLOYEES");
-        $("#storage-method").val("PUT");
+        $("#employee-method").val("PUT");
         $("#employee-object-id").val(id);
         Fields.form.submit();
         console.log("form sent");

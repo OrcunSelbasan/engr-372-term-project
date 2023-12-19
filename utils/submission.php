@@ -1,7 +1,13 @@
 <?php
-include("../controller/ControllerAuth.php");
-include("../controller/ControllerStorage.php");
-include("../controller/ControllerEmployees.php");
+// Setting absoulute path to prevent errors caused by nesting in the folders
+$rootPath = $_SERVER['DOCUMENT_ROOT'];
+$storageControllerPath = $rootPath . "/controller/ControllerStorage.php";
+$employeesControllerPath = $rootPath . "/controller/ControllerEmployees.php";
+$authControllerPath = $rootPath . "/controller/ControllerAuth.php";
+
+include($authControllerPath);
+include($storageControllerPath);
+include($employeesControllerPath);
 // * Check if the user is authenticated
 $auth = new ControllerAuth();
 $auth->checkAuth();
@@ -16,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 } else {
                     $success = $controller->createRecord($_POST);
                 }
-                header("Location: $root/view/storage.php");
+                header("Location: $root/view/storage/storage.php");
                 if (!boolval($success)) {
                     throw new Exception("Error Processing Request");
                 }
@@ -25,13 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Server doesn't know how to handle this request, so send code 500
                 http_response_code(500);
                 // Redirect user to storage main page
-                header("Location: $root/view/storage.php");
+                header("Location: $root/view/storage/storage.php");
             }
             break;
-         case 'EMPLOYEES':
+        case 'EMPLOYEES':
             $controller = new ControllerEmployees();
             try {
-                if (isset($_POST['storage-method']) && $_POST['storage-method'] == 'PUT') {
+                if (isset($_POST['employee-method']) && $_POST['employee-method'] == 'PUT') {
                     $success = $controller->updateRecord($_POST);
                 } else {
                     $success = $controller->createRecord($_POST);
@@ -45,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Server doesn't know how to handle this request, so send code 500
                 http_response_code(500);
                 // Redirect user to storage main page
-                header("Location: $root/view/storage.php");
+                header("Location: $root/view/storage/storage.php");
             }
             break;
         default:
@@ -55,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
-     
+
     if (str_contains($_SERVER['HTTP_REFERER'], 'storage')) {
         $controller = new ControllerStorage();
         $queryString = $_SERVER['QUERY_STRING'];
@@ -68,29 +74,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
             } else {
                 var_dump('An error occurred while deleting!');
             }
-        
-    }
-    
-    }
-    
-    else if (str_contains($_SERVER['HTTP_REFERER'], 'employee')) {
+        }
+    } else if (str_contains($_SERVER['HTTP_REFERER'], 'employee')) {
         $controller = new ControllerEmployees();
         $queryString = $_SERVER['QUERY_STRING'];
         $queryArray = [];
         parse_str($queryString, $queryArray);
-       
+
         if (sizeof($queryArray) > 0 && isset($queryArray['id'])) {
-           
+
             $result = $controller->deleteRecord($queryArray['id']);
             if ($result) {
                 echo "true";
             } else {
                 echo "$result";
             }
-        
+        }
     }
-    }
-        
 }
 
 exit();
