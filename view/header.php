@@ -120,9 +120,8 @@ $className = getClasses();
                 </li>
                 <div id="cities_dropdown" style="display: none;">
                     <ul class="nav_link_list">
-                        <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_create"><a href="#">Overview</a></li>
-                        <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_create"><a href="#">Resources</a></li>
-                        <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_update"><a href="#">Facility Management</a></li>
+                        <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_create"><a href="<?php echo $rootPath . "/view/cities/cities_overview.php" ?>">Overview</a></li>
+                        <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_update"><a href="<?php echo $rootPath . "/view/cities/cities_add.php" ?>">Add a City</a></li>
                     </ul>
                 </div>
             </div>

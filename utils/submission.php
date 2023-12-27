@@ -4,10 +4,12 @@ $rootPath = $_SERVER['DOCUMENT_ROOT'];
 $storageControllerPath = $rootPath . "/controller/ControllerStorage.php";
 $employeesControllerPath = $rootPath . "/controller/ControllerEmployees.php";
 $authControllerPath = $rootPath . "/controller/ControllerAuth.php";
+$cityControllerPath = $rootPath . "/controller/ControllerCity.php";
 
 include($authControllerPath);
 include($storageControllerPath);
 include($employeesControllerPath);
+include($cityControllerPath);
 // * Check if the user is authenticated
 $auth = new ControllerAuth();
 $auth->checkAuth();
@@ -54,6 +56,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 header("Location: $root/view/storage/storage.php");
             }
             break;
+        case 'CITIES':
+            $controller = new ControllerCity();
+            print_r($_POST);
+            if(isset($_POST['city-method']) && $_POST['city-method'] == 'PUT') {
+                $controller->updateRecord($_POST);
+            } else {
+                $controller->createRecord($_POST);
+            }
+            header("Location: $root/view/cities/cities_overview.php");
         default:
             # code...
             break;
@@ -77,6 +88,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
         }
     } else if (str_contains($_SERVER['HTTP_REFERER'], 'employee')) {
         $controller = new ControllerEmployees();
+        $queryString = $_SERVER['QUERY_STRING'];
+        $queryArray = [];
+        parse_str($queryString, $queryArray);
+
+        if (sizeof($queryArray) > 0 && isset($queryArray['id'])) {
+
+            $result = $controller->deleteRecord($queryArray['id']);
+            if ($result) {
+                echo "true";
+            } else {
+                echo "$result";
+            }
+        }
+    }  else if (str_contains($_SERVER['HTTP_REFERER'], 'cities')) {
+        $controller = new ControllerCity();
         $queryString = $_SERVER['QUERY_STRING'];
         $queryArray = [];
         parse_str($queryString, $queryArray);
