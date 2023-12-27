@@ -14,15 +14,13 @@ controller folder: should include the functionalities. It should use __**models*
 
 css: it should contain only the style files of the pages
 
-database: it should contain the code that is directly related to the database
+database: it should contain the code that is directly related to the database and database dumps
 
 jquery: this folder contains development version of jQuery. therefore code is not minified and can be debugged thanks to that. This folder doesn't need edition. Production version of jQuery can be added if deployment is considered.
 
 js: this folder contains only the javascript files. The codes in this files should only be used in views folder. Because views are served to the client and JS is required for client side interactions.
 
 model: this folder contains structure of entities. Such as their attributes, belonging tables names, and data interaction methods that use SQL commands. Basically we use the models in this file to interact with the database.
-
-shared: course related content. each team member can share their design files, database dumps, etc.
 
 utils: this folder contains the files that doesn't belong to specific folder.
 

@@ -13,6 +13,10 @@ class ControllerStorage
         $this->entity = new Storage();
     }
 
+    public function getEntity() {
+        return $this->entity;
+    }
+
     public function createRecord($post)
     {
         $category = $post['storage-category'];
