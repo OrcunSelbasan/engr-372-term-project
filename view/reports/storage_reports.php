@@ -49,56 +49,6 @@ if (isset($_GET['referrer'])) {
     <link rel="stylesheet" href="../../css/index.css">
     <!-- I added it for days -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: white;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            height: 100vh;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #fff;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            min-width: 160px;
-            z-index: 1;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown-content ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .dropdown-content li {
-            padding: 10px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .dropdown-content a {
-            color: #333;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f0f0f0;
-        }
-    </style>
     <title>WMS Inventory - Reports</title>
 </head>
 <?php include("../header.php"); ?>
@@ -141,7 +91,7 @@ if (isset($_GET['referrer'])) {
                         </select>
                     </td>
                     <td>
-                        <input name="storage-volume" id="storage-volume" type="number" min="1" max="4000" style="flex-grow: 1;">
+                        <input name="storage-volume" id="storage-volume" type="number" min="1" max="4000" style="width: 150px">
                     </td>
                     <td>
                         <select name="storage-type">
@@ -165,7 +115,7 @@ if (isset($_GET['referrer'])) {
                         <input type="checkbox" name="storage-notifier" id="storage-notifier">
                     </td>
                     <td>
-                        <input type="number" min="1" name="storage-quantity" id="storage-quantity" style="width: 300px">
+                        <input type="number" min="1" name="storage-quantity" id="storage-quantity" style="flex-grow: 1;">
                     </td>
                     <td>
                         <input name="storage-estimated-lifetime" id="storage-estimated-lifetime" type="number" min="1" style="flex-grow: 1;">
