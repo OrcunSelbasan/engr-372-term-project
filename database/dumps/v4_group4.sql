@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Dec 19, 2023 at 07:08 PM
+-- Generation Time: Dec 28, 2023 at 01:39 PM
 -- Server version: 5.7.39
 -- PHP Version: 8.2.0
 
@@ -40,6 +40,29 @@ CREATE TABLE `auth` (
 INSERT INTO `auth` (`id`, `email`, `password`) VALUES
 (1, 'test@test.com', '$2y$10$ClKW1H.oUOB3qc3rlf8QPu2uidzq4jrdBSxUMftWioT48pnmnNrCy'),
 (2, 'lutfu.selbasan@bilgiedu.net', '$2y$10$UPtQUhGuO8yGCj/QWDIDke9fSLImULQdHbEeOzRubobi3nXYGPGfC');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cities`
+--
+
+CREATE TABLE `cities` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `inhabitans_cnt` int(11) NOT NULL,
+  `employees_cnt` int(11) NOT NULL,
+  `coordinates` text NOT NULL,
+  `object_cnt` int(11) NOT NULL,
+  `region` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cities`
+--
+
+INSERT INTO `cities` (`id`, `name`, `inhabitans_cnt`, `employees_cnt`, `coordinates`, `object_cnt`, `region`) VALUES
+(2, 'asddf_updated', 19, 646464, 'akjsfhj', 1, '0');
 
 -- --------------------------------------------------------
 
@@ -176,6 +199,12 @@ ALTER TABLE `auth`
   ADD UNIQUE KEY `email` (`email`);
 
 --
+-- Indexes for table `cities`
+--
+ALTER TABLE `cities`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `employees`
 --
 ALTER TABLE `employees`
@@ -208,6 +237,12 @@ ALTER TABLE `tasks`
 --
 ALTER TABLE `auth`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `cities`
+--
+ALTER TABLE `cities`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `employees`
