@@ -7,7 +7,7 @@ include_once($dbPath);
 class City
 {
     private $db;
-    private $table = '';
+    private $table = 'cities';
 
     public function __construct()
     {
@@ -15,8 +15,24 @@ class City
     }
 
     // CREATE OPS
-    public function create()
+    public function create($name,
+        $inhabitants,
+        $Employees,
+        $Coordinates,
+        $Objects,
+        $Region)
     {
+        try {
+            $statement = "INSERT INTO cities (name, inhabitans_cnt, employees_cnt, coordinates, object_cnt, region) VALUES ('$name', $inhabitants, $Employees, '$Coordinates', $Objects, '$Region')";
+            $query = $this->db->queryRaw($statement);
+            if ($query == true) {
+                return true;
+            } else {
+                throw new Exception("Error Processing Request: troubled statement", 1);
+            }
+        } catch (Exception $e) {
+            return $e;
+        }
     }
 
     // READ OPS
@@ -30,20 +46,18 @@ class City
             var_dump($e->getMessage());
             return $e;
         }
-        return false;
     }
 
     public function getById($value)
     {
-        // try {
-        //     $result = $this->db->queryRaw("SELECT * FROM $this->table WHERE $this->id = $value");
-        //     $this->db->close();
-        //     return $result;
-        // } catch (Exception $e) {
-        //     var_dump($e->getMessage());
-        //     return $e;
-        // }
-        // return false;
+        try {
+            $result = $this->db->queryRaw("SELECT * FROM $this->table WHERE id = $value");
+            $this->db->close();
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
     }
 
     public function getByIds($array)
@@ -93,47 +107,36 @@ class City
     }
 
     // UPDATE OPS
-    // TODO: Improve this function
     public function updateById($id, $array)
     {
-        // try {
-        //     $query = "";
-        //     $lastColumnValue = end($array);
-        //     foreach ($array as $key => $value) {
-        //         if ($key == "storage") {
-        //             continue;
-        //         } else {
-        //             $quotes = in_array($key, ["volume", "value", "quantity", "lifetime"]) ? "" : '"';
-        //             $comma = ($value == $lastColumnValue) ? '' : ',';
-        //             $query = $query . " $key=$quotes$value$quotes $comma";
-        //         }
-        //     }
-        //     if (empty($array)) {
-        //         throw new Exception("Error Processing Request: empty update array", 1);
-        //     }
-        //     $statement = "UPDATE $this->table SET $query WHERE $this->id = $id";
-        //     $result = $this->db->queryRaw($statement);
-        //     $this->db->close();
-        //     return $result;
-        // } catch (Exception $e) {
-        //     var_dump($e->getMessage());
-        //     return $e;
-        // }
-        // return false;
+        try {
+            $name = $array["cities-name"];
+            $inhabitans_cnt = $array["inhabitants"];
+            $employees_cnt = $array["Employees"];
+            $coordinates = $array["Coordinates"];
+            $object_cnt = $array["Objects"];
+            $region = $array["Region"];
+            $statement = "UPDATE $this->table SET name='$name', inhabitans_cnt=$inhabitans_cnt, employees_cnt=$employees_cnt, coordinates='$coordinates', object_cnt=$object_cnt, region='$region' WHERE id = $id;";
+            $result = $this->db->queryRaw($statement);
+            $this->db->close();
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
     }
 
     // DELETE OPS
     public function deleteById($value)
     {
-        // try {
-        //     $result = $this->db->queryRaw("DELETE FROM $this->table WHERE $this->id = $value");
-        //     $this->db->close();
-        //     return $result;
-        // } catch (Exception $e) {
-        //     var_dump($e->getMessage());
-        //     return $e;
-        // }
-        // return false;
+        try {
+            $result = $this->db->queryRaw("DELETE FROM $this->table WHERE id = $value");
+            $this->db->close();
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
     }
 
     public function deleteByIds($array)
@@ -153,7 +156,8 @@ class City
         // return false;
     }
 
-    public function getStat($column, $condition, $op = "") {
+    public function getStat($column, $condition, $op = "")
+    {
         // try {
         //     $statement = "SELECT COUNT($column) FROM $this->table WHERE $condition";
         //     if ($op == "sum") {
@@ -166,6 +170,6 @@ class City
         //     return $e;
         // }
         // return false;
-        
+
     }
 }
