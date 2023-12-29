@@ -65,15 +65,18 @@
 <body>
     <?php include("./header.php"); ?>
     <main class="employee-container">
-    <h1>Employees</h1>
-    <div class="header-flex">
-            <h2 style="font-weight: 400;">Last Modification Date:  <?php echo"$lastModificationDate"; ?></h2>
-            <button class="btn-create-employee" onclick="addEmployee()">
+    <h2>EMPLOYEE INVENTORY</h2>
+    <section class="header-flex">
+            <h3 style="font-weight: 500; max-width:400px; padding:0;">Last Modification Date:  <?php echo"$lastModificationDate"; ?></h3>
+            <div class="employee-subheader-buttons">
+                <button class="btn-create-employee" onclick="addEmployee()">
                     Add Employee
                 </button>
+    </section>
+            
     </div>
     <div class="stats-flex">
-        <?php echo "<div>Total number of employees: "." "."<span style='font-weight: 500;margin-left:4px;'>".count($records) ."</span></div>"?>
+        <?php echo "<div style='font-size:16px;'>Total number of employees: "." "."<span style='font-weight: 500;margin-left:4px;'>".count($records) ."</span></div>"?>
         <div class="sorting-options">
             <label for="sortAttribute">Sort by:</label>
             <select id="sortAttribute" onchange="sortTable()" style="margin-left:5px;">
@@ -81,6 +84,7 @@
                 <option value="lname" <?php setSorted("lname",$sortAttribute);?>>Last Name</option>
                 <option value="email" <?php setSorted("email",$sortAttribute);?>>E-Mail</option>
                 <option value="salary" <?php setSorted("salary",$sortAttribute);?>>Salary</option>
+                <option value="team" <?php setSorted("team",$sortAttribute);?>>Team</option>
                 <option value="modification_date" <?php setSorted("modification_date",$sortAttribute);?>>Date</option>
             </select>
             <label for="desc" style="margin-left:10px;">Descending</label>
@@ -91,7 +95,7 @@
     <div class="employee-entries">
         <table class="employee-table">
             <tr class="table-header">
-                <th class="table-header-data">ID</th>
+                <th class="table-header-data">Team</th>
                 <th class="table-header-data">First Name</th>
                 <th class="table-header-data">Last Name</th>
                 <th class="table-header-data">E-Mail</th>
@@ -114,6 +118,7 @@
                    
                     foreach ($records as $record) {
                         $id = $record['id'];
+                        $team = $record['team'];
                         $fname = $record['fname'];
                         $lname = $record['lname'];
                         $email = $record['email'];
@@ -121,7 +126,7 @@
                         $salary = $record['salary'];
                         $date = $record['modification_date'];
                         echo "<tr>";
-                        echo "<td class='table-data'>$id</td>";
+                        echo "<td class='table-data'>$team</td>";
                         echo "<td class='table-data'>$fname</td>";
                         echo "<td class='table-data'>$lname</td>";
                         echo "<td class='table-data'>$email</td>";

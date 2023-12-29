@@ -196,7 +196,7 @@ a:hover {
 .employee-form-container {
   background-color: var(--white);
   padding: 20px 40px;
-  border: 2px solid var(--light-blue);
+  border: 2px solid var(--dark-blue);
   border-radius: 10px;
   box-shadow: 0px 2px 2px 0px rgba(99, 99, 99, 0.3);
   width: 70%;
@@ -274,6 +274,13 @@ a:hover {
   outline: none;
 } 
 
+.employee-subheader-buttons {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+  width: 300px;
+}
+
 .employee-select{
     width: 300px; 
   text-align: end;
@@ -350,13 +357,6 @@ a:hover {
   font-weight: 400;
 }
 
-.employee-subheader-buttons {
-  display: flex;
-  justify-content: end;
-  gap: 10px;
-  width: 300px;
-}
-
 .btn-create-employee{
   height: 40px;
   flex-grow: 2;
@@ -391,7 +391,7 @@ a:hover {
 }
 
 .btn-add-employee{
-  height: 40px;
+ height: 40px;
   width: 150px;
   border-radius: 12px;
   opacity: 0.9;
@@ -411,15 +411,15 @@ a:hover {
   width: 80px;
   border-radius: 12px;
   background-color: var(--white);
-  color: var(--dark-blue);
-  border: 1px solid var(--dark-blue);
+  color: red;
+  border: 1px solid red;
   transition-duration: 1ms;
 }
 
 .reset-button:hover{
   cursor: pointer;
   color: var(--white);
-  background-color: var(--dark-blue);
+  background-color: red;
 }
 
 .delete-employee{
@@ -472,7 +472,7 @@ a:hover {
 }
 
 #desc{
-  accent-color: var(--light-blue);
+  accent-color: var(--lightest-green);
 }
 
 .employee-form-line input {
@@ -498,3 +498,10 @@ a:hover {
 .tasks-container{
   padding: 50px 30px 100px 50px;
 }
+
+.task-form {
+  /* height: 400px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+} 

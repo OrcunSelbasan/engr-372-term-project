@@ -116,6 +116,10 @@ class ControllerStorage
     //     return $records;
     // }
 
+    public function setActive($id){
+        $this->entity->setActive($id);
+    }
+
     public function getRecord($qs, $root)
     {
         $queryString = $qs;
@@ -167,7 +171,28 @@ class ControllerStorage
         }
         return false;
     }
-
+    public function getAvailableBins()
+    {
+        $queryResult =  $this->entity->getAvailableBins();
+        if ($queryResult->num_rows > 0) {
+            // MYSQLI_ASSOC is used because it gives column names to,
+            // otherwise array keys will be indexes instead of column names
+            $fetchResult = $queryResult->fetch_all(MYSQLI_ASSOC);
+            return $fetchResult;
+        }
+        return false;
+    }
+    public function getTrucks()
+    {
+        $queryResult =  $this->entity->getTrucks();
+        if ($queryResult->num_rows > 0) {
+            // MYSQLI_ASSOC is used because it gives column names to,
+            // otherwise array keys will be indexes instead of column names
+            $fetchResult = $queryResult->fetch_all(MYSQLI_ASSOC);
+            return $fetchResult;
+        }
+        return false;
+    }
     public function deleteRecord($id)
     {
         $queryResult =  $this->entity->deleteById($id);

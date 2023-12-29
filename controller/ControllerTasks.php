@@ -1,34 +1,34 @@
 <?php
 // Setting absoulute path to prevent errors caused by nesting in the folders
 $rootPath = $_SERVER['DOCUMENT_ROOT'];
-$employeeModelPath = $rootPath . "/model/Employees.php";
-include($employeeModelPath);
+$taskModelPath = $rootPath . "/model/Task.php";
+include($taskModelPath);
 
-class ControllerEmployees{
+
+class ControllerTask{
     private $entity;
 
     public function __construct() {
-        $this -> entity = new Employees();
+        $this -> entity = new Task();
     }
 
     public function createRecord($post)
     {
-        $fname = $post['employee-fname'];
-        $lname = $post['employee-lname'];
-        $email = $post['employee-email'];
-        $phone = $post['employee-phone'];
-        $salary = $post['employee-salary'];
-        $team = $post['employee-team'];
+        $title = $post['task-title'];
+        $team = $post['task-team'];
+        $status = "in progress";
+        $binId = $post['task-binId'];
+        $truckId = $post['task-truckId'];
         $modificationDate = date('Y-m-d');
+
         
 
         $isSuccess = $this->entity->create(
-            $fname,
-            $lname,
-            $email,
-            $phone,
-            $salary,
-            $team,
+            $title,
+            $team ,
+            $status ,
+            $binId,
+            $truckId,
             $modificationDate
         );
 
@@ -37,24 +37,28 @@ class ControllerEmployees{
 
     public function updateRecord($post)
     {
-        $id = $post['employee-object-id'];
-        $fname = $post['employee-fname'];
-        $lname = $post['employee-lname'];
-        $email = $post['employee-email'];
-        $phone = $post['employee-phone'];
-        $salary = $post['employee-salary'];
-        $team = $post['employee-team'];
+        $id = $post['task-object-id'];
+        $title = $post['task-title'];
+        $team = $post['task-team'];
+        $status = $post['task-status'];
+        $binId = $post['task-binId'];
+        $truckId = $post['task-truckId'];
         $modificationDate = date('Y-m-d');
         $isSuccess = $this->entity->updateById($id, [
-            'fname' => $fname,
-            'lname' => $lname,
-            'email' => $email,
-            'phone' => $phone,
-            'salary' => $salary,
+            'title' => $title,
             'team' => $team,
+            'status' => $status,
+            'binId' => $binId,
+            'truckId' => $truckId,
             'modification_date' => $modificationDate
         ]);
 
+        return $isSuccess;
+    }
+
+    public function markDone($post){
+        $id = $post['taskId'];
+        $isSuccess = $this->entity->markDone($id);
         return $isSuccess;
     }
 
@@ -109,8 +113,9 @@ class ControllerEmployees{
         return false;
     }
 
-    public function getTeamMembers($team){
-        $queryResult =  $this->entity->getTeamMembers($team);
+    public function getRecordsByStatus($s)
+    {
+        $queryResult =  $this->entity->getRecordsByStatus($s);
         if ($queryResult->num_rows > 0) {
             // MYSQLI_ASSOC is used because it gives column names to,
             // otherwise array keys will be indexes instead of column names

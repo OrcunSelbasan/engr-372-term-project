@@ -60,6 +60,29 @@ class Storage
         return false;
     }
 
+    public function getAvailableBins(){
+        try {
+            $result = $this->db->queryRaw("SELECT * FROM $this->table WHERE category='bin' AND initial_status='passive'");
+            // $this->db->close();
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
+        return false;
+    }
+    public function getTrucks(){
+        try {
+            $result = $this->db->queryRaw("SELECT * FROM $this->table WHERE category='truck' AND initial_status='passive'");
+            // $this->db->close();
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
+        return false;
+    }
+
     public function getById($value)
     {
         try {
@@ -92,6 +115,7 @@ class Storage
         }
         return false;
     }
+
 
     public function getByCategory($value)
     {

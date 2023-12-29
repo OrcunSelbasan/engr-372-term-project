@@ -1,28 +1,23 @@
 const Fields = (function getFields() {
-    const btnReset = $("#employee-reset");
-    const btnCreate = $("#employee-create");
-    const btnUpdate = $("#employee-update");
-    const fname = $("#employee-fname");
-    const lname = $("#employee-lname");
-    const email = $("#employee-email");
-    const phone = $("#employee-phone");
-    const salary = $("#employee-salary");
-    const team = $('#employee-team');
+    // const btnReset = $("#task-reset");
+    const btnCreate = $("#task-create");
+    // const btnUpdate = $("#employee-update");
+    const title = $("#task-title");
+    const team = $("#task-team");
+    const bin = $("#employee-email");
+    const truck = $("#employee-phone");
+
     // const salaryUnit = $("#employee-salary-unit");
-    const form = $("#employee-form");
+    const form = $("#task-form");
 
     return {
-        btnReset,
+        // btnReset,
         btnCreate,
-        fname,
-        lname,
-        email,
-        phone,
-        salary,
-        // salaryUnit,
+        title,
         team,
+        // salaryUnit,
         form,
-        btnUpdate,
+        // btnUpdate,
     };
 })();
 
@@ -32,7 +27,7 @@ function validate(event) {
     const fields = Object.entries(Fields)
         .filter(
             ([fieldIdentifier, field]) =>
-                fieldIdentifier !== "btnReset" &&
+                // fieldIdentifier !== "btnReset" &&
                 fieldIdentifier !== "btnCreate" &&
                 fieldIdentifier !== "form" &&
                 fieldIdentifier !== "btnUpdate"
@@ -51,6 +46,7 @@ function validate(event) {
     console.log("Error Fields: " + erroredFields);
 
     if (!isValid) {
+        console.log("not valid");
         event.preventDefault();
     }
 
@@ -67,37 +63,25 @@ function validate(event) {
     return isValid;
 }
 
-Fields.btnReset.on("click", () => {
-    console.log("reset pressed");
-    const fields = Object.values(Fields);
-    fields.forEach((field) => {
-        if (!field.is("button") && !field.is("form")) {
-            field.val("");
-        }
-    });
-});
+// Fields.btnReset.on("click", () => {
+//     console.log("reset pressed");
+//     const fields = Object.values(Fields);
+//     fields.forEach((field) => {
+//         if (!field.is("button") && !field.is("form")) {
+//             field.val("");
+//         }
+//     });
+// });
 
 
 Fields.btnCreate.on("click", (event) => {
     console.log("create pressed");
     const isValid = validate(event);
     if (isValid) {
-        $("#form-submission-type").val("EMPLOYEES");
+        console.log("valid");
+        $("#form-submission-type").val("TASKS");
         Fields.form.submit();
-    }
-});
-
-Fields.btnUpdate.on("click", async function (event) {
-    console.log("Update pressed");
-    const isValid = validate(event);
-    if (isValid) {
-        console.log("fine");
-        const id = $("#employee-object-id").data("identifier")
-        $("#form-submission-type").val("EMPLOYEES");
-        $("#employee-method").val("PUT");
-        $("#employee-object-id").val(id);
-        Fields.form.submit();
-        console.log("form sent");
+        console.log("submitted");
     }
 });
 
@@ -121,25 +105,29 @@ async function deleteItem(id) {
         if (text === "true") {
             // window.location.reload();
             // history.back();
-            const redirectUrl = origin.concat('/view/employees.php');
+            const redirectUrl = origin.concat('/view/tasks/tasks.php');
             window.location.replace(redirectUrl);
         }
     }
 }
-function editItem(id) {
-    console.log("Edit " + id);
-    window.location.href = `employee-view-entry.php?id=${id}`;
-}
-function addEmployee() {
-    window.location.href = "add-employee.php";
-}
-function sortTable() {
-    var sortAttribute = document.getElementById('sortAttribute').value;
-    var descCheckbox = document.getElementById("desc");
-    var isDescending = descCheckbox.checked;
-    if (isDescending) {
-        window.location.href = `employees.php?sort=${sortAttribute}&desc=true`;
-    } else {
-        window.location.href = `employees.php?sort=${sortAttribute}&desc=false`;
-    }
-}
+
+$("#task-reset").on("click", function () {
+    console.log("Reset pressed");
+    $("#task-title").val("");
+    $("#task-team").val("1");
+    $('input[type="radio"]').prop('checked', false);
+});
+
+// Fields.btnUpdate.on("click", async function (event) {
+//     console.log("Update pressed");
+//     const isValid = validate(event);
+//     if (isValid) {
+//         console.log("fine");
+//         const id = $("#employee-object-id").data("identifier")
+//         $("#form-submission-type").val("EMPLOYEES");
+//         $("#employee-method").val("PUT");
+//         $("#employee-object-id").val(id);
+//         Fields.form.submit();
+//         console.log("form sent");
+//     }
+// });

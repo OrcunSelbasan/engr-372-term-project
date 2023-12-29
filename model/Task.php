@@ -3,18 +3,16 @@
 $rootPath = $_SERVER['DOCUMENT_ROOT'];
 $dbPath = $rootPath . "/database/index.php";
 include_once($dbPath);
-class Employees
+class Task
 {
     private $db;
-    private $table = 'employees';
+    private $table = 'tasks';
     private $id ='id';
-    private $firstName = 'fname';
-    private $lastName = 'lname';
-    private $email = 'email';
-    private $phone = 'phone';
-    private $salary = 'salary';
-
+    private $title = 'title';
     private $team = 'team';
+    private $status = 'status';
+    private $binId = 'binId';
+    private $truckId = 'truckId';
     private $modificationDate = 'modification_date';
 
      public function __construct()
@@ -22,12 +20,18 @@ class Employees
         $this->db = new Database();
     }
 
-    public function create($fname, $lname, $email, $phone, $salary, $team, $modificationDate)
+    
+
+    public function create($title, $team, $status, $binId, $truckId, $modificationDate)
     {
         try {
-            $statement = "INSERT INTO $this->table ($this->firstName, $this->lastName, $this->email, $this->phone, $this->salary, $this->team, $this->modificationDate) VALUES ('$fname',  '$lname', '$email', '$phone',  '$salary', '$team', '$modificationDate')";
+            $statement = "INSERT INTO $this->table ($this->title, $this->team, $this->status, $this->binId, $this->truckId, $this->modificationDate) VALUES ('$title',  '$team', '$status', '$binId',  '$truckId', '$modificationDate')";
             $query = $this->db->queryRaw($statement);
             if ($query == true) {
+                $statement = "UPDATE storage SET initial_status='active' WHERE id='$binId'";
+                $query = $this->db->queryRaw($statement);
+                $statement = "UPDATE storage SET initial_status='active' WHERE id='$truckId'";
+                $query = $this->db->queryRaw($statement);
                 return true;
             } else {
                 throw new Exception("Error Processing Request: troubled statement", 1);
@@ -51,10 +55,10 @@ class Employees
         return false;
     }
 
-     public function getTeamMembers($team)
+    public function getRecordsByStatus($s)
     {
         try {
-            $result = $this->db->queryRaw("SELECT * FROM $this->table WHERE team='$team'");
+            $result = $this->db->queryRaw("SELECT * FROM $this->table WHERE status='$s'");
             // $this->db->close();
             return $result;
         } catch (Exception $e) {
@@ -100,7 +104,7 @@ class Employees
                 if ($key == "employees") {
                     continue;
                 } else {
-                    $quotes = in_array($key, ["salary","team"]) ? "" : '"';
+                    $quotes = in_array($key, ["team","binId","truckId"]) ? "" : '"';
                     $comma = ($value == $lastColumnValue) ? '' : ',';
                     $query = $query . " $key=$quotes$value$quotes $comma";
                 }
@@ -121,6 +125,29 @@ class Employees
 
     public function getLastModDate(){
         return $this->db->queryRaw("SELECT MAX(modification_date) FROM $this->table")->fetch_row()[0];
+    }
+
+    public function markDone($id){
+        try {
+            $entry = $this->db->queryRaw("SELECT * FROM $this->table WHERE $this->id = '$id'");
+            $row = $entry->fetch_assoc();
+            $binId = $row['binId'];
+            $truckId = $row['truckId'];
+            $statement = "UPDATE storage SET initial_status='passive' WHERE id='$binId'";
+            $this->db->queryRaw($statement);
+            $statement = "UPDATE storage SET initial_status='passive' WHERE id='$truckId'";
+            $this->db->queryRaw($statement);
+            $date = date('Y-m-d');
+            $statement = "UPDATE $this->table SET status='done', modification_date='$date' WHERE id =".$id."";
+            $result = $this->db->queryRaw($statement);
+            $this->db->close();
+            return $result;
+
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
+        return false;
     }
 
     public function getByFilters($filters) {
