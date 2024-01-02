@@ -6,6 +6,7 @@ $regionsPath = $rootPath . "/view/regions/regions.php";
 $citiesPath = $rootPath . "/view/cities.php";
 $employeesPath = $rootPath . "/view/employees.php";
 $reportsPath = $rootPath . "/view/reports/storage_reports.php";
+$logoutPath = $rootPath . "/view/logout.php";
 
 function getCurrentDirectoryName()
 {
@@ -36,6 +37,21 @@ function getHeader()
         case "employee-view-entry":
             return "Employee";
             break;
+        case "storage_reports":
+            return "Storage Report";
+            break;
+        case "cities_report":
+            return "Cities Report";
+            break;
+        case "employees_report":
+            return "Employees Report";
+            break;
+        case "regions_report":
+            return "Regions Report";
+            break;
+        case "tasks_log":
+            return "Task Log Report";
+            break;
         default:
             return "Storage";
             break;
@@ -47,20 +63,20 @@ function getClasses()
     $directoryName = getCurrentDirectoryName();
     switch ($directoryName) {
         case "storage-add-record":
-            return "bg-brown";
-            break;
+            // return "bg-brown";
+            // break;
         case "storage-view-record":
-            return "bg-green";
-            break;
+            // return "bg-green";
+            // break;
         case "employees":
-            return "bg-light-green";
-            break;
+            // return "bg-light-green";
+            // break;
         case "add-employee":
-            return "bg-light-green";
-            break;
+            // return "bg-light-green";
+            // break;
         case "employee-view-entry":
-            return "bg-light-green";
-            break;
+            // return "bg-light-green";
+            // break;
         default:
             break;
     }
@@ -142,7 +158,7 @@ $className = getClasses();
                 </a>
             </li>
         </ul>
-        <a class="nav_link nav_link_item" href="./logout.php">
+        <a class="nav_link nav_link_item" href="<?php echo $logoutPath ?>">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 18C1.45 18 0.979167 17.8042 0.5875 17.4125C0.195833 17.0208 0 16.55 0 16V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H9V2H2V16H9V18H2ZM13 14L11.625 12.55L14.175 10H6V8H14.175L11.625 5.45L13 4L18 9L13 14Z" fill="white" />
             </svg>

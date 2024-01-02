@@ -15,7 +15,7 @@ $auth->checkAuth();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../../jquery/jquery-3.7.1.js"></script>
 
-    <title>City Modul</title>
+    <title>City Module</title>
     <link rel="stylesheet" href="../../css/index.css">
     <link rel="stylesheet" href="../../css/cities.css">
     
@@ -31,7 +31,7 @@ $auth->checkAuth();
     <?php include("../header.php"); ?>
 
     <main class="storage-main">
-        <h2 class="storage-header">Welcome to City Modul: Add a City</h2>
+        <h2 class="storage-header">Welcome to City Module: Add a City</h2>
         <section class="storage-subheader-wrapper">
             <h3 class="storage-subheader" style="max-width: 700px; font-weight: 500;">Here you can add a new city.</h3>
         </section>

@@ -33,19 +33,17 @@ $records = $task->getAll();
 </head>
 <?php include("../header.php"); ?>
 <main class="report-main">
-    <h2 class="report-header">REPORT</h2>
+     
     <section class="select-dropdown">
-        <div class="dropdown">
-            <span>Please Select A Category Below </span>
-            <ul style="display: flex; flex-direction: row; gap: 20px;">
-                <li style="list-style: none;"><a href="./storage_reports.php">Storage</a></li>
-                <li style="list-style: none;"><a href='./regions_report.php'>Regions</a></li>
-                <li style="list-style: none;"><a href='./cities_report.php'>Cities</a></li>
-                <li style="list-style: none;"><a href='./employees_report.php'>Employees</a></li>
-                <li style="list-style: none; border-bottom: 1px solid black;"><a href='./tasks_log.php'>Tasks Log</a></li>
-            </ul>
-        </div>
+        <ul style="display: flex; flex-direction: row; gap: 20px; padding: 0; margin-bottom: 60px;">
+            <li style="list-style: none; font-size: 24px;"><a href="./storage_reports.php">Storage</a></li>
+            <li style="list-style: none; font-size: 24px;"><a href='./regions_report.php'>Regions</a></li>
+            <li style="list-style: none; font-size: 24px;"><a href='./cities_report.php'>Cities</a></li>
+            <li style="list-style: none; font-size: 24px;"><a href='./employees_report.php'>Employees</a></li>
+            <li style="list-style: none; font-size: 24px; border-bottom: 2px solid #16558f;"><a href='./tasks_log.php'>Tasks Log</a></li>
+        </ul>
     </section>
+    <h3>Task Log</h3>
     <table class="storage-table">
         <tr class="storage-table-header">
             <th class="storage-table-header-data">ID</th>

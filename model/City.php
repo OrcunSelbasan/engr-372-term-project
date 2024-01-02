@@ -15,13 +15,14 @@ class City
     }
 
     // CREATE OPS
-    public function create($name,
+    public function create(
+        $name,
         $inhabitants,
         $Employees,
         $Coordinates,
         $Objects,
-        $Region)
-    {
+        $Region
+    ) {
         try {
             $statement = "INSERT INTO cities (name, inhabitans_cnt, employees_cnt, coordinates, object_cnt, region) VALUES ('$name', $inhabitants, $Employees, '$Coordinates', $Objects, '$Region')";
             $query = $this->db->queryRaw($statement);
@@ -104,6 +105,34 @@ class City
         //     return $e;
         // }
         // return false;
+    }
+
+    public function getByFilters($filters)
+    {
+        // Prepare query string from conditions
+        if ($filters == []) {
+            return [];
+        }
+        $lastElement = count($filters) - 1;
+        $counter = 0;
+        $queryString = "";
+        foreach ($filters as $key => $value) {
+            if ($counter == $lastElement) {
+                $queryString = $queryString . "$key='$value'";
+            } else {
+                $queryString = $queryString . "$key='$value'" . " AND ";
+            }
+            $counter += 1;
+        }
+        $query = "SELECT * FROM cities WHERE $queryString";;
+        try {
+            $result = $this->db->queryRaw($query);
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
+        return false;
     }
 
     // UPDATE OPS

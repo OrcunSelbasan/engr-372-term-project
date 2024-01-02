@@ -27,7 +27,7 @@ $city = $controller->fetchRecord($id);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/jquery/jquery-3.7.1.js"></script>
 
-    <title>City Modul</title>
+    <title>City Module</title>
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/cities.css">
 
@@ -38,7 +38,7 @@ $city = $controller->fetchRecord($id);
 
     <main>
         <h1>
-            Welcome to City Modul: Edit a City
+            Welcome to City Module: Edit a City
         </h1>
         <section class="storage-subheader-wrapper">
             <h3 class="storage-subheader" style="max-width: 700px; font-weight: 500;">Here you can edit a City.</h3>

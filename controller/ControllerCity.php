@@ -90,9 +90,10 @@ class ControllerCity{
         return false;
     }
 
-    public function getLastModDate(){
-        return $this->entity->getLastModDate();
-    }
+    // ! NOT IMPLEMENTED
+    // public function getLastModDate(){
+    //     return $this->entity->getLastModDate();
+    // }
 
     public function deleteRecord($id)
     {
@@ -101,7 +102,7 @@ class ControllerCity{
     }
 
     public function getByFilters($filters)
-    {
+    { 
         $result = $this->entity->getByFilters($filters);
         $records = [];
         try {

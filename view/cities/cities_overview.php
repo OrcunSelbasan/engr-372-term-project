@@ -22,7 +22,7 @@ $cities = $controller->getAllRecords();
     <script src="../../jquery/jquery-3.7.1.js"></script>
     <script src="/js/cities.js"></script>
 
-    <title>City Modul</title>
+    <title>City Module</title>
     <link rel="stylesheet" href="../../css/index.css">
     <link rel="stylesheet" href="../../css/cities.css">
 
@@ -33,7 +33,7 @@ $cities = $controller->getAllRecords();
 
     <main>
         <h1>
-            Welcome to City Modul: Overview
+            Welcome to City Module: Overview
         </h1>
 
         <section class="storage-form-wrapper">
