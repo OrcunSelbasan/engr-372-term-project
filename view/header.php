@@ -76,7 +76,7 @@ function getClasses()
             // return "bg-brown";
             // break;
         case "storage-view-record":
-            return "bg-green";
+            // return "bg-green";
             break;
         // case "employees":
         //     return "bg-light-green";
