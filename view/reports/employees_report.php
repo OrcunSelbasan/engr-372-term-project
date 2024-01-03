@@ -94,57 +94,55 @@ if (isset($_GET['referrer'])) {
 </head>
 <?php include("../header.php"); ?>
 <main class="report-main">
-    <h2 class="report-header">REPORT</h2>
+
     <section class="select-dropdown">
-        <div class="dropdown">
-            <span>Please Select A Category Below </span>
-            <ul style="display: flex; flex-direction: row; gap: 20px;">
-                <li style="list-style: none;"><a href="./storage_reports.php">Storage</a></li>
-                <li style="list-style: none;"><a href='./regions_report.php'>Regions</a></li>
-                <li style="list-style: none;"><a href='./cities_report.php'>Cities</a></li>
-                <li style="list-style: none; border-bottom: 1px solid black;"><a href='./employees_report.php'>Employees</a></li>
-            </ul>
-        </div>
+        <ul style="display: flex; flex-direction: row; gap: 20px; padding: 0; margin-bottom: 60px;">
+            <li style="list-style: none; font-size: 24px;"><a href="./storage_reports.php">Storage</a></li>
+            <li style="list-style: none; font-size: 24px;"><a href='./regions_report.php'>Regions</a></li>
+            <li style="list-style: none; font-size: 24px;"><a href='./cities_report.php'>Cities</a></li>
+            <li style="list-style: none; font-size: 24px; border-bottom: 2px solid #16558f;"><a href='./employees_report.php'>Employees</a></li>
+            <li style="list-style: none; font-size: 24px;"><a href='./tasks_log.php'>Tasks Log</a></li>
+        </ul>
     </section>
-    <h3>Employees<h3>
     <section class="report-table-wrapper">
         <form action="./employees_report.php" method="GET">
             <input type="text" hidden value="storage" name="referrer">
-            <table class="report-table">
+            <table class="report-table" style="margin: 20px 0; width: 100%;">
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>E-Mail</th>
-                    <th>Phone Number</th>
-                    <th>Monthly Salary</th>
+                    <th style="text-align: center;">First Name</th>
+                    <th style="text-align: center;">Last Name</th>
+                    <th style="text-align: center;">E-Mail</th>
+                    <th style="text-align: center;">Phone Number</th>
+                    <th style="text-align: center;">Monthly Salary</th>
+                    <th></th>
                 </tr>
                 <tr>
-                    <td>
-                        <input name="employee-fname" id="employee-fname" type="text" style="flex-grow: 1;">
+                    <td style="text-align: center;">
+                        <input name="employee-fname" id="employee-fname" type="text" style="flex-grow: 1;" placeholder="John">
                     </td>
-                    <td>
-                        <input name="employee-lname" id="employee-lname" type="text" style="flex-grow: 1;">
+                    <td style="text-align: center;">
+                        <input name="employee-lname" id="employee-lname" type="text" style="flex-grow: 1;" placeholder="Doe">
                     </td>
-                    <td>
-                        <input name="employee-email" id="employee-email" type="text" style="flex-grow: 1;">
+                    <td style="text-align: center;">
+                        <input name="employee-email" id="employee-email" type="text" style="flex-grow: 1;" placeholder="john.doe@wms.com">
                     </td>
-                    <td>
-                        <input name="employee-phone" id="employee-phone" type="text" style="flex-grow: 1;">
+                    <td style="text-align: center;">
+                        <input name="employee-phone" id="employee-phone" type="text" style="flex-grow: 1;" placeholder="5554443322">
                     </td>
-                    <td>
-                        <input name="employee-salary" id="employee-salary" type="number" min="1" style="flex-grow: 1;">
+                    <td style="text-align: center;">
+                        <input name="employee-salary" id="employee-salary" type="number" min="1" style="flex-grow: 1;" placeholder="50123">
+                    </td>
+                    <td style="text-align: center;">
+                        <button class="btn btn-blue" style="width: 100px; height: 25px;" type="submit">Search</button>
                     </td>
                 </tr>
             </table>
-            <div style="display: flex; flex-direction: row; justify-content: end;">
-                <button type="submit">Search</button>
-            </div>
         </form>
     </section>
     <section class="storage-table-wrapper">
         <table class="storage-table">
             <tr class="storage-table-header">
-                <th class="storage-table-header-data">First Name</th> 
+                <th class="storage-table-header-data">First Name</th>
                 <th class="storage-table-header-data">Last Name</th>
                 <th class="storage-table-header-data">E-Mail</th>
                 <th class="storage-table-header-data">Phone Number</th>

@@ -1,14 +1,16 @@
 <?php
 // Setting absoulute path to prevent errors caused by nesting in the folders
 $rootPath = $_SERVER['DOCUMENT_ROOT'];
-$employeeModelPath = $rootPath . "/model/Employees.php";
-include($employeeModelPath);
-
-class ControllerEmployees{
+$regionModelPath = $rootPath . "/model/Region.php";
+include_once($regionModelPath);
+// TODO: VALIDATE DATA AND SANITIZE
+class ControllerRegions
+{
     private $entity;
 
-    public function __construct() {
-        $this -> entity = new Employees();
+    public function __construct()
+    {
+        $this->entity = new Region();
     }
 
     public function getEntity() {
@@ -17,22 +19,21 @@ class ControllerEmployees{
 
     public function createRecord($post)
     {
-        $fname = $post['employee-fname'];
-        $lname = $post['employee-lname'];
-        $email = $post['employee-email'];
-        $phone = $post['employee-phone'];
-        $salary = $post['employee-salary'];
-        $team = $post['employee-team'];
+        $name = $post['region-name'];
+        $lat = $post['region-location-lat'];
+        $lon = $post['region-location-lon'];
+        $collection_interval = $post['region-collection-interval'];
+        $threshold = $post['region-threshold'];
+        $budget = $post['region-budget'];
         $modificationDate = date('Y-m-d');
-        
 
         $isSuccess = $this->entity->create(
-            $fname,
-            $lname,
-            $email,
-            $phone,
-            $salary,
-            $team,
+            $name,
+            $lat,
+            $lon,
+            $collection_interval,
+            $threshold,
+            $budget,
             $modificationDate
         );
 
@@ -41,24 +42,27 @@ class ControllerEmployees{
 
     public function updateRecord($post)
     {
-        $id = $post['employee-object-id'];
-        $fname = $post['employee-fname'];
-        $lname = $post['employee-lname'];
-        $email = $post['employee-email'];
-        $phone = $post['employee-phone'];
-        $salary = $post['employee-salary'];
-        $team = $post['employee-team'];
+        $id = $post['regions-object-id'];
+        $name = $post['region-name'];
+        $lat = $post['region-location-lat'];
+        $lon = $post['region-location-lon'];
+        $collection_interval = $post['region-collection-interval'];
+        $threshold = $post['region-threshold'];
+        $budget = $post['region-budget'];
         $modificationDate = date('Y-m-d');
-        $isSuccess = $this->entity->updateById($id, [
-            'fname' => $fname,
-            'lname' => $lname,
-            'email' => $email,
-            'phone' => $phone,
-            'salary' => $salary,
-            'team' => $team,
-            'modification_date' => $modificationDate
-        ]);
 
+        $isSuccess = $this->entity->updateById($id, 
+        [
+            "name" => $name,
+            "lat" => $lat,
+            "lon" => $lon,
+            "collection_interval" => $collection_interval,
+            "threshold" =>$threshold,
+            "budget" => $budget,
+            "modification_date" => $modificationDate
+            ]
+        );
+        
         return $isSuccess;
     }
 
@@ -71,6 +75,7 @@ class ControllerEmployees{
         $id = isset($queryArray['id']) ? $queryArray['id'] : "false";
         $isEdit = isset($queryArray['edit']) ? $queryArray['edit'] : "false";
 
+        // No id means trouble just redirect to storage main page
         if ($id == "false") {
             header("Location: $root/view/storage/storage.php");
             exit();
@@ -111,21 +116,6 @@ class ControllerEmployees{
             return $fetchResult;
         }
         return false;
-    }
-
-    public function getTeamMembers($team){
-        $queryResult =  $this->entity->getTeamMembers($team);
-        if ($queryResult->num_rows > 0) {
-            // MYSQLI_ASSOC is used because it gives column names to,
-            // otherwise array keys will be indexes instead of column names
-            $fetchResult = $queryResult->fetch_all(MYSQLI_ASSOC);
-            return $fetchResult;
-        }
-        return false;
-    }
-
-    public function getLastModDate(){
-        return $this->entity->getLastModDate();
     }
 
     public function deleteRecord($id)

@@ -1,39 +1,34 @@
 <?php
 // Setting absoulute path to prevent errors caused by nesting in the folders
 $rootPath = $_SERVER['DOCUMENT_ROOT'];
-$employeeModelPath = $rootPath . "/model/Employees.php";
-include($employeeModelPath);
+$cityModelPath = $rootPath . "/model/City.php";
+include($cityModelPath);
 
-class ControllerEmployees{
+class ControllerCity{
     private $entity;
 
     public function __construct() {
-        $this -> entity = new Employees();
-    }
-
-    public function getEntity() {
-        return $this->entity;
+        $this -> entity = new City();
     }
 
     public function createRecord($post)
     {
-        $fname = $post['employee-fname'];
-        $lname = $post['employee-lname'];
-        $email = $post['employee-email'];
-        $phone = $post['employee-phone'];
-        $salary = $post['employee-salary'];
-        $team = $post['employee-team'];
-        $modificationDate = date('Y-m-d');
+        $name = $post['cities-name']; //* TODO: cities_add.php Variablen einfügen
+        $inhabitants = $post['inhabitants'];
+        $Employees = $post['Employees'];
+        $Coordinates = $post['Coordinates'];
+        $Objects = $post['Objects'];
+        $Region = $post['Region'];
         
 
         $isSuccess = $this->entity->create(
-            $fname,
-            $lname,
-            $email,
-            $phone,
-            $salary,
-            $team,
-            $modificationDate
+            $name,
+            $inhabitants,
+            $Employees,
+            $Coordinates,
+            $Objects,
+            $Region,
+
         );
 
         return $isSuccess;
@@ -41,25 +36,7 @@ class ControllerEmployees{
 
     public function updateRecord($post)
     {
-        $id = $post['employee-object-id'];
-        $fname = $post['employee-fname'];
-        $lname = $post['employee-lname'];
-        $email = $post['employee-email'];
-        $phone = $post['employee-phone'];
-        $salary = $post['employee-salary'];
-        $team = $post['employee-team'];
-        $modificationDate = date('Y-m-d');
-        $isSuccess = $this->entity->updateById($id, [
-            'fname' => $fname,
-            'lname' => $lname,
-            'email' => $email,
-            'phone' => $phone,
-            'salary' => $salary,
-            'team' => $team,
-            'modification_date' => $modificationDate
-        ]);
-
-        return $isSuccess;
+        $this->entity->updateById($post["id"], $post);
     }
 
     public function getRecord($qs, $root)
@@ -89,14 +66,14 @@ class ControllerEmployees{
         return $record;
     }
 
-    private function fetchRecord($id)
+    public function fetchRecord($id)
     {
         $queryResult =  $this->entity->getById($id);
         if ($queryResult->num_rows > 0) {
             // MYSQLI_ASSOC is used because it gives column names to,
             // otherwise array keys will be indexes instead of column names
             $fetchResult = $queryResult->fetch_all(MYSQLI_ASSOC);
-            return $fetchResult;
+            return $fetchResult[0];
         }
         return false;
     }
@@ -113,20 +90,10 @@ class ControllerEmployees{
         return false;
     }
 
-    public function getTeamMembers($team){
-        $queryResult =  $this->entity->getTeamMembers($team);
-        if ($queryResult->num_rows > 0) {
-            // MYSQLI_ASSOC is used because it gives column names to,
-            // otherwise array keys will be indexes instead of column names
-            $fetchResult = $queryResult->fetch_all(MYSQLI_ASSOC);
-            return $fetchResult;
-        }
-        return false;
-    }
-
-    public function getLastModDate(){
-        return $this->entity->getLastModDate();
-    }
+    // ! NOT IMPLEMENTED
+    // public function getLastModDate(){
+    //     return $this->entity->getLastModDate();
+    // }
 
     public function deleteRecord($id)
     {
@@ -135,7 +102,7 @@ class ControllerEmployees{
     }
 
     public function getByFilters($filters)
-    {
+    { 
         $result = $this->entity->getByFilters($filters);
         $records = [];
         try {

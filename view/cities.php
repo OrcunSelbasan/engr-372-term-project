@@ -3,6 +3,9 @@ include("../controller/ControllerAuth.php");
 // * Check if the user is authenticated
 $auth = new ControllerAuth();
 $auth->checkAuth();
+$root = $auth::getRoot();
+
+header("Location: $root/view/cities/cities_overview.php");
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +21,6 @@ $auth->checkAuth();
 
 <body>
     <?php include("./header.php"); ?>
-    <?php include("./index_cities.html"); ?>
 
 </body>
 

@@ -7,6 +7,7 @@ $citiesPath = $rootPath . "/view/cities.php";
 $employeesPath = $rootPath . "/view/employees.php";
 $reportsPath = $rootPath . "/view/reports/storage_reports.php";
 $tasksPath = $rootPath . "/view/tasks/tasks.php";
+$logoutPath = $rootPath . "/view/logout.php";
 
 function getCurrentDirectoryName()
 {
@@ -46,6 +47,21 @@ function getHeader()
         case "view-task":
             return "Tasks";
             break;
+        case "storage_reports":
+            return "Storage Report";
+            break;
+        case "cities_report":
+            return "Cities Report";
+            break;
+        case "employees_report":
+            return "Employees Report";
+            break;
+        case "regions_report":
+            return "Regions Report";
+            break;
+        case "tasks_log":
+            return "Task Log Report";
+            break;
         default:
             return "Storage";
             break;
@@ -57,8 +73,8 @@ function getClasses()
     $directoryName = getCurrentDirectoryName();
     switch ($directoryName) {
         case "storage-add-record":
-            return "bg-brown";
-            break;
+            // return "bg-brown";
+            // break;
         case "storage-view-record":
             return "bg-green";
             break;
@@ -114,8 +130,8 @@ $className = getClasses();
                     <ul class="nav_link_list">
                         <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_create"><a href="<?php echo $regionsPath ?>">Overview</a></li>
                         <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_create"><a href="<?php echo $regionsRootPath . "regions_create.php" ?>">Create Region</a></li>
-                        <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_update"><a href="<?php echo $regionsRootPath . "regions_update.php" ?>">Update Region</a></li>
-                        <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_review"><a href="<?php echo $regionsRootPath . "regions_review.php" ?>">Review Region</li></a>
+                        <!-- <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_update"><a href="<?php echo $regionsRootPath . "regions_update.php" ?>">Update Region</a></li>
+                        <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_review"><a href="<?php echo $regionsRootPath . "regions_review.php" ?>">Review Region</li></a> -->
                     </ul>
                 </div>
             </div>
@@ -130,9 +146,8 @@ $className = getClasses();
                 </li>
                 <div id="cities_dropdown" style="display: none;">
                     <ul class="nav_link_list">
-                        <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_create"><a href="#">Overview</a></li>
-                        <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_create"><a href="#">Resources</a></li>
-                        <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_update"><a href="#">Facility Management</a></li>
+                        <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_create"><a href="<?php echo $rootPath . "/view/cities/cities_overview.php" ?>">Overview</a></li>
+                        <li style="list-style-type: none; padding: 10px 0;" class="regions_dropdown_link_item" id="regions_dropdown_update"><a href="<?php echo $rootPath . "/view/cities/cities_add.php" ?>">Add a City</a></li>
                     </ul>
                 </div>
             </div>
@@ -160,7 +175,7 @@ $className = getClasses();
                 </a>
             </li>
         </ul>
-        <a class="nav_link nav_link_item" href="./logout.php">
+        <a class="nav_link nav_link_item" href="<?php echo $logoutPath ?>">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 18C1.45 18 0.979167 17.8042 0.5875 17.4125C0.195833 17.0208 0 16.55 0 16V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H9V2H2V16H9V18H2ZM13 14L11.625 12.55L14.175 10H6V8H14.175L11.625 5.45L13 4L18 9L13 14Z" fill="white" />
             </svg>

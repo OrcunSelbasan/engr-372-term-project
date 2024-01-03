@@ -49,133 +49,78 @@ if (isset($_GET['referrer'])) {
     <link rel="stylesheet" href="../../css/index.css">
     <!-- I added it for days -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: white;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            height: 100vh;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #fff;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            min-width: 160px;
-            z-index: 1;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown-content ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .dropdown-content li {
-            padding: 10px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .dropdown-content a {
-            color: #333;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f0f0f0;
-        }
-    </style>
     <title>WMS Inventory - Reports</title>
 </head>
 <?php include("../header.php"); ?>
 <main class="report-main">
-    <h2 class="report-header">REPORT</h2>
     <section class="select-dropdown">
-        <div class="dropdown">
-            <span>Please Select A Category Below </span>
-            <ul style="display: flex; flex-direction: row; gap: 20px;">
-                <li style="list-style: none; border-bottom: 1px solid black;"><a href="./storage_reports.php">Storage</a></li>
-                <li style="list-style: none;"><a href='./regions_report.php'>Regions</a></li>
-                <li style="list-style: none;"><a href='./cities_report.php'>Cities</a></li>
-                <li style="list-style: none;"><a href='./employees_report.php'>Employees</a></li>
-            </ul>
-        </div>
+        <ul style="display: flex; flex-direction: row; gap: 20px; padding: 0; margin-bottom: 60px;">
+            <li style="list-style: none; font-size: 24px; border-bottom: 2px solid #16558f;"><a href="./storage_reports.php">Storage</a></li>
+            <li style="list-style: none; font-size: 24px;"><a href='./regions_report.php'>Regions</a></li>
+            <li style="list-style: none; font-size: 24px;"><a href='./cities_report.php'>Cities</a></li>
+            <li style="list-style: none; font-size: 24px;"><a href='./employees_report.php'>Employees</a></li>
+            <li style="list-style: none; font-size: 24px;"><a href='./tasks_log.php'>Tasks Log</a></li>
+        </ul>
     </section>
-    <h3>Storage</h3>
     <!-- Report Table-->
     <section class="report-table-wrapper">
         <form action="./storage_reports.php" method="GET">
             <input type="text" hidden value="storage" name="referrer">
-            <table class="report-table">
+            <table class="report-table" style="margin: 20px 0; width: 100%;">
                 <tr>
-                    <th>Category</th>
-                    <th>Storage Volume</th>
-                    <th>Type</th>
-                    <th>Status</th>
-                    <th>Purchase Value</th>
-                    <th>Auto-notifier</th>
-                    <th>Quantity</th>
-                    <th>Estimated Lifetime</th>
+                    <th style="text-align: center;">Category</th>
+                    <th style="text-align: center;">Storage Volume</th>
+                    <th style="text-align: center;">Type</th>
+                    <th style="text-align: center;">Status</th>
+                    <th style="text-align: center;">Purchase Value</th>
+                    <th style="text-align: center;">Auto-notifier</th>
+                    <th style="text-align: center;">Quantity</th>
+                    <th style="text-align: center;">Estimated Lifetime</th>
+                    <th></th>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="text-align: center;">
                         <select name="storage-category">
-                            <option value=></option>
+                            <option value="" selected disabled>Please Select</option>
                             <option value="bin">Bin</option>
                             <option value="truck">Truck</option>
                         </select>
                     </td>
-                    <td>
-                        <input name="storage-volume" id="storage-volume" type="number" min="1" max="4000" style="flex-grow: 1;">
+                    <td style="text-align: center;">
+                        <input name="storage-volume" id="storage-volume" type="number" min="1" max="4000" style="width: 150px" placeholder="100">
                     </td>
-                    <td>
+                    <td style="text-align: center;">
                         <select name="storage-type">
-                            <option value=></option>
+                            <option value="" selected disabled>Please Select</option>
                             <option value="smart">Smart</option>
                             <option value="regular">Regular</option>
                         </select>
                     </td>
-                    <td>
+                    <td style="text-align: center;">
                         <select name="storage-initial-status">
-                            <option value=></option>
+                            <option value="" selected disabled>Please Select</option>
                             <option value="maintenance">Maintenance</option>
                             <option value="passive">Passive</option>
                             <option value="active">Active</option>
                         </select>
                     </td>
-                    <td>
-                        <input name="storage-value" id="storage-value" type="number" min="1" style="flex-grow: 1;">
+                    <td style="text-align: center;">
+                        <input name="storage-value" id="storage-value" type="number" min="1" style="flex-grow: 1;" placeholder="1000">
                     </td>
-                    <td>
+                    <td style="text-align: center;">
                         <input type="checkbox" name="storage-notifier" id="storage-notifier">
                     </td>
-                    <td>
-                        <input type="number" min="1" name="storage-quantity" id="storage-quantity" style="width: 300px">
+                    <td style="text-align: center;">
+                        <input type="number" min="1" name="storage-quantity" id="storage-quantity" style="flex-grow: 1;" placeholder="1">
                     </td>
-                    <td>
-                        <input name="storage-estimated-lifetime" id="storage-estimated-lifetime" type="number" min="1" style="flex-grow: 1;">
+                    <td style="text-align: center;">
+                        <input name="storage-estimated-lifetime" id="storage-estimated-lifetime" type="number" min="1" style="flex-grow: 1;" placeholder="5">
                     </td>
-
-
+                    <td style="text-align: center;">
+                        <button class="btn btn-blue" style="width: 100px; height: 25px;" type="submit">Search</button>
+                    </td>
                 </tr>
             </table>
-            <div style="display: flex; flex-direction: row; justify-content: end;">
-                <button type="submit">Search</button>
-            </div>
         </form>
     </section>
     <section class="storage-table-wrapper">
@@ -210,7 +155,6 @@ if (isset($_GET['referrer'])) {
             } else {
                 echo "<tr><td colspan='12' align='center'>No information.</td></tr>";
             }
-
             ?>
         </table>
     </section>
