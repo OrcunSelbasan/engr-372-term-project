@@ -1,8 +1,5 @@
 <?php
-<<<<<<< HEAD
-=======
-// TODO: CHECK SQL INJECTION PREVENTION
->>>>>>> main
+
 // Setting absoulute path to prevent errors caused by nesting in the folders
 $rootPath = $_SERVER['DOCUMENT_ROOT'];
 $dbPath = $rootPath . "/database/index.php";
@@ -11,7 +8,6 @@ class Task
 {
     private $db;
     private $table = 'tasks';
-<<<<<<< HEAD
     private $id ='id';
     private $title = 'title';
     private $team = 'team';
@@ -21,20 +17,11 @@ class Task
     private $modificationDate = 'modification_date';
 
      public function __construct()
-=======
-    private $id = 'id';
-    private $employee_id = 'employee_id';
-    private $storage_id = 'storage_id';
-    private $interaction_time = 'interaction_time';
-    private $region_id = 'region_id';
 
-    public function __construct()
->>>>>>> main
     {
         $this->db = new Database();
     }
 
-<<<<<<< HEAD
     
 
     public function create($title, $team, $status, $binId, $truckId, $modificationDate)
@@ -47,19 +34,7 @@ class Task
                 $query = $this->db->queryRaw($statement);
                 $statement = "UPDATE storage SET initial_status='active' WHERE id='$truckId'";
                 $query = $this->db->queryRaw($statement);
-=======
-    // CREATE OPS
-    public function create(
-        $employee_id,
-        $storage_id,
-        $interaction_time,
-        $region_id
-    ) {
-        try {
-            $statement = "INSERT INTO $this->table ($this->employee_id, $this->storage_id, $this->interaction_time, $this->region_id) VALUES ($employee_id, $storage_id, '$interaction_time', $region_id)";
-            $query = $this->db->queryRaw($statement);
-            if ($query == true) {
->>>>>>> main
+
                 return true;
             } else {
                 throw new Exception("Error Processing Request: troubled statement", 1);
@@ -70,19 +45,10 @@ class Task
         return false;
     }
 
-<<<<<<< HEAD
      public function getAll()
     {
         try {
             $result = $this->db->queryRaw("SELECT * FROM $this->table");
-=======
-    // READ OPS
-    public function getAll()
-    {
-        try {
-            $result = $this->db->queryRaw("SELECT * FROM $this->table");
-            $result = $result->fetch_all(MYSQLI_ASSOC);
->>>>>>> main
             // $this->db->close();
             return $result;
         } catch (Exception $e) {
@@ -91,7 +57,6 @@ class Task
         }
         return false;
     }
-<<<<<<< HEAD
 
     public function getRecordsByStatus($s)
     {
@@ -215,6 +180,3 @@ class Task
         return false;
     }
 }
-=======
-}
->>>>>>> main
