@@ -13,6 +13,8 @@ class Employees
     private $email = 'email';
     private $phone = 'phone';
     private $salary = 'salary';
+
+    private $team = 'team';
     private $modificationDate = 'modification_date';
 
      public function __construct()
@@ -20,10 +22,10 @@ class Employees
         $this->db = new Database();
     }
 
-    public function create($fname, $lname, $email, $phone, $salary, $modificationDate)
+    public function create($fname, $lname, $email, $phone, $salary, $team, $modificationDate)
     {
         try {
-            $statement = "INSERT INTO $this->table ($this->firstName, $this->lastName, $this->email, $this->phone, $this->salary, $this->modificationDate) VALUES ('$fname',  '$lname', '$email', '$phone',  '$salary', '$modificationDate')";
+            $statement = "INSERT INTO $this->table ($this->firstName, $this->lastName, $this->email, $this->phone, $this->salary, $this->team, $this->modificationDate) VALUES ('$fname',  '$lname', '$email', '$phone',  '$salary', '$team', '$modificationDate')";
             $query = $this->db->queryRaw($statement);
             if ($query == true) {
                 return true;
@@ -40,6 +42,19 @@ class Employees
     {
         try {
             $result = $this->db->queryRaw("SELECT * FROM $this->table");
+            // $this->db->close();
+            return $result;
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            return $e;
+        }
+        return false;
+    }
+
+     public function getTeamMembers($team)
+    {
+        try {
+            $result = $this->db->queryRaw("SELECT * FROM $this->table WHERE team='$team'");
             // $this->db->close();
             return $result;
         } catch (Exception $e) {
@@ -85,7 +100,7 @@ class Employees
                 if ($key == "employees") {
                     continue;
                 } else {
-                    $quotes = in_array($key, ["salary"]) ? "" : '"';
+                    $quotes = in_array($key, ["salary","team"]) ? "" : '"';
                     $comma = ($value == $lastColumnValue) ? '' : ',';
                     $query = $query . " $key=$quotes$value$quotes $comma";
                 }

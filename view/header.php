@@ -6,6 +6,7 @@ $regionsPath = $rootPath . "/view/regions/regions.php";
 $citiesPath = $rootPath . "/view/cities.php";
 $employeesPath = $rootPath . "/view/employees.php";
 $reportsPath = $rootPath . "/view/reports/storage_reports.php";
+$tasksPath = $rootPath . "/view/tasks/tasks.php";
 $logoutPath = $rootPath . "/view/logout.php";
 
 function getCurrentDirectoryName()
@@ -37,6 +38,15 @@ function getHeader()
         case "employee-view-entry":
             return "Employee";
             break;
+        case "tasks":
+            return "Tasks";
+            break;
+        case "add_task":
+            return "Tasks";
+            break;
+        case "view-task":
+            return "Tasks";
+            break;
         case "storage_reports":
             return "Storage Report";
             break;
@@ -66,17 +76,17 @@ function getClasses()
             // return "bg-brown";
             // break;
         case "storage-view-record":
-            // return "bg-green";
-            // break;
-        case "employees":
-            // return "bg-light-green";
-            // break;
-        case "add-employee":
-            // return "bg-light-green";
-            // break;
-        case "employee-view-entry":
-            // return "bg-light-green";
-            // break;
+            return "bg-green";
+            break;
+        // case "employees":
+        //     return "bg-light-green";
+        //     break;
+        // case "add-employee":
+        //     return "bg-light-green";
+        //     break;
+        // case "employee-view-entry":
+        //     return "bg-light-green";
+        //     break;
         default:
             break;
     }
@@ -155,6 +165,13 @@ $className = getClasses();
                         <path d="M5 6C5.28333 6 5.52083 5.90417 5.7125 5.7125C5.90417 5.52083 6 5.28333 6 5C6 4.71667 5.90417 4.47917 5.7125 4.2875C5.52083 4.09583 5.28333 4 5 4C4.71667 4 4.47917 4.09583 4.2875 4.2875C4.09583 4.47917 4 4.71667 4 5C4 5.28333 4.09583 5.52083 4.2875 5.7125C4.47917 5.90417 4.71667 6 5 6ZM5 10C5.28333 10 5.52083 9.90417 5.7125 9.7125C5.90417 9.52083 6 9.28333 6 9C6 8.71667 5.90417 8.47917 5.7125 8.2875C5.52083 8.09583 5.28333 8 5 8C4.71667 8 4.47917 8.09583 4.2875 8.2875C4.09583 8.47917 4 8.71667 4 9C4 9.28333 4.09583 9.52083 4.2875 9.7125C4.47917 9.90417 4.71667 10 5 10ZM5 14C5.28333 14 5.52083 13.9042 5.7125 13.7125C5.90417 13.5208 6 13.2833 6 13C6 12.7167 5.90417 12.4792 5.7125 12.2875C5.52083 12.0958 5.28333 12 5 12C4.71667 12 4.47917 12.0958 4.2875 12.2875C4.09583 12.4792 4 12.7167 4 13C4 13.2833 4.09583 13.5208 4.2875 13.7125C4.47917 13.9042 4.71667 14 5 14ZM2 18C1.45 18 0.979167 17.8042 0.5875 17.4125C0.195833 17.0208 0 16.55 0 16V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H13L18 5V16C18 16.55 17.8042 17.0208 17.4125 17.4125C17.0208 17.8042 16.55 18 16 18H2ZM2 16H16V6H12V2H2V16Z" fill="white" />
                     </svg>
                     <span class="nav_link_a_span">Reports</span>
+                </a>
+            </li>
+            <li class="nav_link_item">
+                <a class="nav_link_a" href="<?php echo $tasksPath ?>">
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 -960 960 960" width="24"><path d="m438-240 226-226-58-58-169 169-84-84-57 57 142 142ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z" fill="white"/></svg>
+                    <span class="nav_link_a_span">Tasks</span>
                 </a>
             </li>
         </ul>
