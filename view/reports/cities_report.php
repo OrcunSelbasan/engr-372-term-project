@@ -52,7 +52,7 @@ if (isset($_GET['referrer'])) {
             <li style="list-style: none; font-size: 24px;"><a href='./regions_report.php'>Regions</a></li>
             <li style="list-style: none; font-size: 24px; border-bottom: 2px solid #16558f;"><a href='./cities_report.php'>Cities</a></li>
             <li style="list-style: none; font-size: 24px;"><a href='./employees_report.php'>Employees</a></li>
-            <li style="list-style: none; font-size: 24px;"><a href='./tasks_log.php'>Tasks Log</a></li>
+             
         </ul>
     </section>
     <section class="report-table-wrapper">
