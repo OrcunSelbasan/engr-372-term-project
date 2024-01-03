@@ -23,7 +23,7 @@ $auth->checkAuth();
 <body>
     <?php include("../header.php"); ?>
     <main class="storage-main">
-        <h2 class="storage-header">Welcome to the Region Management System! CREATE</h2>
+        <h2 class="storage-header">Create Region</h2>
         <section class="storage-subheader-wrapper">
             <h3 class="storage-subheader" style="max-width: 700px; font-weight: 500;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo laborum vitae eveniet iusto et. Unde non officiis omnis. Explicabo nemo provident accusantium quisquam, officiis maiores facere? Perferendis voluptatum impedit nam!</h3>
         </section>
