@@ -77,34 +77,38 @@ CREATE TABLE `employees` (
   `email` varchar(40) NOT NULL,
   `phone` int(20) NOT NULL,
   `salary` int(20) NOT NULL,
+  `team` int(10) NOT NULL,
   `modification_date` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `employees`
 --
 
-INSERT INTO `employees` (`id`, `fname`, `lname`, `email`, `phone`, `salary`, `modification_date`) VALUES
-(10, 'Jane', 'Smith', 'jane.smith@email.com', 5555678, 60000, '2023-12-11'),
-(11, 'Robert', 'Johnson', 'robert.johnson@email.com', 5559012, 70000, '2023-12-16'),
-(12, 'Emily', 'Williams', 'emily.williams@email.com', 5553456, 55000, NULL),
-(15, 'Daniel', 'Miller', 'daniel.miller@email.com', 5556789, 70000, NULL),
-(16, 'Megan', 'Jones', 'megan.jones@email.com', 5550123, 55000, NULL),
-(18, 'Ashley', 'Moore', 'ashley.moore@email.com', 5558901, 70000, '2023-12-08'),
-(19, 'David', 'Taylor', 'david.taylor@email.com', 5552345, 60000, NULL),
-(22, 'Emma', 'Lewis', 'emma.lewis@email.com', 5554567, 65000, NULL),
-(23, 'William', 'Scott', 'william.scott@email.com', 5558901, 70000, '2023-12-16'),
-(24, 'Ava', 'Hill', 'ava.hill@email.com', 5552345, 60000, '2023-12-16'),
-(25, 'Matthew', 'Turner', 'matthew.turner@email.com', 5556789, 70000, NULL),
-(28, 'Isabella', 'Ward', 'isabella.ward@email.com', 5558901, 70000, NULL),
-(29, 'James', 'Fisher', 'james.fisher@email.com', 5552345, 60000, '2023-12-14'),
-(33, 'Benjamin', 'Reed', 'benjamin.reed@email.com', 5558901, 70000, NULL),
-(35, 'Jackson', 'Russell', 'jackson.russell@email.com', 5556789, 70000, NULL),
-(36, 'Ella', 'Stone', 'ella.stone@email.com', 5550123, 55000, '2023-12-16'),
-(37, 'Logan', 'Harrison', 'logan.harrison@email.com', 5554567, 65000, '2023-12-16'),
-(38, 'Mia', 'Ferguson', 'mia.ferguson@email.com', 98765432, 70000, '2023-12-16'),
-(39, 'Caleb', 'Mason', 'caleb.mason@email.com', 5552345, 60000, NULL),
-(40, 'Addison', 'Hudson', 'addison.hudson@email.com', 5556789, 70001, '2023-12-08');
+INSERT INTO `employees` (`id`, `fname`, `lname`, `email`, `phone`, `salary`, `team`, `modification_date`) VALUES
+(10, 'Jane', 'Smith', 'jane.smith@email.com', 5555678, 60000, 0, '2023-12-11'),
+(11, 'Robert', 'Johnson', 'robert.johnson@email.com', 5559012, 70000, 0, '2023-12-16'),
+(12, 'Emily', 'Williams', 'emily.williams@email.com', 5553456, 55000, 0, '2023-12-18'),
+(15, 'Daniel', 'Miller', 'daniel.miller@email.com', 5556789, 70000, 0, NULL),
+(16, 'Megan', 'Jones', 'megan.jones@email.com', 5550123, 55000, 0, '2023-12-18'),
+(17, 'Christopher', 'Wilson', 'christopher.wilson@email.com', 5554567, 65000, 0, '2023-12-16'),
+(18, 'Ashley', 'Moore', 'ashley.moore@email.com', 5558901, 70000, 0, '2023-12-08'),
+(19, 'David', 'Taylor', 'david.taylor@email.com', 5552345, 60000, 0, '2023-12-18'),
+(21, 'Ryan', 'Hall', 'ryan.hall@email.com', 5550123, 55000, 1, '2024-01-03'),
+(22, 'Emma', 'Lewis', 'emma.lewis@email.com', 5554567, 65000, 7, '2024-01-03'),
+(23, 'William', 'Scott', 'william.scott@email.com', 5558901, 70000, 0, '2023-12-16'),
+(24, 'Ava', 'Hill', 'ava.hill@email.com', 5552345, 60000, 0, '2023-12-16'),
+(25, 'Matthew', 'Turner', 'matthew.turner@email.com', 5556789, 70000, 0, NULL),
+(28, 'Isabella', 'Ward', 'isabella.ward@email.com', 5558901, 70000, 0, NULL),
+(29, 'James', 'Fisher', 'james.fisher@email.com', 5552345, 60000, 0, '2023-12-14'),
+(31, 'Liam', 'Young', 'liam.young@email.com', 5550123, 55000, 0, '2023-12-14'),
+(35, 'Jackson', 'Russell', 'jackson.russell@email.com', 5556789, 70000, 0, '2023-12-18'),
+(36, 'Ella', 'Stone', 'ella.stone@email.com', 5550123, 55000, 0, '2023-12-16'),
+(37, 'Logan', 'Harrison', 'logan.harrison@email.com', 5554567, 65000, 0, '2023-12-16'),
+(38, 'Mia', 'Ferguson', 'mia.ferguson@email.com', 98765432, 70000, 8, '2023-12-29'),
+(39, 'Caleb', 'Mason', 'caleb.mason@email.com', 5552345, 60000, 0, NULL),
+(40, 'Addison', 'Hudson', 'addison.hudson@email.com', 5556789, 70001, 1, '2023-12-29'),
+(41, 'Jack', 'Wolfe', 'jack.wolfe@email.com', 9928374, 60000, 0, '2023-12-08');
 
 -- --------------------------------------------------------
 
@@ -159,12 +163,14 @@ CREATE TABLE `storage` (
 --
 
 INSERT INTO `storage` (`id`, `category`, `volume`, `volume_unit`, `type`, `initial_status`, `value`, `value_unit`, `autonotifier`, `quantity`, `lifetime`, `lifetime_unit`, `temporary_storage`, `modification_date`) VALUES
-(14, 'truck', 10, 'liter', 'smart', 'active', 100, 'dollar', 'on', 1, 5, 'year', 'true', '2023-12-07'),
+(14, 'truck', 10, 'liter', 'smart', 'passive', 100, 'dollar', 'on', 1, 5, 'year', 'true', '2023-12-07'),
 (17, 'bin', 3000, 'kilogram', 'regular', 'active', 10000, 'dollar', 'on', 2, 5, 'year', 'false', '2023-11-26'),
 (18, 'truck', 100, 'cubicmeter', 'smart', 'passive', 10000, 'euro', 'on', 1, 5, 'year', 'true', '2023-11-26'),
-(19, 'bin', 5, 'kilogram', 'smart', 'maintenance', 5000, 'euro', 'on', 3, 5, 'year', 'false', '2023-11-26'),
-(21, 'truck', 8, 'cubicmeter', 'regular', 'maintenance', 1, 'dollar', '', 2, 2, 'year', 'true', '2023-12-18'),
-(25, 'bin', 10, 'liter', 'smart', 'active', 100, 'dollar', 'on', 1, 5, 'year', 'false', '2023-12-18');
+(19, 'bin', 5, 'kilogram', 'smart', 'passive', 5000, 'euro', 'on', 3, 5, 'year', 'false', '2023-11-26'),
+(21, 'truck', 2, 'cubicmeter', 'regular', 'maintenance', 1, 'dollar', '', 2, 2, 'year', 'true', '2023-12-07'),
+(24, 'bin', 1, 'liter', 'smart', 'active', 333, 'dollar', '', 1, 1, 'year', 'false', '2023-12-12'),
+(25, 'truck', 3, 'liter', 'smart', 'passive', 4, 'dollar', '', 1, 3, 'year', 'true', '2023-12-29'),
+(26, 'bin', 1, 'liter', 'smart', 'passive', 1000, 'euro', '', 1, 1, 'year', 'false', '2023-12-29');
 
 -- --------------------------------------------------------
 
@@ -173,19 +179,43 @@ INSERT INTO `storage` (`id`, `category`, `volume`, `volume_unit`, `type`, `initi
 --
 
 CREATE TABLE `tasks` (
-  `id` int(11) NOT NULL,
-  `employee_id` int(11) NOT NULL,
-  `storage_id` int(11) NOT NULL,
-  `interaction_time` datetime NOT NULL,
-  `region_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int(100) NOT NULL,
+  `title` varchar(500) NOT NULL,
+  `team` int(5) NOT NULL,
+  `status` varchar(40) NOT NULL,
+  `binId` int(20) NOT NULL,
+  `truckId` int(20) NOT NULL,
+  `modification_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tasks`
 --
 
-INSERT INTO `tasks` (`id`, `employee_id`, `storage_id`, `interaction_time`, `region_id`) VALUES
-(1, 10, 14, '2023-12-07 00:00:00', 2);
+INSERT INTO `tasks` (`id`, `title`, `team`, `status`, `binId`, `truckId`, `modification_date`) VALUES
+(1, 'Task 1', 3, 'done', 15, 22, '2023-12-20'),
+(2, 'Task 2', 7, 'done', 45, 76, '2023-12-20'),
+(3, 'Task 3', 2, 'done', 10, 88, '2023-12-20'),
+(4, 'Task 4', 9, 'done', 32, 45, '2023-12-20'),
+(5, 'Task 5', 5, 'done', 78, 91, '2023-12-20'),
+(6, 'Task 6', 4, 'done', 55, 12, '2023-12-20'),
+(7, 'Task 7', 1, 'done', 20, 67, '2023-12-20'),
+(8, 'Task 8', 8, 'done', 90, 34, '2023-12-28'),
+(9, 'Task 9', 6, 'done', 75, 55, '2023-12-20'),
+(10, 'Task 10', 3, 'done', 30, 78, '2023-12-20'),
+(11, 'Task 11', 7, 'in progress', 50, 99, '2023-12-21'),
+(12, 'Task 12', 2, 'done', 5, 23, '2023-12-21'),
+(13, 'Task 13', 9, 'open', 42, 56, '2023-12-21'),
+(14, 'Task 14', 5, 'in progress', 68, 87, '2023-12-21'),
+(15, 'Task 15', 4, 'done', 35, 9, '2023-12-21'),
+(16, 'Task 16', 1, 'done', 25, 44, '2023-12-21'),
+(17, 'Task 17', 8, 'done', 95, 67, '2023-12-21'),
+(18, 'Task 18', 6, 'done', 80, 11, '2023-12-21'),
+(19, 'Task 19', 3, 'done', 40, 75, '2023-12-21'),
+(20, 'Task 20', 7, 'done', 60, 88, '2023-12-21'),
+(24, 'TEST', 1, 'done', 19, 14, '2024-01-03'),
+(25, 'ce', 1, 'done', 26, 25, '2023-12-29'),
+(27, 'hellooo', 1, 'done', 26, 25, '2024-01-03');
 
 --
 -- Indexes for dumped tables
@@ -248,7 +278,7 @@ ALTER TABLE `cities`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `regions`
@@ -260,13 +290,13 @@ ALTER TABLE `regions`
 -- AUTO_INCREMENT for table `storage`
 --
 ALTER TABLE `storage`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
