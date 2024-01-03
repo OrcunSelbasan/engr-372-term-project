@@ -217,7 +217,7 @@ a:hover {
 .employee-form-table td {
     padding: 10px;
     border: 1px solid #ddd;
-    text-align: center; /* Center the content within each table cell */
+    text-align: center; 
 }
 
 .employee-form-table label {
@@ -227,21 +227,21 @@ a:hover {
 
 .employee-form input,
 .employee-form select {
-    width: 100%; /* Adjust the width as needed */
+    width: 100%; 
     padding: 8px;
     box-sizing: border-box;
     margin-bottom: 5px;
-    display: block; /* Ensure inputs and selects are full-width */
+    display: block; 
 }
 
 .employee-salary-container {
     display: flex;
-    align-items: center; /* Center vertically within the container */
+    align-items: center; 
 }
 
 .employee-salary-container select {
-    width: 25%; /* Set the select width to 25% of the container */
-    margin-left: 5%; /* Add some space between input and select */
+    width: 25%; 
+    margin-left: 5%; 
 }
 
 .employee-form-lines-container {
