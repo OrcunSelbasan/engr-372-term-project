@@ -46,7 +46,7 @@ if (isset($_GET['referrer'])) {
     <title>WMS Inventory - Reports</title>
 </head>
 <?php include("../header.php"); ?>
-<main class="report-main">
+<main class="report-main" style="width: 700px;">
     <section class="select-dropdown">
         <ul style="display: flex; flex-direction: row; gap: 20px; padding: 0; margin-bottom: 60px;">
             <li style="list-style: none; font-size: 24px;"><a href="./storage_reports.php">Storage</a></li>
@@ -56,7 +56,7 @@ if (isset($_GET['referrer'])) {
              
         </ul>
     </section>
-    <section class="report-table-wrapper">
+    <section class="report-table-wrapper" style="overflow-x: scroll;">
         <form action="./regions_report.php" method="GET">
             <input type="text" hidden value="storage" name="referrer">
             <table class="report-table" style="margin: 20px 0; width: 100%;">
