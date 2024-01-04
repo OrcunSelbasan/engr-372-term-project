@@ -56,7 +56,7 @@ function validate(event) {
         setTimeout(() => {
 
             $("#validate-error").text("");
-            $("#employee-form-container").css("border", "2px solid var(--dark-green)");
+            $("#employee-form-container").css("border", "2px solid var(--light-blue)");
         }, 1000);
     }
 
