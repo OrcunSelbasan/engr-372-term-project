@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-element">
                     <label for="password"><b>Password</b></label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="password" id="password" placeholder="1234">
                 </div>
                 <button class="form-element-btn" type="submit">Login</button>
             </form>

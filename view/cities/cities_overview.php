@@ -10,6 +10,7 @@ $cityControllerPath = $rootPath . "/controller/ControllerCity.php";
 include($cityControllerPath);
 $controller = new ControllerCity();
 $cities = $controller->getAllRecords();
+$cities = $cities == false ? array() : $cities;
 
 ?>
 
